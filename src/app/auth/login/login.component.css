@@ -1,0 +1,20 @@
+.ftco-section{
+  background-image: url(../../../assets/login/images/bg.jpg) ;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center center;
+  height: 100vh;
+
+}
+
+.signin-form{
+
+  /* background-color : rgba(0, 0, 0, 0.1); */
+  border-radius: 2%;
+
+}
+.form-control{
+  background-color : rgba(0, 0, 0, 0.2);
+}
+
+
