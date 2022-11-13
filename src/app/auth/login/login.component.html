@@ -1,172 +1,76 @@
-<!--
+<div class="limiter">
+  <div class="container-login100">
+  <div class="wrap-login100 p-t-50 p-b-90">
+  <form class="login100-form validate-form flex-sb flex-w">
+  <span class="login100-form-title p-b-51">
+  Login
+  </span>
 
+  <mat-form-field  style="  height: 84.0625px;
+  width: 390px;">
+    <div class="wrap-input100 validate-input m-b-16" data-validate="Username is required" >
+  <input class="input100" matInput [formControl]="email" type="text"  placeholder="Email">
+  <span class="focus-input100"></span>
+</div>
+  <mat-error *ngIf="email.hasError('email')">
+    Please enter a valid email address
+   </mat-error>
+   <mat-error *ngIf="email.hasError('requaired')">
+    email is <strong>requaired</strong>
+   </mat-error>
+  </mat-form-field>
 
-<section class="ftco-section" >
-  <div class="container">
-
-    <div class="row justify-content-center">
-      <div class="col-md-6 col-lg-4">
-        <div class="login-wrap p-0">
-          <h3 class="mb-4 text-center">Have an account?</h3>
-          <form action="#" class="signin-form">
-            <div class="form-group">
-              <mat-form-field  >
-
-              <input
-                [formControl]="email"
-                type="email"
-                placeholder="Enter Your Email"
-                matInput
-
-              />
-            <mat-error *ngIf="email.hasError('email')">
-              Please enter a valid email address
-             </mat-error>
-             <mat-error *ngIf="email.hasError('requaired')">
-              email is <strong>requaired</strong>
-             </mat-error>
-            </mat-form-field>
-          </div>
-            <div class="form-group">
-              <input
-                id="password-field"
-                type="password"
-                class="form-control"
-                placeholder="Password"
-                required
-              />
-              <span
-                toggle="#password-field"
-                class="fa fa-fw fa-eye field-icon toggle-password"
-              ></span>
-            </div>
-            <div class="form-group">
-              <button
-                type="submit"
-                class="form-control btn btn-primary submit px-3"
-              >
-                Sign In
-              </button>
-            </div>
-            <div class="form-group d-md-flex">
-              <div class="w-50">
-                <label class="checkbox-wrap checkbox-primary"
-                  >Remember Me
-                  <input type="checkbox" checked />
-                  <span class="checkmark"></span>
-                </label>
-              </div>
-              <div class="w-50 text-md-right">
-                <a href="#" style="color: #fff">Forgot Password</a>
-              </div>
-            </div>
-          </form>
-          <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
-          <div class="social d-flex text-center">
-            <a href="#" class="px-2 py-2 mr-md-1 rounded"
-              ><span class="ion-logo-facebook mr-2"></span> Facebook</a
-            >
-            <a href="#" class="px-2 py-2 ml-md-1 rounded"
-              ><span class="ion-logo-twitter mr-2"></span> Twitter</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+  <input class="input100" type="password" name="pass" placeholder="Password">
+  <span class="focus-input100"></span>
   </div>
-</section>
-
-<script src="./assets/login/js/jquery.min.js"></script>
-<script src="./assets/login/js/popper.js"></script>
-<script src="./assets/login/js/bootstrap.min.js"></script>
-<script src="./assets/login/js/main.js"></script> -->
-<section class="vh-100">
-  <div class="container-fluid h-custom">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-9 col-lg-6 col-xl-5">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-          class="img-fluid" alt="Sample image">
-      </div>
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form>
-          <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-            <p class="lead fw-normal mb-0 me-3">Sign in with</p>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-facebook-f"></i>
-            </button>
-
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-twitter"></i>
-            </button>
-
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-linkedin-in"></i>
-            </button>
-          </div>
-
-          <div class="divider d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-3 mb-0">Or</p>
-          </div>
-
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <input type="email" id="form3Example3" class="form-control form-control-lg"
-              placeholder="Enter a valid email address" />
-            <label class="form-label" for="form3Example3">Email address</label>
-          </div>
-
-          <!-- Password input -->
-          <div class="form-outline mb-3">
-            <input type="password" id="form3Example4" class="form-control form-control-lg"
-              placeholder="Enter password" />
-            <label class="form-label" for="form3Example4">Password</label>
-          </div>
-
-          <div class="d-flex justify-content-between align-items-center">
-            <!-- Checkbox -->
-            <div class="form-check mb-0">
-              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-              <label class="form-check-label" for="form2Example3">
-                Remember me
-              </label>
-            </div>
-            <a href="#!" class="text-body">Forgot password?</a>
-          </div>
-
-          <div class="text-center text-lg-start mt-4 pt-2">
-            <button type="button" class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
-                class="link-danger">Register</a></p>
-          </div>
-
-        </form>
-      </div>
-    </div>
+  <div class="flex-sb-m w-full p-t-3 p-b-24">
+  <div class="contact100-form-checkbox">
+  <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+  <label class="label-checkbox100" for="ckb1">
+  Remember me
+  </label>
   </div>
-  <div
-    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-    <!-- Copyright -->
-    <div class="text-white mb-3 mb-md-0">
-      Copyright © 2020. All rights reserved.
-    </div>
-    <!-- Copyright -->
-
-    <!-- Right -->
-    <div>
-      <a href="#!" class="text-white me-4">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="#!" class="text-white me-4">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="#!" class="text-white me-4">
-        <i class="fab fa-google"></i>
-      </a>
-      <a href="#!" class="text-white">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-    </div>
-    <!-- Right -->
+  <div>
+  <a href="https://colorlib.com/etc/lf/Login_v10/index.html#" class="txt1">
+  Forgot?
+  </a>
   </div>
-</section>
+  </div>
+  <div class="container-login100-form-btn m-t-17">
+  <button class="login100-form-btn">
+  Login
+  </button>
+  </div>
+  </form>
+  </div>
+  </div>
+  </div>
+  <div id="dropDownSelect1"></div>
+
+  <script src="../../../assets/login/Login V10_files/jquery-3.2.1.min.js.download"></script>
+
+  <script src="../../../assets/login/Login V10_files/animsition.min.js.download"></script>
+
+  <script src="../../../assets/login/Login V10_files/popper.js.download"></script>
+  <script src="../../../assets/login/Login V10_files/bootstrap.min.js.download"></script>
+
+  <script src="../../../assets/login/Login V10_files/select2.min.js.download"></script>
+
+  <script src="../../../assets/login/Login V10_files/moment.min.js.download"></script>
+  <script src="../../../assets/login/Login V10_files/daterangepicker.js.download"></script>
+
+  <script src="../../../assets/login/Login V10_files/countdowntime.js.download"></script>
+
+  <script src="../../../assets/login/Login V10_files/main.js.download"></script>
+
+  <script async="" src="../../../assets/login/Login V10_files/js"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-23581568-13');
+    </script>
+  <script defer="" src="../../../assets/login/Login V10_files/vaafb692b2aea4879b33c060e79fe94621666317369993" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon="{&quot;rayId&quot;:&quot;7698a37b7b19743b&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;,&quot;version&quot;:&quot;2022.11.0&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
+
