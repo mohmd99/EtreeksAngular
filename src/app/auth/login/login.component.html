@@ -10,7 +10,7 @@
   width: 390px;">
     <div class="wrap-input100 validate-input m-b-16" data-validate="Username is required" >
   <input class="input100" matInput [formControl]="email" type="text"  placeholder="Email">
-  <span class="focus-input100"></span>
+
 </div>
   <mat-error *ngIf="email.hasError('email')">
     Please enter a valid email address
@@ -19,11 +19,17 @@
     email is <strong>requaired</strong>
    </mat-error>
   </mat-form-field>
-
+  <mat-form-field  style="  height: 84.0625px;
+  width: 390px;">
   <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-  <input class="input100" type="password" name="pass" placeholder="Password">
-  <span class="focus-input100"></span>
-  </div>
+  <input class="input100" type="password" matInput [formControl]="password" placeholder="Password">
+
+  </div>  <mat-error *ngIf="password.hasError('minlength')">
+    Please enter a strong Password
+   </mat-error>
+   <mat-error *ngIf="password.hasError('requaired')">
+    Password is <strong>requaired</strong>
+   </mat-error></mat-form-field>
   <div class="flex-sb-m w-full p-t-3 p-b-24">
   <div class="contact100-form-checkbox">
   <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
@@ -42,6 +48,7 @@
   Login
   </button>
   </div>
+
   </form>
   </div>
   </div>
