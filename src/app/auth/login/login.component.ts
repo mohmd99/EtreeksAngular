@@ -8,9 +8,11 @@ import { FormControl, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   constructor() { }
-
+rememberMe: boolean=false;
   ngOnInit(): void {
+    
   }
   email = new FormControl('',[Validators.required,Validators.email]);
   password = new FormControl('',[Validators.required,Validators.minLength(8)]);
+
 }
