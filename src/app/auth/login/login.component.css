@@ -33,8 +33,20 @@ height: calc(100% - 73px);
 height: 100%;
 }
 }
-.wrap-input100{
+/* .wrap-input100{
 margin-top: 20px;
 margin-bottom: 20px;
+} */
+
+.login100-form-title {
+  padding-bottom: 0;
+}
+
+.mat-form-field{
+  margin-bottom: 50px;
+}
+
+.mat-form-field-wrapper { 
+  padding: 0 !important;
 }
 
