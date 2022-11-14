@@ -17,8 +17,12 @@ export class LoginComponent implements OnInit {
     this.AutoLogin();
 
   }
-  Remember(ev: any) {
-    if (ev.target.checked) {
+
+ 
+  Remember() {
+
+   var ev = document.getElementById("ckb1")as HTMLInputElement
+    if (ev.checked) {
       localStorage.setItem('email', String(this.email.value));
       localStorage.setItem('password', String(this.password.value));
     }
@@ -35,23 +39,6 @@ export class LoginComponent implements OnInit {
   }
 
 
-  /*{
-
-
-
-      localStorage.setItem('email', this.email);
-      localStorage.setItem('password',  this.password);
-     // Save value to local storage
-     if(this.rememberMe) {
-        localStorage.setItem('rememberMe', 'yes')
-      }
-      this.toastrService.success('Successfully Login!');
-      this.router.navigate(['/home']);
-   },
-    (err) => {
-
-    });
-   }*/
 
 }
 

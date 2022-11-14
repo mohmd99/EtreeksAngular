@@ -43,7 +43,9 @@ margin-bottom: 20px;
 }
 
 .mat-form-field{
-  margin-bottom: 50px;
+  margin-bottom: 25px;
+  width: 390px;
+    font-size: large;
 }
 
 .mat-form-field-wrapper {
@@ -55,4 +57,8 @@ margin-bottom: 20px;
 width: 450px;
 padding-left: 50px;
 padding-right: 50px;
+}
+
+ .mat-form-field-underline {
+  bottom: 2.25em;
 }
