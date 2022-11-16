@@ -1,5 +1,7 @@
+import { SharedModule } from './../../shared/shared.module';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,10 +17,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.rememberMe = false;
     this.AutoLogin();
+    
 
   }
 
- 
+
   Remember() {
 
    var ev = document.getElementById("ckb1")as HTMLInputElement
