@@ -10,6 +10,7 @@ export class GeneralService {
 
   homeInfo:any={};
   allCourses:any=[{}]
+  
   constructor( private toaster:ToastrService,private spinner:NgxSpinnerService,private http:HttpClient ) { }
 
   GetHomeInfo(){
