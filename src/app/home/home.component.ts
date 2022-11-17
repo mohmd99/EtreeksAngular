@@ -15,9 +15,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.generalServise.GetHomeInfo();
-
-
     
+
+
+
     // setTimeout(() => {
 
     //   this.spinner.hide();
