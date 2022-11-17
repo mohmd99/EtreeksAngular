@@ -4,12 +4,12 @@
 
 
 
-        <section id="home" class="video-section js-height-full">
-            <div class="overlay"></div>
+        <section *ngFor="let info of generalServise.homeInfo" id="home" class="video-section js-height-full">
+            <div class="overlay" style=" background-image: url('../../assets/assets_template/images/{{info.image}}');"></div>
             <div class="home-text-wrapper relative container">
                 <div class="home-message">
-                    <p>Learning Management System</p>
-                    <small>Edulogy is the ideal choice for your organization, your business and your online education system. Create your online course now with unlimited page templates, color options, and menu features.</small>
+                    <p>{{info.title}}</p>
+                    <small>{{info.text}}</small>
                     <div class="btn-wrapper">
                         <div class="text-center">
                             <a href="#" class="btn btn-primary wow slideInLeft">Read More</a> &nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-default wow slideInRight">Buy Now</a>

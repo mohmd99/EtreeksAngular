@@ -12,6 +12,7 @@ import { ContactComponent } from './contact/contact.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
+import {HttpClientModule} from "@angular/common/http"
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     ToastNoAnimationModule.forRoot(),
     BrowserAnimationsModule,
     SharedModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

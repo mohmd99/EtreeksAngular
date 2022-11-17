@@ -1,6 +1,7 @@
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { GeneralService } from '../Services/general.service';
 
 @Component({
   selector: 'app-home',
@@ -9,15 +10,18 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private toastr:ToastrService,private spinner:NgxSpinnerService) { }
+
+  constructor(public generalServise:GeneralService) { }
 
   ngOnInit(): void {
-    this.toastr.success('hello');
-    this.spinner.show();
-    setTimeout(() => {
+    this.generalServise.GetHomeInfo();
 
-      this.spinner.hide();
-      }, 3000);
+
+    
+    // setTimeout(() => {
+
+    //   this.spinner.hide();
+    //   }, 3000);
 
   }
 
