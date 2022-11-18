@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoursePageComponent } from './course-page/course-page.component';
 import { CategoryComponent } from './category/category.component';
+import { AdminModule } from './admin/admin.module';
 
 const routes: Routes = [
   {
@@ -34,7 +35,12 @@ const routes: Routes = [
     path:'auth',
     loadChildren:()=>AuthModule
   }
-
+  ,
+  
+  {
+    path:'admin',
+    loadChildren:()=>AdminModule
+  }
 ];
 
 @NgModule({
