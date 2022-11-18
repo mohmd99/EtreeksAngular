@@ -14,7 +14,8 @@ import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 import {HttpClientModule} from "@angular/common/http";
 import { CoursesComponent } from './courses/courses.component';
-import { CoursePageComponent } from './course-page/course-page.component'
+import { CoursePageComponent } from './course-page/course-page.component';
+import { CategoryComponent } from './category/category.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CoursePageComponent } from './course-page/course-page.component'
     AboutComponent,
     ContactComponent,
     CoursesComponent,
-    CoursePageComponent
+    CoursePageComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

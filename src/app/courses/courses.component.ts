@@ -14,17 +14,15 @@ export class CoursesComponent implements OnInit {
   @Input() description:string|undefined;
   @Input() id:number=0;
   
-  constructor(public generalServise:GeneralService,private router:Router ) { }
+  constructor(public generalService:GeneralService,private router:Router ) { }
 
   ngOnInit(): void {
    
   }
   ShowCourse(id:number){
-    this.generalServise.GetCourseById(id);
+    this.generalService.GetCourseById(id);
     this.router.navigate(['Course']);
 
-   
-   
   }
   
 

@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoursePageComponent } from './course-page/course-page.component';
+import { CategoryComponent } from './category/category.component';
 
 const routes: Routes = [
   {
@@ -20,12 +21,18 @@ const routes: Routes = [
     component:ContactComponent
   },
   {
-    path:'auth',
-    loadChildren:()=>AuthModule
+    path:'Category',
+    component:CategoryComponent
   },
+  
   {
     path:'Course',
     component:CoursePageComponent
+  },
+  
+  {
+    path:'auth',
+    loadChildren:()=>AuthModule
   }
 
 ];

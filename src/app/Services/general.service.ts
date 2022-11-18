@@ -70,6 +70,7 @@ getCoursesbyCategoryId(cat_id:number){
   this.http.get("https://localhost:44343/api/course/getbycatid/"+cat_id).subscribe((res:any)=>{
     this.coursesbycategory=res;
     this.spinner.hide();
+    console.log(res);
 
   },err=>{
     this.spinner.hide();
