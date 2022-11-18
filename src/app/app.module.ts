@@ -13,7 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 import {HttpClientModule} from "@angular/common/http";
-import { CoursesComponent } from './courses/courses.component'
+import { CoursesComponent } from './courses/courses.component';
+import { CoursePageComponent } from './course-page/course-page.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CoursesComponent } from './courses/courses.component'
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    CoursesComponent
+    CoursesComponent,
+    CoursePageComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CoursePageComponent } from './course-page/course-page.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path:'auth',
     loadChildren:()=>AuthModule
+  },
+  {
+    path:'Course',
+    component:CoursePageComponent
   }
 
 ];

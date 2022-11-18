@@ -88,18 +88,19 @@
                     <p>Maecenas sit amet tristique turpis. Quisque porttitor eros quis leo pulvinar, at hendrerit sapien iaculis. Donec consectetur accumsan arcu, sit amet fringilla ex ultricies.</p>
                 </div><!-- end title -->
         
-                <div id="owl-01" class="owl-carousel owl-theme owl-theme-01">
+                <!-- <div id="owl-01" class="owl-carousel owl-theme owl-theme-01"> -->
                             
                     
         
-               
-                    <app-courses *ngFor="let course of generalServise.allCourses"  [coursE_NAME]="course.coursE_NAME" [description]="course.description" ></app-courses>
-                    
+                    <div class="row">
+                    <app-courses *ngFor="let course of generalServise.allCourses"  [coursE_NAME]="course.coursE_NAME" [description]="course.description" [id]="course.id"></app-courses>
+                    </div>
+
         
                     
         
         
-                </div><!-- end row -->
+                <!-- </div> -->
         
                 <hr class="invis">
         

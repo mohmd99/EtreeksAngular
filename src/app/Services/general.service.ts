@@ -10,6 +10,7 @@ export class GeneralService {
 
   homeInfo:any={};
   allCourses:any=[{}]
+  retreavedCourse:any={};
   
   constructor( private toaster:ToastrService,private spinner:NgxSpinnerService,private http:HttpClient ) { }
 
@@ -31,6 +32,18 @@ export class GeneralService {
     this.spinner.show();
     this.http.get("https://localhost:44343/api/CRUDCourse").subscribe((res:any)=>{
       this.allCourses=res;
+      this.spinner.hide();
+
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message,err.status);
+    });
+  }
+
+  GetCourseById(id:number){
+    this.spinner.show();
+    this.http.get("https://localhost:44343/api/CRUDCourse/getbyid/"+id).subscribe((res:any)=>{
+      this.retreavedCourse=res;
       this.spinner.hide();
 
     },err=>{
