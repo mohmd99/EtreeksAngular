@@ -11,7 +11,9 @@ export class GeneralService {
   homeInfo:any={};
   allCourses:any=[{}]
   retreavedCourse:any={};
-  
+  allcategories:any=[{}];
+  coursesbycategory:any=[{}];
+
   constructor( private toaster:ToastrService,private spinner:NgxSpinnerService,private http:HttpClient ) { }
 
   GetHomeInfo(){
@@ -51,4 +53,31 @@ export class GeneralService {
       this.toaster.error(err.message,err.status);
     });
   }
+
+getAllCategory(){
+  this.spinner.show();
+  this.http.get("https://localhost:44343/api/CRUDcategory").subscribe((res:any)=>{
+    this.allcategories=res;
+    this.spinner.hide();
+
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message,err.status);
+  });
 }
+getCoursesbyCategoryId(cat_id:number){
+  this.spinner.show();
+  this.http.get("https://localhost:44343/api/course/getbycatid/"+cat_id).subscribe((res:any)=>{
+    this.coursesbycategory=res;
+    this.spinner.hide();
+
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message,err.status);
+  });
+
+}
+
+
+}
+
