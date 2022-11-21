@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GeneralService } from 'src/app/Services/general.service';
 
 @Component({
   selector: 'app-admin-panel',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
+
 
   ngOnInit(): void {
+  }
+
+
+  OpenCourses(){
+
+    
+    this.router.navigate(['AllCourses']);
+
   }
 
 }
