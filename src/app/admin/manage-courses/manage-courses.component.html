@@ -28,9 +28,7 @@
                         <th>
                             Course Description
                         </th>
-                        <th>
-                            Course Teacher
-                        </th>
+
                         <th>
                             Course Image
                         </th>
@@ -40,16 +38,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="w-30">
+                <tr *ngFor="let item of adminService.coursesinfo
+                    ">
+                    <td class="w-30" >
                     <div class="d-flex px-2 py-1 align-items-center">
 
                         <div class="ms-4">
-                        <p class="text-xs font-weight-bold mb-0">Country:</p>
-                        <h6 class="text-sm mb-0">United States</h6>
+
+                        <h6 class="text-sm mb-0">{{ item.coursE_NAME }}</h6>
                         </div>
                     </div>
                     </td>
+                    <td class="w-30" >
+                      <div class="d-flex px-2 py-1 align-items-center">
+
+                          <div class="ms-4">
+
+                          <h6 class="text-sm mb-0">{{ item.categorY_NAME }}</h6>
+                          </div>
+                      </div>
+                      </td>
+                      <td class="w-30" >
+                        <div class="d-flex px-2 py-1 align-items-center">
+
+                            <div class="ms-4">
+
+                           <!-- <img src="../../../assets/images/"+{{ item.image }}> -->
+                            </div>
+                        </div>
+                        </td>
+
                 </tr>
                 </tbody>
             </table>

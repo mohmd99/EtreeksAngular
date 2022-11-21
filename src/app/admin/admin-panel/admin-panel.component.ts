@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminService } from 'src/app/Services/admin.service';
 import { GeneralService } from 'src/app/Services/general.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { GeneralService } from 'src/app/Services/general.service';
 })
 export class AdminPanelComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router ,private adminService:AdminService) { }
 
 
   ngOnInit(): void {
