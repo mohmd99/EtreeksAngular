@@ -44,7 +44,7 @@ margin-bottom: 20px;
 
 .mat-form-field{
   margin-bottom: 25px;
-  width: 390px;
+  width: 300px;
     font-size: large;
 }
 
@@ -57,8 +57,22 @@ margin-bottom: 20px;
 width: 450px;
 padding-left: 50px;
 padding-right: 50px;
+color: #01bacf;
 }
 
  .mat-form-field-underline {
   bottom: 2.25em;
+}
+.fa {
+  display: inline-block;
+  padding-top: 40px;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.form-control{
+  transform: perspective(100px);
+  color: wheat;
 }
