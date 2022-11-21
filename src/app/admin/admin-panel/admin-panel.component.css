@@ -26933,4 +26933,9 @@ pre[class*="language-"] {
   }
 }
 
+
+.customtabletitle{
+  margin-top: 10px !important;
+    font-size: 20px !important;
+}
 /*# sourceMappingURL=dashboard-free.css.map */

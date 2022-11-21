@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GeneralService } from 'src/app/Services/general.service';
 
 @Component({
   selector: 'app-manage-courses',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageCoursesComponent implements OnInit {
 
-  constructor() { }
+  constructor(public generalServices:GeneralService) { }
+
 
   ngOnInit(): void {
+    this.generalServices.GetAllCourses();
   }
 
 }
