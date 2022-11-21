@@ -19,18 +19,18 @@
             <div class="img d-flex align-items-center justify-content-center" style="background-image: url(../../../assets/login_assets/images/Green\ Modern\ Education\ Online\ Course\ Logo\ \(1\).png); height: 170px; width: 170px; border-radius: 50%;" ></div>
             <h3 class="text-center mb-0">Welcome <span style="color:#01BACF">ETreeks</span></h3>
             <p class="text-center">Sign in by entering the information below</p>
-                  <form action="#" class="login-form" >
+                  <form class="login-form"  [formGroup]="registerForm" >
                     <div class="form-group">
                     <div class="row">
                         <div class="col-md-6">
                         <mat-form-field >
                           <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
                           <!-- <input type="text" class="form-control" placeholder="Username" required> -->
-                          <input class="form-control" matInput [formControl]="firstname" type="text"  placeholder="FirstName" >
+                          <input class="form-control" matInput formControlName="firstname" type="text"  placeholder="FirstName" >
                          
                       
                      
-                      <mat-error *ngIf="firstname.hasError('required')">
+                      <mat-error *ngIf="registerForm.controls['firstname'].hasError('required')">
                         FirstName is <strong>required</strong>
                       </mat-error>
                     </mat-form-field>
@@ -39,11 +39,11 @@
                     <mat-form-field >
                         <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
                         <!-- <input type="text" class="form-control" placeholder="Username" required> -->
-                        <input class="form-control" matInput [formControl]="lastname" type="text"  placeholder="LastName" >
+                        <input class="form-control" matInput formControlName="lastname" type="text"  placeholder="LastName" >
                        
                     
                    
-                    <mat-error *ngIf="lastname.hasError('required')">
+                    <mat-error *ngIf="registerForm.controls['lastname'].hasError('required')">
                       LastName is <strong>required</strong>
                     </mat-error>
                   </mat-form-field>
@@ -55,42 +55,79 @@
                   <mat-form-field >
                     <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
                     <!-- <input type="text" class="form-control" placeholder="Username" required> -->
-                    <input class="form-control" matInput [formControl]="email" type="text"  placeholder="Email" >
+                    <input class="form-control" matInput formControlName="email" type="text"  placeholder="Email" >
                    
                 
-                <mat-error *ngIf="email.hasError('email')">
+                <mat-error *ngIf="registerForm.controls['email'].hasError('email')">
                   Please enter a valid email address
                 </mat-error>
-                <mat-error *ngIf="email.hasError('required')">
+                <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
                   email is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
             </div>
+            <div class="form-group">
+                    
+              <mat-form-field >
+                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-phone"></span></div>
+                <!-- <input type="text" class="form-control" placeholder="Username" required> -->
+                <input class="form-control" matInput formControlName="phonenumber" type="text"  placeholder="PhoneNumber" >
+               
+            
+            <mat-error *ngIf="registerForm.controls['phonenumber'].hasError('minlength')">
+              Please enter a valid Phonenumber
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls['phonenumber'].hasError('maxlength')">
+              Please enter a valid Phonenumber
+            </mat-error>
+          </mat-form-field>
+        </div>
           <div class="form-group">
+            
               <mat-form-field  >
               <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
             <!-- <input type="password" class="form-control" placeholder="Password" required> -->
-            <input class="form-control" type="password" matInput [formControl]="password" placeholder="Password">
+            
+            <input class="form-control" type="password" name="password" matInput formControlName="password" placeholder="Password">
           
-          <mat-error *ngIf="password.hasError('minlength')">
+          <mat-error *ngIf="registerForm.controls['password'].hasError('minlength')">
               Please enter a strong Password
             </mat-error>
-            <mat-error *ngIf="password.hasError('required')">
+            <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
               Password is <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </div>
+        <div class="form-group">
+          <mat-form-field  >
+          <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
+        <!-- <input type="password" class="form-control" placeholder="Password" required> -->
+        <mat-label>Re-type Password</mat-label>
+        <input class="form-control" type="password" name="password" matInput formControlName="confirmPassword" (change)="matchError()">
+      
+      <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('minlength')">
+          Please enter a strong Password
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('mismatch')">
+          confirmPassword must match with password
+        </mat-error>
+      </mat-form-field>
+    </div>
           <div class="form-group d-md-flex">
                           <div class="w-100 text-md-right">
                               <a href="#" style="color: #01BACF;">Forgot Password</a>
                           </div>
           </div>
           <div class="form-group">
-              <button type="submit" class="btn form-control btn-primary rounded submit px-3" > LOGIN </button>
+              <button type="submit" class="btn form-control btn-primary rounded submit px-3" [disabled]="!registerForm.valid" (click)="submit()"
+              type="submit" value="Register"> Register </button>
           </div>
         </form>
         <div class="w-100 text-center mt-4 text">
-            <p class="mb-0" style="color: white;">Don't have an account?</p>
+            <p class="mb-0" style="color: white; cursor: pointer;" (click)="goToLogin()">Already have account</p>
             <a href="#" style="color: #01BACF;">Sign Up</a>
         </div>
       </div>
