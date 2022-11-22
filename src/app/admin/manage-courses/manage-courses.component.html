@@ -1,11 +1,11 @@
 <div class="min-height-300 bg-primary position-absolute w-100"></div>
 
-<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+<aside [ngStyle]="{'display': unvisible?'none':'block'}" class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <app-side-nav></app-side-nav>
    </aside>
 
 <main class="main-content position-relative border-radius-lg ">
-   <app-admin-navbar></app-admin-navbar>
+   <app-admin-navbar ></app-admin-navbar>
 
    <div class="row mt-4">
         <div class="col-lg-11 mb-lg-11 mb-11" style="margin-left: 50px;">
@@ -14,7 +14,7 @@
             <div class="d-flex justify-content-between">
                 <h6 class="customtabletitle">Courses </h6>
                 <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                    <i class="bi bi-file-plus"></i>
+                    <i class="bi bi-file-plus" (click)="OpenCreateDialouge()"></i>
                   </div>
             </div>
             </div>
@@ -26,9 +26,12 @@
                             Course Name
                         </th>
                         <th>
-                            Course Description
+                            Course Category
                         </th>
 
+                        <th>
+                            Course Description
+                        </th>
                         <th>
                             Course Image
                         </th>
@@ -60,10 +63,19 @@
                       </td>
                       <td class="w-30" >
                         <div class="d-flex px-2 py-1 align-items-center">
+  
+                            <div class="ms-4">
+  
+                            <h6 class="text-sm mb-0">{{ item.description }}</h6>
+                            </div>
+                        </div>
+                        </td>
+                      <td class="w-30" >
+                        <div class="d-flex px-2 py-1 align-items-center">
 
                             <div class="ms-4">
 
-                           <!-- <img src="../../../assets/images/"+{{ item.image }}> -->
+                           <img style="width:50px ; height: 50px; border-radius: 50%;" alt="image" src="../../../assets/images/{{ item.image }}">
                             </div>
                         </div>
                         </td>
@@ -76,3 +88,74 @@
         </div>
     </div>
 </main>
+
+
+
+<ng-template #CreateCourseDialoug >
+    
+
+    <div class="card" >
+        
+        <div class="card-content collapse show">
+            <div class="card-body">
+
+                
+                <h3>Create Course</h3>
+                <form class="form" [formGroup]="createForm">
+                    <div class="form-body">
+
+                        <div class="form-group">
+                            <label for="issueinput1">Course Name</label>
+                            <input matInput formControlName="coursE_NAME"  type="text" id="issueinput1" class="form-control" placeholder="issue title"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Issue Title">
+                            <mat-error *ngIf="createForm.controls['coursE_NAME'].hasError('required')" >  </mat-error>
+                        </div>
+
+                       
+
+                        <div class="row">
+                            
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="issueinput5">Category</label>
+                            <select type="number"  matInput formControlName="cat_Id" id="issueinput5"  class="form-control" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Priority">
+                                <option *ngFor="let option of this.generalService.allcategories" [value]=option.id>{{option.categorY_NAME}}</option>
+                            </select>
+
+                            <mat-error *ngIf="createForm.controls['cat_Id'].hasError('required')" >  </mat-error>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Select Image</label>
+                            <label id="projectinput7" class="file center-block">
+                                <input matInput formControlName="image" #file (change)="UploadFile(file.files)" type="file" id="file">
+                                <span class="file-custom"></span>
+                            </label>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <label for="issueinput8">Description</label>
+                            <textarea matInput formControlName="description"   id="issueinput8" rows="5" class="form-control"  placeholder="comments" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Comments"></textarea>
+                            <mat-error *ngIf="createForm.controls['description'].hasError('required')" >  </mat-error>
+                        </div>
+
+                    </div>
+
+                    <div class="form-actions">
+                        <button mat-dialog-close type="reset" class="btn btn-warning mr-1">
+                            <i class="feather icon-x"></i> Cancel
+                        </button>
+                        <button [mat-dialog-close]="true" (click)="SaveData()" style="margin-left:20px" type="submit" class="btn btn-primary">
+                            <i class="fa fa-check-square-o"></i> Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</ng-template>

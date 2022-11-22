@@ -6,6 +6,11 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ManageCoursesComponent } from './manage-courses/manage-courses.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -13,11 +18,13 @@ import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
     AdminPanelComponent,
     ManageCoursesComponent,
     SideNavComponent,
-    AdminNavbarComponent
+    AdminNavbarComponent,
+    
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    SharedModule
   ]
 })
 export class AdminModule { }

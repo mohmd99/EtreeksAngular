@@ -7,7 +7,8 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root'
 })
 export class AdminService {
-coursesinfo:any=[{}]
+coursesinfo:any=[{}];
+display_image:any;
   constructor( private toaster:ToastrService,private spinner:NgxSpinnerService,private http:HttpClient) { }
 
   getcoursewithcategory(){
@@ -23,5 +24,35 @@ coursesinfo:any=[{}]
       this.spinner.hide();
       this.toaster.error(err.message,err.status);
     });
+  }
+
+
+
+  uploadAttachment(file: FormData) {
+    this.http.post('https://localhost:44343/api/course/uploadImage', file).subscribe((resp: any) => {
+      this.display_image = resp.image;
+    }, err => {
+      this.toaster.error('Can not Upload Image');
+      console.log(err);
+    })
+  }
+
+ 
+
+
+
+  createCourse(body: any) {
+    body.image = this.display_image;
+    this.spinner.show();
+    debugger
+    this.http.post('https://localhost:44343/api/CRUDcourse', body).subscribe((resp) => {
+      console.log(resp);
+      this.spinner.hide();
+      this.toaster.success('Created !!');
+    }, err => {
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    }
+    )
   }
 }
