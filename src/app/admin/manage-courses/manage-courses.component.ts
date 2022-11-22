@@ -3,6 +3,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { GeneralService } from 'src/app/Services/general.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatDialog}from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,11 +21,11 @@ export class ManageCoursesComponent implements OnInit {
   ({
     coursE_NAME:new FormControl('',Validators.required),
     description:new FormControl('',Validators.required),
-    cat_Id:new FormControl(0,Validators.required),    
+    cat_Id:new FormControl(Number,Validators.required),    
     image:new FormControl()
   });
 
-  constructor(public adminService:AdminService ,public generalService:GeneralService,public dialog:MatDialog) { }
+  constructor(public adminService:AdminService ,public generalService:GeneralService,public dialog:MatDialog,private router: Router) { }
 
 
   ngOnInit(): void {
@@ -55,11 +56,16 @@ export class ManageCoursesComponent implements OnInit {
   }
 
   SaveData(){
-   debugger;
+    
+    
   //  this.createForm.controls['cat_Id'].value:Number;
     console.log(this.createForm.value);
     this.adminService.createCourse(this.createForm.value);
     this.unvisible=false;
+    window.location.reload();
+
+    // this.router.navigate(['AllCourses']);
+    
   }
 
 }

@@ -120,7 +120,7 @@
                         <div class="form-group">
                             <label for="issueinput5">Category</label>
                             <select type="number"  matInput formControlName="cat_Id" id="issueinput5"  class="form-control" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Priority">
-                                <option *ngFor="let option of this.generalService.allcategories" [value]=option.id>{{option.categorY_NAME}}</option>
+                                <option *ngFor="let option of this.generalService.allcategories" [ngValue]=option.id>{{option.categorY_NAME}}</option>
                             </select>
 
                             <mat-error *ngIf="createForm.controls['cat_Id'].hasError('required')" >  </mat-error>
@@ -147,7 +147,7 @@
                         <button mat-dialog-close type="reset" class="btn btn-warning mr-1">
                             <i class="feather icon-x"></i> Cancel
                         </button>
-                        <button [mat-dialog-close]="true" (click)="SaveData()" style="margin-left:20px" type="submit" class="btn btn-primary">
+                        <button  [mat-dialog-close]="true" (click)="SaveData()" style="margin-left:20px" type="submit" class="btn btn-primary">
                             <i class="fa fa-check-square-o"></i> Save
                         </button>
                     </div>
