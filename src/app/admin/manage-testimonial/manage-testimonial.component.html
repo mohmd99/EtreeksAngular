@@ -1,6 +1,6 @@
 <div class="min-height-300 bg-primary position-absolute w-100"></div>
 
-<aside  class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+<aside [ngStyle]="{'display': unvisible?'none':'block'}" class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <app-side-nav></app-side-nav>
    </aside>
 
@@ -12,7 +12,7 @@
         <div class="card ">
             <div class="card-header pb-0 p-3">
             <div class="d-flex justify-content-between">
-                <h6 class="customtabletitle">Message </h6>
+                <h6 class="customtabletitle">Testimonial </h6>
 
             </div>
             </div>
@@ -21,17 +21,17 @@
                 <thead>
                     <tr>
                         <th>
-                            Text
+                            User
                         </th>
 
+
+                        <th>
+                            Message
+                        </th>
 
                         <th>
                             Status
                         </th>
-                        <th>
-                             User Name
-                        </th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -41,7 +41,12 @@
 
                         <div class="ms-4">
 
-                        <h6 class="text-sm mb-0">{{ item.text }}</h6>
+                        <h6 class="text-sm mb-0">{{ item.first_Name  }} {{ item.last_Name }}</h6>
+                        </div>
+
+                        <div class="ms-4">
+
+                          <img style="width:50px ; height: 50px; border-radius: 50%;" alt="image" src="../../../assets/images/{{ item.image }}">
                         </div>
                     </div>
                     </td>
@@ -51,20 +56,15 @@
 
                             <div class="ms-4">
 
-                            <h6 class="text-sm mb-0">{{ item.status }}</h6>
+                              <h6 class="text-sm mb-0">{{ item.text  }}</h6>
                             </div>
                         </div>
                         </td>
-                        <td class="w-30" >
-                          <div class="d-flex px-2 py-1 align-items-center">
-
-                              <div class="ms-4">
-
-                              <h6 class="text-sm mb-0">{{ item.message }}</h6>
-                              </div>
-                          </div>
-                          </td>
-
+                        <td *ngIf="item.status==null" >
+                          <i  class="bi bi-pencil-square" style="margin-right: 15px; cursor: pointer;" (click)="openAcceptDailog(item)"></i>  <i class="bi bi-trash3" style=" cursor: pointer;" (click)="openRejectDailog(item)"></i>
+                        </td>
+                        <td *ngIf="item.status==1">Accept</td>
+                        <td *ngIf="item.status==0">Reject</td>
 
                 </tr>
                 </tbody>
@@ -80,8 +80,30 @@
 
 
 
+<ng-template #callAcceptDailog>
+<h5>Are you sure you want to Accept this testimonial ? </h5>
+<br>
+<div class="form-actions">
+  <button mat-dialog-close="no" type="reset" class="btn btn-warning mr-1">
+      <i class="feather icon-x"></i> Cancel
+  </button>
+  <button  mat-dialog-close="yes"  style="margin-left:20px" type="submit" class="btn btn-primary">
+      <i class="fa fa-check-square-o"></i> Save
+  </button>
+</div>
 
+</ng-template>
+<ng-template #callRejectDailog>
+  <h5>Are you sure you want to Reject this testimonial ? </h5>
+  <br>
+  <div class="form-actions">
+    <button mat-dialog-close="no" type="reset" class="btn btn-warning mr-1">
+        <i class="feather icon-x"></i> Cancel
+    </button>
+    <button  mat-dialog-close="yes"  style="margin-left:20px" type="submit" class="btn btn-primary">
+        <i class="fa fa-check-square-o"></i> Save
+    </button>
+  </div>
 
-
-
+  </ng-template>
 
