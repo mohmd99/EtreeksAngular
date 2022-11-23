@@ -38,7 +38,7 @@ export class ManageHomeComponent implements OnInit {
       let filetoupload=<File>file[0];
       const formData=new FormData();
       formData.append(file,filetoupload,filetoupload.name);
-      this.adminService.uploadAttachmentCategory(formData);
+      this.adminService.uploadAttachmentHome(formData);
 
     }
 
@@ -58,7 +58,7 @@ export class ManageHomeComponent implements OnInit {
 
     //  this.createForm.controls['cat_Id'].value:Number;
       console.log(this.createForm.value);
-      this.adminService.createCategory(this.createForm.value);
+      this.adminService.createHome(this.createForm.value);
       this.unvisible=false;
 
 
@@ -99,7 +99,7 @@ image:new FormControl(),
     }
     updateData(){
       console.log(this.updateForm.value);
-      this.adminService.updateCategory(this.updateForm.value);
+      this.adminService.updateHome(this.updateForm.value);
 
 
     }
@@ -113,7 +113,7 @@ image:new FormControl(),
             console.log(id);
 
 
-            this.adminService.deleteCategory(id);
+            this.adminService.deletehome(id);
           }
 
             else if(result=='no')

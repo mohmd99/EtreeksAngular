@@ -1,3 +1,5 @@
+import { ManageAboutComponent } from './manage-about/manage-about.component';
+import { AboutComponent } from './../about/about.component';
 import { MessageComponent } from './message/message.component';
 import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { ManageCategoryComponent } from './manage-category/manage-category.component';
@@ -15,6 +17,8 @@ const routes: Routes = [
     path:"home",component:ManageHomeComponent
   },{
     path:"message",component:MessageComponent
+  },{
+    path:"about",component:ManageAboutComponent
   }
 ];
 

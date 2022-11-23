@@ -79,7 +79,7 @@ getCoursesbyCategoryId(cat_id:number){
 
 }
 
-allabout:any;
+allabout:any={};
 getabout(){
   this.spinner.show();
   this.http.get("https://localhost:44343/api/CRUDabout").subscribe((res:any)=>{
