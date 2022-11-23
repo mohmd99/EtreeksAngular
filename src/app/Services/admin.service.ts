@@ -59,7 +59,7 @@ display_image:any;
   {
     if(this.display_image !=null)
      body.image = this.display_image;
-     
+
     this.spinner.show();
     this.http.put('https://localhost:44343/api/CRUDcourse',body).subscribe((resp)=>{
       this.spinner.hide();
@@ -67,6 +67,18 @@ display_image:any;
     },err=>{
       this.spinner.hide();
       this.toaster.error(err.message, err.status);
+    })
+  }
+  deleteCourse(id:number)
+  {
+    this.spinner.show();
+   
+    this.http.delete('https://localhost:44343/api/CRUDcourse'+id).subscribe((resp)=>{
+      this.spinner.hide();
+        this.toaster.success('Deleted Successfully !!');
+    },err=>{
+      this.spinner.hide();
+    //  this.toastr.error(err.message, err.status);
     })
   }
 }

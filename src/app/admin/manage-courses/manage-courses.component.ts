@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class ManageCoursesComponent implements OnInit {
 @ViewChild('CreateCourseDialoug') callCreateCourse!:TemplateRef<any>;
 @ViewChild('callUpdatDailog') callUpdate!:TemplateRef<any>
-
+@ViewChild('callDeleteDailog') callDelete!:TemplateRef<any>
  unvisible=false;
 
   createForm:FormGroup=new FormGroup
@@ -106,5 +106,22 @@ export class ManageCoursesComponent implements OnInit {
     this.adminService.updateCourse(this.updateForm.value);
 
 
+  }
+  openDeleteDailog(id:number){
+    const dialogRef=  this.dialog.open(this.callDelete);
+    dialogRef.afterClosed().subscribe((result)=>{
+      if(result!=undefined)
+      {
+        if(result=='yes')
+        {
+          debugger
+          this.adminService.deleteCourse(id);
+        }
+
+          else if(result=='no')
+          console.log('thank you ');
+
+      }
+    })
   }
 }
