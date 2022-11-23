@@ -9,7 +9,9 @@ import { ToastrService } from 'ngx-toastr';
 export class AdminService {
 coursesinfo:any=[{}];
 allcontactus:any=[{}];
+allTestimonial:any=[{}];
 display_image:any;
+
   constructor( private toaster:ToastrService,private spinner:NgxSpinnerService,private http:HttpClient) { }
 
   getcoursewithcategory(){
@@ -294,4 +296,23 @@ display_image:any;
     })
   }
 
+
+
+
+
+
+getTestimonial(){
+  this.spinner.show();
+  debugger
+  this.http.get('https://localhost:44343/api/CRUDTestimonial').subscribe((resp) => {
+    console.log(resp);
+    this.allTestimonial=resp
+    this.spinner.hide();
+
+  }, err => {
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  }
+  )
+}
 }

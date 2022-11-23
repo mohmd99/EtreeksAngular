@@ -15,6 +15,7 @@ import { ManageCategoryComponent } from './manage-category/manage-category.compo
 import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { MessageComponent } from './message/message.component';
 import { ManageAboutComponent } from './manage-about/manage-about.component';
+import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ManageAboutComponent } from './manage-about/manage-about.component';
     ManageHomeComponent,
     MessageComponent,
     ManageAboutComponent,
+    ManageTestimonialComponent,
     
   ],
   imports: [
