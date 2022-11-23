@@ -1,0 +1,87 @@
+<div class="min-height-300 bg-primary position-absolute w-100"></div>
+
+<aside  class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+    <app-side-nav></app-side-nav>
+   </aside>
+
+<main class="main-content position-relative border-radius-lg ">
+   <app-admin-navbar ></app-admin-navbar>
+
+   <div class="row mt-4">
+        <div class="col-lg-11 mb-lg-11 mb-11" style="margin-left: 50px;">
+        <div class="card ">
+            <div class="card-header pb-0 p-3">
+            <div class="d-flex justify-content-between">
+                <h6 class="customtabletitle">Message </h6>
+
+            </div>
+            </div>
+            <div class="table-responsive" style="margin-top:15px" >
+            <table class="table align-items-center ">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+
+
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                             Message
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of adminService.allcontactus">
+                    <td class="w-30" >
+                    <div class="d-flex px-2 py-1 align-items-center">
+
+                        <div class="ms-4">
+
+                        <h6 class="text-sm mb-0">{{ item.name }}</h6>
+                        </div>
+                    </div>
+                    </td>
+
+                      <td class="w-30" >
+                        <div class="d-flex px-2 py-1 align-items-center">
+
+                            <div class="ms-4">
+
+                            <h6 class="text-sm mb-0">{{ item.email }}</h6>
+                            </div>
+                        </div>
+                        </td>
+                        <td class="w-30" >
+                          <div class="d-flex px-2 py-1 align-items-center">
+
+                              <div class="ms-4">
+
+                              <h6 class="text-sm mb-0">{{ item.message }}</h6>
+                              </div>
+                          </div>
+                          </td>
+
+
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        </div>
+    </div>
+</main>
+
+
+
+
+
+
+
+
+
+
+

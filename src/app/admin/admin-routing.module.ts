@@ -1,3 +1,6 @@
+import { MessageComponent } from './message/message.component';
+import { ManageHomeComponent } from './manage-home/manage-home.component';
+import { ManageCategoryComponent } from './manage-category/manage-category.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
@@ -6,6 +9,12 @@ import { ManageCoursesComponent } from './manage-courses/manage-courses.componen
 const routes: Routes = [
   {path:"",component:AdminPanelComponent},{
     path:"AllCourses",component:ManageCoursesComponent
+  },{
+    path:"category",component:ManageCategoryComponent
+  },{
+    path:"home",component:ManageHomeComponent
+  },{
+    path:"message",component:MessageComponent
   }
 ];
 

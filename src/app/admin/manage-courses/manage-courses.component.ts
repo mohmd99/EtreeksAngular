@@ -114,7 +114,9 @@ export class ManageCoursesComponent implements OnInit {
       {
         if(result=='yes')
         {
-          debugger
+          console.log(id);
+
+          
           this.adminService.deleteCourse(id);
         }
 

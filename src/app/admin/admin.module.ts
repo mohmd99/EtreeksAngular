@@ -11,6 +11,9 @@ import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { ManageCategoryComponent } from './manage-category/manage-category.component';
+import { ManageHomeComponent } from './manage-home/manage-home.component';
+import { MessageComponent } from './message/message.component';
 
 
 @NgModule({
@@ -19,6 +22,9 @@ import { SharedModule } from '../shared/shared.module';
     ManageCoursesComponent,
     SideNavComponent,
     AdminNavbarComponent,
+    ManageCategoryComponent,
+    ManageHomeComponent,
+    MessageComponent,
     
   ],
   imports: [

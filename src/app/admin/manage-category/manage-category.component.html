@@ -12,7 +12,7 @@
         <div class="card ">
             <div class="card-header pb-0 p-3">
             <div class="d-flex justify-content-between">
-                <h6 class="customtabletitle">Courses </h6>
+                <h6 class="customtabletitle">Category </h6>
                 <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
                     <i class="bi bi-file-plus" (click)="OpenCreateDialouge()"></i>
                   </div>
@@ -23,17 +23,15 @@
                 <thead>
                     <tr>
                         <th>
-                            Course Name
-                        </th>
-                        <th>
-                            Course Category
+                            Category Name
                         </th>
 
+
                         <th>
-                            Course Description
+                            Category Description
                         </th>
                         <th>
-                            Course Image
+                            Category Image
                         </th>
                         <th>
                             Manage
@@ -41,25 +39,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let item of adminService.coursesinfo">
+                <tr *ngFor="let item of generalService.allcategories">
                     <td class="w-30" >
                     <div class="d-flex px-2 py-1 align-items-center">
 
                         <div class="ms-4">
 
-                        <h6 class="text-sm mb-0">{{ item.coursE_NAME }}</h6>
+                        <h6 class="text-sm mb-0">{{ item.categorY_NAME }}</h6>
                         </div>
                     </div>
                     </td>
-                    <td class="w-30" >
-                      <div class="d-flex px-2 py-1 align-items-center">
 
-                          <div class="ms-4">
-
-                          <h6 class="text-sm mb-0">{{ item.categorY_NAME }}</h6>
-                          </div>
-                      </div>
-                      </td>
                       <td class="w-30" >
                         <div class="d-flex px-2 py-1 align-items-center">
 
@@ -93,7 +83,7 @@
 
 
 
-<ng-template #CreateCourseDialoug >
+<ng-template #CreateDialoug >
 
 
     <div class="card" >
@@ -102,31 +92,17 @@
             <div class="card-body">
 
 
-                <h3>Create Course</h3>
+                <h3>Create Category</h3>
                 <form class="form" [formGroup]="createForm">
                     <div class="form-body">
 
                         <div class="form-group">
-                            <label for="issueinput1">Course Name</label>
-                            <input matInput formControlName="coursE_NAME"  type="text" id="issueinput1" class="form-control" placeholder="issue title"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Issue Title">
-                            <mat-error *ngIf="createForm.controls['coursE_NAME'].hasError('required')" >  </mat-error>
+                            <label for="issueinput1">Category Name</label>
+                            <input matInput formControlName="categorY_NAME"  type="text" id="issueinput1" class="form-control" placeholder="issue title"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Issue Title">
+                            <mat-error *ngIf="createForm.controls['categorY_NAME'].hasError('required')" >  </mat-error>
                         </div>
 
 
-
-                        <div class="row">
-
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="issueinput5">Category</label>
-                            <select type="number"  matInput formControlName="cat_Id" id="issueinput5"  class="form-control" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Priority">
-                                <option *ngFor="let option of this.generalService.allcategories" [ngValue]=option.id>{{option.categorY_NAME}}</option>
-                            </select>
-
-                            <mat-error *ngIf="createForm.controls['cat_Id'].hasError('required')" >  </mat-error>
-                        </div>
 
                         <div class="form-group">
                             <label>Select Image</label>
@@ -169,31 +145,17 @@
         <div class="card-body">
 
 
-            <h3>Update Course</h3>
+            <h3>Update Category</h3>
             <form class="form" [formGroup]="updateForm">
                 <div class="form-body">
 
                     <div class="form-group">
-                        <label for="issueinput1">Course Name</label>
-                        <input matInput [(ngModel)]="p_data.coursE_NAME"  formControlName="coursE_NAME"  type="text" id="issueinput1" class="form-control" placeholder="issue title"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Issue Title">
-                        <mat-error *ngIf="createForm.controls['coursE_NAME'].hasError('required')" >  </mat-error>
+                        <label for="issueinput1">Category Name</label>
+                        <input matInput [(ngModel)]="p_data.categorY_NAME"  formControlName="categorY_NAME"  type="text" id="issueinput1" class="form-control" placeholder="issue title"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Issue Title">
+                        <mat-error *ngIf="createForm.controls['categorY_NAME'].hasError('required')" >  </mat-error>
                     </div>
 
 
-
-                    <div class="row">
-
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="issueinput5">Category</label>
-                        <select type="number" [(ngModel)]=p_data.cat_Id  matInput formControlName="cat_Id" id="issueinput5"  class="form-control" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Priority">
-                          <option *ngFor="let option of this.generalService.allcategories" [ngValue]=option.id>{{option.categorY_NAME}}</option>
-                      </select>
-
-                        <mat-error *ngIf="createForm.controls['cat_Id'].hasError('required')" >  </mat-error>
-                    </div>
 
                     <div class="form-group">
                         <label>Select Image</label>
@@ -241,3 +203,4 @@
 </div>
 
 </ng-template>
+

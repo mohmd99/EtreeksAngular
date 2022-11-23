@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AdminService {
 coursesinfo:any=[{}];
+allcontactus:any=[{}];
 display_image:any;
   constructor( private toaster:ToastrService,private spinner:NgxSpinnerService,private http:HttpClient) { }
 
@@ -72,13 +73,174 @@ display_image:any;
   deleteCourse(id:number)
   {
     this.spinner.show();
-   
-    this.http.delete('https://localhost:44343/api/CRUDcourse'+id).subscribe((resp)=>{
+
+    this.http.delete('https://localhost:44343/api/CRUDcourse/Delete/'+id).subscribe((resp)=>{
       this.spinner.hide();
         this.toaster.success('Deleted Successfully !!');
     },err=>{
       this.spinner.hide();
-    //  this.toastr.error(err.message, err.status);
+      this.toaster.error(err.message, err.status);
     })
   }
+  display_image_category:any
+  createCategory(body: any) {
+    body.image = this.display_image_category;
+    this.spinner.show();
+    debugger
+    this.http.post('https://localhost:44343/api/CRUDcategory', body).subscribe((resp) => {
+      console.log(resp);
+      this.spinner.hide();
+      this.toaster.success('Created !!');
+    }, err => {
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    }
+    )
+  }
+
+  updateCategory(body:any)
+  {
+    if(this.display_image_category !=null)
+     body.image = this.display_image_category;
+
+    this.spinner.show();
+    this.http.put('https://localhost:44343/api/CRUDcategory',body).subscribe((resp)=>{
+      this.spinner.hide();
+      this.toaster.success('Updated Successfully !!');
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    })
+  }
+  deleteCategory(id:number)
+  {
+    this.spinner.show();
+
+    this.http.delete('https://localhost:44343/api/CRUDcategory/Delete/'+id).subscribe((resp)=>{
+      this.spinner.hide();
+        this.toaster.success('Deleted Successfully !!');
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    })
+  }
+  display_image_home:any
+  uploadAttachmentHome(file: FormData) {
+    this.http.post('https://localhost:44343/api/home/uploadImage', file).subscribe((resp: any) => {
+      this.display_image_home = resp.image;
+      console.log(this.display_image_category);
+
+    }, err => {
+      this.toaster.error('Can not Upload Image');
+      console.log(err);
+    })
+  }
+  createHome(body: any) {
+    body.image = this.display_image_home;
+    this.spinner.show();
+    debugger
+    this.http.post('https://localhost:44343/api/CRUDhome', body).subscribe((resp) => {
+      console.log(resp);
+      this.spinner.hide();
+      this.toaster.success('Created !!');
+    }, err => {
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    }
+    )
+  }
+
+  updateHome(body:any)
+  {
+    if(this.display_image_home !=null)
+     body.image = this.display_image_home;
+
+    this.spinner.show();
+    this.http.put('https://localhost:44343/api/CRUDhome',body).subscribe((resp)=>{
+      this.spinner.hide();
+      this.toaster.success('Updated Successfully !!');
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    })
+  }
+  deletehome(id:number)
+  {
+    this.spinner.show();
+
+    this.http.delete('https://localhost:44343/api/CRUDhome/Delete/'+id).subscribe((resp)=>{
+      this.spinner.hide();
+        this.toaster.success('Deleted Successfully !!');
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    })
+  }
+  uploadAttachmentCategory(file: FormData) {
+    this.http.post('https://localhost:44343/api/Category/uploadImage', file).subscribe((resp: any) => {
+      this.display_image_category = resp.image;
+      console.log(this.display_image_category);
+
+    }, err => {
+      this.toaster.error('Can not Upload Image');
+      console.log(err);
+    })
+  }
+  createContactus(body: any) {
+
+    this.spinner.show();
+    debugger
+    this.http.post('https://localhost:44343/api/CRUDcontactus', body).subscribe((resp) => {
+      console.log(resp);
+      this.spinner.hide();
+      this.toaster.success('Created !!');
+    }, err => {
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    }
+    )
+  }
+
+  updateContactus(body:any)
+  {
+
+
+    this.spinner.show();
+    this.http.put('https://localhost:44343/api/CRUDcontactus',body).subscribe((resp)=>{
+      this.spinner.hide();
+      this.toaster.success('Updated Successfully !!');
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    })
+  }
+  deleteContactus(id:number)
+  {
+    this.spinner.show();
+
+    this.http.delete('https://localhost:44343/api/CRUDcontactus/Delete/'+id).subscribe((resp)=>{
+      this.spinner.hide();
+        this.toaster.success('Deleted Successfully !!');
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    })
+  }
+  getcontactus(){
+    this.spinner.show();
+    debugger
+    this.http.get('https://localhost:44343/api/CRUDcontactus').subscribe((resp) => {
+      console.log(resp);
+      this.allcontactus=resp
+      this.spinner.hide();
+
+    }, err => {
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    }
+    )
+  }
+
+
+
 }
