@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatDialog}from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-manage-user',
@@ -20,11 +21,16 @@ export class ManageUserComponent implements OnInit {
 
 
 
-    constructor(public adminService:AdminService ,public generalService:GeneralService,public dialog:MatDialog,private router: Router) { }
-
+    constructor(private spinner:NgxSpinnerService,public adminService:AdminService ,public generalService:GeneralService,public dialog:MatDialog,private router: Router) { }
+    name:any=''
 
     ngOnInit(): void {
-      this.adminService.getUser();
+      this.spinner.show();
+      if (this.name==''){
+
+         this.adminService.getUser();
+      }
+
     }
 
     UploadFile(file:any){
@@ -74,7 +80,7 @@ export class ManageUserComponent implements OnInit {
         image:obj.image
       }
 
-      
+
 
       this.updateForm.controls['id'].setValue(this.p_data.id);
       this.updateForm.controls['image'].setValue(this.p_data.image);
@@ -107,6 +113,19 @@ export class ManageUserComponent implements OnInit {
 
         }
       })
+    }
+
+    Search(ev:any){
+      this.name=ev.target.value;
+      if(this.name!=''){
+
+         this.adminService.SearchUser(this.name);
+
+        console.log(this.adminService.AllUser);
+      }else{
+        this.adminService.getUser();
+      }
+
     }
   }
 

@@ -6,13 +6,21 @@
 
 <main class="main-content position-relative border-radius-lg ">
    <app-admin-navbar ></app-admin-navbar>
+   <div class="ms-md-auto pe-md-3 d-flex align-items-center" style="    padding-right: 6rem !important;
+   padding-left: 6em;">
+    <div class="input-group">
+      <span class="input-group-text text-body"><i class="bi bi-binoculars" style="font-size: large;" aria-hidden="true"></i></span>
+      <input type="text" class="form-control" style="height: 45px;" placeholder="Type here..." (keyup)="Search($event)">
+    </div>
+   </div>
 
    <div class="row mt-4">
+
         <div class="col-lg-11 mb-lg-11 mb-11" style="margin-left: 50px;">
         <div class="card ">
             <div class="card-header pb-0 p-3">
             <div class="d-flex justify-content-between">
-                <h6 class="customtabletitle">Category </h6>
+                <h6 class="customtabletitle">Users </h6>
 
             </div>
             </div>
@@ -149,7 +157,7 @@
                     </div>
                     <div class="form-group">
                       <label for="issueinput1">birth Date</label>
-                      <input type="date"   [(ngModel)]="p_data.birth_Date"  
+                      <input type="date"   [(ngModel)]="p_data.birth_Date"
                       formControlName="birth_Date" class="form-control"  data-toggle="tooltip" data-trigger="hover" data-placement="top" >
 
                   </div>

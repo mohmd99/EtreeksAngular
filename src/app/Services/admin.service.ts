@@ -374,7 +374,7 @@ deleteUser(id:number)
   })
 }
 getUser(){
-  this.spinner.show();
+ 
 
   this.http.get('https://localhost:44343/api/CRUDuser').subscribe((resp) => {
     console.log(resp);
@@ -396,6 +396,16 @@ uploadAttachmentuser(file: FormData) {
 
   }, err => {
     this.toaster.error('Can not Upload Image');
+    console.log(err);
+  })
+}
+SearchUser(body:string){
+
+  this.http.get('https://localhost:44343/api/user/Search/'+body).subscribe((res:any)=>{
+    this.AllUser=res
+
+  },err=>{
+    this.toaster.error('Can not Search');
     console.log(err);
   })
 }
