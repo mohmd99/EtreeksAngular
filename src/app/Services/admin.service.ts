@@ -241,6 +241,57 @@ display_image:any;
     )
   }
 
+  display_image_about:any
+  uploadAttachmentAbout(file: FormData) {
+    this.http.post('https://localhost:44343/api/about/uploadImage', file).subscribe((resp: any) => {
+      this.display_image_about = resp.image;
+      console.log(this.display_image_category);
 
+    }, err => {
+      this.toaster.error('Can not Upload Image');
+      console.log(err);
+    })
+  }
+  createAbout(body: any) {
+    body.image = this.display_image_about;
+    this.spinner.show();
+    debugger
+    this.http.post('https://localhost:44343/api/CRUDabout', body).subscribe((resp) => {
+      console.log(resp);
+      this.spinner.hide();
+      this.toaster.success('Created !!');
+    }, err => {
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    }
+    )
+  }
+
+  updateabout(body:any)
+  {
+    if(this.display_image_about !=null)
+     body.image = this.display_image_about;
+
+    this.spinner.show();
+    this.http.put('https://localhost:44343/api/CRUDabout',body).subscribe((resp)=>{
+      this.spinner.hide();
+      this.toaster.success('Updated Successfully !!');
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    })
+  }
+  deleteabout(id:number)
+  {
+    this.spinner.show();
+
+    this.http.delete('https://localhost:44343/api/CRUDabout/Delete/'+id).subscribe((resp)=>{
+      this.spinner.hide();
+        this.toaster.success('Deleted Successfully !!');
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    })
+  }
 
 }

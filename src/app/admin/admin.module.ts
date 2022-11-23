@@ -14,6 +14,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ManageCategoryComponent } from './manage-category/manage-category.component';
 import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { MessageComponent } from './message/message.component';
+import { ManageAboutComponent } from './manage-about/manage-about.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { MessageComponent } from './message/message.component';
     ManageCategoryComponent,
     ManageHomeComponent,
     MessageComponent,
+    ManageAboutComponent,
     
   ],
   imports: [
