@@ -92,14 +92,17 @@ export class ManageCoursesComponent implements OnInit {
       cat_Id:obj.cat_Id,
       image:obj.image
     }
+
+
     this.updateForm.controls['id'].setValue(this.p_data.id);
     this.updateForm.controls['image'].setValue(this.p_data.image);
 
-this.dialog.open(this.callUpdate);
+    this.dialog.open(this.callUpdate);
 
     console.log(obj);
   }
-  updateData(){console.log(this.updateForm.value);
+  updateData(){
+    console.log(this.updateForm.value);
     this.adminService.updateCourse(this.updateForm.value);
 
 

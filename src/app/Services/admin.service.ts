@@ -57,7 +57,9 @@ display_image:any;
   }
   updateCourse(body:any)
   {
-    body.image = this.display_image;
+    if(this.display_image !=null)
+     body.image = this.display_image;
+     
     this.spinner.show();
     this.http.put('https://localhost:44343/api/CRUDcourse',body).subscribe((resp)=>{
       this.spinner.hide();

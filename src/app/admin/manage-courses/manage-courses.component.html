@@ -199,7 +199,7 @@
                     <div class="form-group">
                         <label>Select Image</label>
                         <label id="projectinput7" class="file center-block">
-                            <input matInput formControlName="image"   #file (change)="UploadFile(file.files)" type="file" id="file">
+                            <input matInput formControlName="image" [(ngModel)]='p_data.image'   #file  (change)="UploadFile(file.files)"  type="file" >
                             <span class="file-custom"></span>
                         </label>
                     </div>
