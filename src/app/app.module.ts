@@ -12,11 +12,12 @@ import { ContactComponent } from './contact/contact.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { CoursesComponent } from './courses/courses.component';
 import { CoursePageComponent } from './course-page/course-page.component';
 import { CategoryComponent } from './category/category.component'
 import { ReactiveFormsModule } from '@angular/forms';
+import { TokenInterceptor } from 'src/Interceptor/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
     
   ],
-  providers: [],
+  exports:[],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

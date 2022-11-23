@@ -2,6 +2,7 @@ import { SharedModule } from './../../shared/shared.module';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private route :Router) { }
+  constructor(private route :Router , private auth:AuthService) { }
   rememberMe: boolean = false;
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
@@ -44,7 +45,11 @@ export class LoginComponent implements OnInit {
   goToRegister(){
     this.route.navigate(['auth/register'])
   }
-
+  submit()
+  {
+    this.auth.submit(this.email,this.password);
+    
+  }
 
 }
 

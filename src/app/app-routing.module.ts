@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CoursePageComponent } from './course-page/course-page.component';
 import { CategoryComponent } from './category/category.component';
 import { AdminModule } from './admin/admin.module';
+import { AuthorizationGuard } from './authorization.guard';
 
 const routes: Routes = [
   {
@@ -39,7 +40,8 @@ const routes: Routes = [
   
   {
     path:'admin',
-    loadChildren:()=>AdminModule
+    loadChildren:()=>AdminModule,
+    canActivate:[AuthorizationGuard]
   }
 ];
 
