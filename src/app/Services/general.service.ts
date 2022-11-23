@@ -79,8 +79,18 @@ getCoursesbyCategoryId(cat_id:number){
 
 }
 
+allabout:any;
+getabout(){
+  this.spinner.show();
+  this.http.get("https://localhost:44343/api/CRUDabout").subscribe((res:any)=>{
+    this.allabout=res;
+    this.spinner.hide();
 
-
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message,err.status);
+  });
+}
 
 }
 
