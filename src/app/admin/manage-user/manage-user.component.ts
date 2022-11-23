@@ -4,6 +4,7 @@ import { GeneralService } from 'src/app/Services/general.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatDialog}from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-manage-user',
@@ -60,17 +61,20 @@ export class ManageUserComponent implements OnInit {
 
 
 
+      // let mydate:any;
+      // var datePipe = new DatePipe("en-US");
+      // mydate = datePipe.transform(obj.birth_Date,'mm/dd/yyyy');
 
       this.p_data={
         id:obj.id,
         first_Name:obj.first_Name,
         last_Name:obj.last_Name,
         phone_Number:obj.phone_Number,
-        birth_Date:obj.birth_Date
-        ,
+        birth_Date:obj.birth_Date,
         image:obj.image
       }
 
+      
 
       this.updateForm.controls['id'].setValue(this.p_data.id);
       this.updateForm.controls['image'].setValue(this.p_data.image);
