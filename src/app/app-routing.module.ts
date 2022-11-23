@@ -26,22 +26,22 @@ const routes: Routes = [
     path:'Category',
     component:CategoryComponent
   },
-  
+
   {
     path:'Course',
     component:CoursePageComponent
   },
-  
+
   {
     path:'auth',
     loadChildren:()=>AuthModule
   }
   ,
-  
+
   {
     path:'admin',
     loadChildren:()=>AdminModule,
-    canActivate:[AuthorizationGuard]
+    // canActivate:[AuthorizationGuard]
   }
 ];
 
