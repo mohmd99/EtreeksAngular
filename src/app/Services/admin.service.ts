@@ -327,4 +327,76 @@ updateTestimonial(body:any){
    this.toaster.error(err.message, err.status);
  })
 }
+
+
+//---------------User----------------
+AllUser:any=[{}]
+display_image_user:any;
+createuser(body: any) {
+  body.image = this.display_image_user;
+  this.spinner.show();
+  debugger
+  this.http.post('https://localhost:44343/api/CRUDuser', body).subscribe((resp) => {
+    console.log(resp);
+    this.spinner.hide();
+    this.toaster.success('Created !!');
+  }, err => {
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  }
+  )
+}
+
+updateUser(body:any)
+{
+  if(this.display_image_user !=null)
+  body.image = this.display_image_user;
+
+  this.spinner.show();
+  this.http.put('https://localhost:44343/api/CRUDuser',body).subscribe((resp)=>{
+    this.spinner.hide();
+    this.toaster.success('Updated Successfully !!');
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  })
+}
+deleteUser(id:number)
+{
+  this.spinner.show();
+
+  this.http.delete('https://localhost:44343/api/CRUDuser/Delete/'+id).subscribe((resp)=>{
+    this.spinner.hide();
+      this.toaster.success('Deleted Successfully !!');
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  })
+}
+getUser(){
+  this.spinner.show();
+
+  this.http.get('https://localhost:44343/api/CRUDuser').subscribe((resp) => {
+    console.log(resp);
+    this.AllUser=resp
+    this.spinner.hide();
+
+  }, err => {
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  }
+  )
+}
+
+
+uploadAttachmentuser(file: FormData) {
+  this.http.post('https://localhost:44343/api/user/uploadImage', file).subscribe((resp: any) => {
+    this.display_image_user = resp.image;
+    console.log(this.display_image_category);
+
+  }, err => {
+    this.toaster.error('Can not Upload Image');
+    console.log(err);
+  })
+}
 }
