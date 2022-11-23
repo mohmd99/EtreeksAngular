@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 
 export class ManageCoursesComponent implements OnInit {
 @ViewChild('CreateCourseDialoug') callCreateCourse!:TemplateRef<any>;
+@ViewChild('callUpdatDailog') callUpdate!:TemplateRef<any>
 
  unvisible=false;
 
@@ -21,7 +22,7 @@ export class ManageCoursesComponent implements OnInit {
   ({
     coursE_NAME:new FormControl('',Validators.required),
     description:new FormControl('',Validators.required),
-    cat_Id:new FormControl(Number,Validators.required),    
+    cat_Id:new FormControl(Number,Validators.required),
     image:new FormControl()
   });
 
@@ -48,7 +49,7 @@ export class ManageCoursesComponent implements OnInit {
   {
     this.unvisible=true;
     this.generalService.getAllCategory();
-    
+
     this.dialog.open(this.callCreateCourse);
 
     //console.log(this.createForm.value)
@@ -56,8 +57,8 @@ export class ManageCoursesComponent implements OnInit {
   }
 
   SaveData(){
-    
-    
+
+
   //  this.createForm.controls['cat_Id'].value:Number;
     console.log(this.createForm.value);
     this.adminService.createCourse(this.createForm.value);
@@ -65,7 +66,42 @@ export class ManageCoursesComponent implements OnInit {
     window.location.reload();
 
     // this.router.navigate(['AllCourses']);
-    
+
   }
 
+  p_data:any={};
+  updateForm:FormGroup=new FormGroup
+  ({
+    id:new FormControl(),
+    coursE_NAME:new FormControl('',Validators.required),
+    description:new FormControl('',Validators.required),
+    cat_Id:new FormControl(Number,Validators.required),
+    image:new FormControl()
+  });
+   getcategory=this.generalService.allcategories;
+
+  openUpdateDailog(obj:any){
+
+    this.generalService.getAllCategory();
+
+
+    this.p_data={
+      id:obj.id,
+      coursE_NAME:obj.coursE_NAME,
+      description:obj.description,
+      cat_Id:obj.cat_Id,
+      image:obj.image
+    }
+    this.updateForm.controls['id'].setValue(this.p_data.id);
+    this.updateForm.controls['image'].setValue(this.p_data.image);
+
+this.dialog.open(this.callUpdate);
+
+    console.log(obj);
+  }
+  updateData(){console.log(this.updateForm.value);
+    this.adminService.updateCourse(this.updateForm.value);
+
+
+  }
 }

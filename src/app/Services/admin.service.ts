@@ -37,7 +37,7 @@ display_image:any;
     })
   }
 
- 
+
 
 
 
@@ -54,5 +54,17 @@ display_image:any;
       this.toaster.error(err.message, err.status);
     }
     )
+  }
+  updateCourse(body:any)
+  {
+    body.image = this.display_image;
+    this.spinner.show();
+    this.http.put('https://localhost:44343/api/CRUDcourse',body).subscribe((resp)=>{
+      this.spinner.hide();
+      this.toaster.success('Updated Successfully !!');
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    })
   }
 }

@@ -63,9 +63,9 @@
                       </td>
                       <td class="w-30" >
                         <div class="d-flex px-2 py-1 align-items-center">
-  
+
                             <div class="ms-4">
-  
+
                             <h6 class="text-sm mb-0">{{ item.description }}</h6>
                             </div>
                         </div>
@@ -78,6 +78,9 @@
                            <img style="width:50px ; height: 50px; border-radius: 50%;" alt="image" src="../../../assets/images/{{ item.image }}">
                             </div>
                         </div>
+                        </td>
+                        <td>
+                          <i class="bi bi-pencil-square" style="margin-right: 15px; cursor: pointer;" (click)="openUpdateDailog(item)"></i>  <i class="bi bi-trash3" style=" cursor: pointer;"></i>
                         </td>
 
                 </tr>
@@ -92,14 +95,14 @@
 
 
 <ng-template #CreateCourseDialoug >
-    
+
 
     <div class="card" >
-        
+
         <div class="card-content collapse show">
             <div class="card-body">
 
-                
+
                 <h3>Create Course</h3>
                 <form class="form" [formGroup]="createForm">
                     <div class="form-body">
@@ -110,10 +113,10 @@
                             <mat-error *ngIf="createForm.controls['coursE_NAME'].hasError('required')" >  </mat-error>
                         </div>
 
-                       
+
 
                         <div class="row">
-                            
+
                         </div>
 
 
@@ -134,7 +137,7 @@
                             </label>
                         </div>
 
-                        
+
                         <div class="form-group">
                             <label for="issueinput8">Description</label>
                             <textarea matInput formControlName="description"   id="issueinput8" rows="5" class="form-control"  placeholder="comments" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Comments"></textarea>
@@ -158,4 +161,68 @@
 
 
 
+</ng-template>
+<ng-template #callUpdatDailog>
+
+  <div class="card" >
+
+    <div class="card-content collapse show">
+        <div class="card-body">
+
+
+            <h3>Update Course</h3>
+            <form class="form" [formGroup]="updateForm">
+                <div class="form-body">
+
+                    <div class="form-group">
+                        <label for="issueinput1">Course Name</label>
+                        <input matInput [(ngModel)]="p_data.coursE_NAME"  formControlName="coursE_NAME"  type="text" id="issueinput1" class="form-control" placeholder="issue title"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Issue Title">
+                        <mat-error *ngIf="createForm.controls['coursE_NAME'].hasError('required')" >  </mat-error>
+                    </div>
+
+
+
+                    <div class="row">
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="issueinput5">Category</label>
+                        <select type="number" [(ngModel)]=p_data.cat_Id  matInput formControlName="cat_Id" id="issueinput5"  class="form-control" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Priority">
+                          <option *ngFor="let option of this.generalService.allcategories" [ngValue]=option.id>{{option.categorY_NAME}}</option>
+                      </select>
+
+                        <mat-error *ngIf="createForm.controls['cat_Id'].hasError('required')" >  </mat-error>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Image</label>
+                        <label id="projectinput7" class="file center-block">
+                            <input matInput formControlName="image"   #file (change)="UploadFile(file.files)" type="file" id="file">
+                            <span class="file-custom"></span>
+                        </label>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="issueinput8">Description</label>
+                        <textarea matInput formControlName="description" [(ngModel)]="p_data.description"  id="issueinput8" rows="5" class="form-control"  placeholder="comments" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Comments"></textarea>
+                        <mat-error *ngIf="createForm.controls['description'].hasError('required')" >  </mat-error>
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+                    <button mat-dialog-close type="reset" class="btn btn-warning mr-1">
+                        <i class="feather icon-x"></i> Cancel
+                    </button>
+                    <button  [mat-dialog-close]="true" (click)="updateData()" style="margin-left:20px" type="submit" class="btn btn-primary">
+                        <i class="fa fa-check-square-o"></i> Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </ng-template>
