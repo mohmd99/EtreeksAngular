@@ -16,11 +16,11 @@ import {HttpClientModule} from "@angular/common/http";
 import { CoursesComponent } from './courses/courses.component';
 import { CoursePageComponent } from './course-page/course-page.component';
 import { CategoryComponent } from './category/category.component'
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-
     HomeComponent,
     AboutComponent,
     ContactComponent,
@@ -37,7 +37,9 @@ import { CategoryComponent } from './category/category.component'
     BrowserAnimationsModule,
     SharedModule,
     NgxSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
