@@ -304,7 +304,7 @@ display_image:any;
 getTestimonial(){
   this.spinner.show();
   debugger
-  this.http.get('https://localhost:44343/api/CRUDTestimonial').subscribe((resp) => {
+  this.http.get('https://localhost:44343/api/Testimonial/GetAllTistimonialUser').subscribe((resp) => {
     console.log(resp);
     this.allTestimonial=resp
     this.spinner.hide();
@@ -314,5 +314,17 @@ getTestimonial(){
     this.toaster.error(err.message, err.status);
   }
   )
+}
+updateTestimonial(body:any){
+
+
+ this.spinner.show();
+ this.http.put('https://localhost:44343/api/CRUDtestimonial',body).subscribe((resp)=>{
+   this.spinner.hide();
+   this.toaster.success('Updated Successfully !!');
+ },err=>{
+   this.spinner.hide();
+   this.toaster.error(err.message, err.status);
+ })
 }
 }

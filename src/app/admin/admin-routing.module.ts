@@ -1,3 +1,4 @@
+import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 import { ManageAboutComponent } from './manage-about/manage-about.component';
 import { AboutComponent } from './../about/about.component';
 import { MessageComponent } from './message/message.component';
@@ -19,6 +20,8 @@ const routes: Routes = [
     path:"message",component:MessageComponent
   },{
     path:"about",component:ManageAboutComponent
+  },{
+    path:"testimonial",component:ManageTestimonialComponent
   }
 ];
 

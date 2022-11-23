@@ -12,10 +12,8 @@
         <div class="card ">
             <div class="card-header pb-0 p-3">
             <div class="d-flex justify-content-between">
-                <h6 class="customtabletitle">Category </h6>
-                <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                    <i class="bi bi-file-plus" (click)="OpenCreateDialouge()"></i>
-                  </div>
+                <h6 class="customtabletitle">Testimonial </h6>
+
             </div>
             </div>
             <div class="table-responsive" style="margin-top:15px" >
@@ -23,29 +21,32 @@
                 <thead>
                     <tr>
                         <th>
-                            Category Name
+                            User
                         </th>
 
 
                         <th>
-                            Category Description
+                            Message
                         </th>
+
                         <th>
-                            Category Image
-                        </th>
-                        <th>
-                            Manage
+                            Status
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let item of generalService.allcategories">
+                <tr *ngFor="let item of adminService.allTestimonial">
                     <td class="w-30" >
                     <div class="d-flex px-2 py-1 align-items-center">
 
                         <div class="ms-4">
 
-                        <h6 class="text-sm mb-0">{{ item.categorY_NAME }}</h6>
+                        <h6 class="text-sm mb-0">{{ item.first_Name  }} {{ item.last_Name }}</h6>
+                        </div>
+
+                        <div class="ms-4">
+
+                          <img style="width:50px ; height: 50px; border-radius: 50%;" alt="image" src="../../../assets/images/{{ item.image }}">
                         </div>
                     </div>
                     </td>
@@ -55,22 +56,15 @@
 
                             <div class="ms-4">
 
-                            <h6 class="text-sm mb-0">{{ item.description }}</h6>
+                              <h6 class="text-sm mb-0">{{ item.text  }}</h6>
                             </div>
                         </div>
                         </td>
-                      <td class="w-30" >
-                        <div class="d-flex px-2 py-1 align-items-center">
-
-                            <div class="ms-4">
-
-                           <img style="width:50px ; height: 50px; border-radius: 50%;" alt="image" src="../../../assets/images/{{ item.image }}">
-                            </div>
-                        </div>
+                        <td >
+                          <i class="bi bi-pencil-square" style="margin-right: 15px; cursor: pointer;" (click)="openAcceptDailog(item)"></i>  <i class="bi bi-trash3" style=" cursor: pointer;" (click)="openRejectDailog(item)"></i>
                         </td>
-                        <td>
-                          <i class="bi bi-pencil-square" style="margin-right: 15px; cursor: pointer;" (click)="openUpdateDailog(item)"></i>  <i class="bi bi-trash3" style=" cursor: pointer;" (click)="openDeleteDailog(item.id)"></i>
-                        </td>
+                        <!-- <td *ngIf="item.status==1">Accept</td>
+                        <td *ngIf="item.status==0">Reject</td> -->
 
                 </tr>
                 </tbody>
@@ -83,115 +77,11 @@
 
 
 
-<ng-template #CreateDialoug >
-
-
-    <div class="card" >
-
-        <div class="card-content collapse show">
-            <div class="card-body">
-
-
-                <h3>Create Category</h3>
-                <form class="form" [formGroup]="createForm">
-                    <div class="form-body">
-
-                        <div class="form-group">
-                            <label for="issueinput1">Category Name</label>
-                            <input matInput formControlName="categorY_NAME"  type="text" id="issueinput1" class="form-control" placeholder="issue title"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Issue Title">
-                            <mat-error *ngIf="createForm.controls['categorY_NAME'].hasError('required')" >  </mat-error>
-                        </div>
 
 
 
-                        <div class="form-group">
-                            <label>Select Image</label>
-                            <label id="projectinput7" class="file center-block">
-                                <input matInput formControlName="image" #file (change)="UploadFile(file.files)" type="file" id="file">
-                                <span class="file-custom"></span>
-                            </label>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="issueinput8">Description</label>
-                            <textarea matInput formControlName="description"   id="issueinput8" rows="5" class="form-control"  placeholder="comments" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Comments"></textarea>
-                            <mat-error *ngIf="createForm.controls['description'].hasError('required')" >  </mat-error>
-                        </div>
-
-                    </div>
-
-                    <div class="form-actions">
-                        <button mat-dialog-close type="reset" class="btn btn-warning mr-1">
-                            <i class="feather icon-x"></i> Cancel
-                        </button>
-                        <button  [mat-dialog-close]="true" (click)="SaveData()" style="margin-left:20px" type="submit" class="btn btn-primary">
-                            <i class="fa fa-check-square-o"></i> Save
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-
-</ng-template>
-<ng-template #callUpdatDailog>
-
-  <div class="card" >
-
-    <div class="card-content collapse show">
-        <div class="card-body">
-
-
-            <h3>Update Category</h3>
-            <form class="form" [formGroup]="updateForm">
-                <div class="form-body">
-
-                    <div class="form-group">
-                        <label for="issueinput1">Category Name</label>
-                        <input matInput [(ngModel)]="p_data.categorY_NAME"  formControlName="categorY_NAME"  type="text" id="issueinput1" class="form-control" placeholder="issue title"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Issue Title">
-                        <mat-error *ngIf="createForm.controls['categorY_NAME'].hasError('required')" >  </mat-error>
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label>Select Image</label>
-                        <label id="projectinput7" class="file center-block">
-                            <input matInput formControlName="image" [(ngModel)]='p_data.image'   #file  (change)="UploadFile(file.files)"  type="file" >
-                            <span class="file-custom"></span>
-                        </label>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="issueinput8">Description</label>
-                        <textarea matInput formControlName="description" [(ngModel)]="p_data.description"  id="issueinput8" rows="5" class="form-control"  placeholder="comments" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Comments"></textarea>
-                        <mat-error *ngIf="createForm.controls['description'].hasError('required')" >  </mat-error>
-                    </div>
-
-                </div>
-
-                <div class="form-actions">
-                    <button mat-dialog-close type="reset" class="btn btn-warning mr-1">
-                        <i class="feather icon-x"></i> Cancel
-                    </button>
-                    <button  [mat-dialog-close]="true" (click)="updateData()" style="margin-left:20px" type="submit" class="btn btn-primary">
-                        <i class="fa fa-check-square-o"></i> Save
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-</ng-template>
-
-
-
-<ng-template #callDeleteDailog>
-<h5>Are you sure you want to delete this item ? </h5>
+<ng-template #callAcceptDailog>
+<h5>Are you sure you want to Accept this testimonial ? </h5>
 <br>
 <div class="form-actions">
   <button mat-dialog-close="no" type="reset" class="btn btn-warning mr-1">
@@ -203,4 +93,17 @@
 </div>
 
 </ng-template>
+<ng-template #callRejectDailog>
+  <h5>Are you sure you want to Reject this testimonial ? </h5>
+  <br>
+  <div class="form-actions">
+    <button mat-dialog-close="no" type="reset" class="btn btn-warning mr-1">
+        <i class="feather icon-x"></i> Cancel
+    </button>
+    <button  mat-dialog-close="yes"  style="margin-left:20px" type="submit" class="btn btn-primary">
+        <i class="fa fa-check-square-o"></i> Save
+    </button>
+  </div>
+
+  </ng-template>
 
