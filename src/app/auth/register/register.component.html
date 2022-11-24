@@ -111,6 +111,25 @@
           </mat-form-field>
         </div>
         </div>
+
+        <div class="form-group">
+          <div class="col-4 col-md-4">
+            <mat-form-field  >
+            <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
+          <!-- <input type="password" class="form-control" placeholder="Password" required> -->
+          
+          <input class="form-control" type="date"  matInput formControlName="birth_Date" >
+        
+        
+          <mat-error *ngIf="registerForm.controls['birth_Date'].hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      </div>
+
+
+
         <div class="form-group">
           <div class="col-4 col-md-4">
           <mat-form-field  >
@@ -147,3 +166,20 @@
     </div>
 
 </section>
+
+
+
+<ng-template #Verifydialog>
+  <h5>Choose a way to recive the code</h5>
+  <br>
+  <div class="form-actions">
+    <button mat-dialog-close="Whatsapp" type="reset" class="btn btn-warning mr-1">
+      <i class="feather icon-x"></i> Cancel
+  </button>
+  <button  mat-dialog-close="Email"  style="margin-left:20px" type="submit" class="btn btn-primary">
+      <i class="fa fa-check-square-o"></i> Save
+  </button>
+  </div>
+  
+  </ng-template>
+  

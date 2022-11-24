@@ -332,20 +332,7 @@ updateTestimonial(body:any){
 //---------------User----------------
 AllUser:any=[{}]
 display_image_user:any;
-createuser(body: any) {
-  body.image = this.display_image_user;
-  this.spinner.show();
-  debugger
-  this.http.post('https://localhost:44343/api/CRUDuser', body).subscribe((resp) => {
-    console.log(resp);
-    this.spinner.hide();
-    this.toaster.success('Created !!');
-  }, err => {
-    this.spinner.hide();
-    this.toaster.error(err.message, err.status);
-  }
-  )
-}
+
 
 updateUser(body:any)
 {
