@@ -4,6 +4,7 @@ import { GeneralService } from 'src/app/Services/general.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatDialog}from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -26,11 +27,19 @@ export class ManageCoursesComponent implements OnInit {
     image:new FormControl()
   });
 
-  constructor(public adminService:AdminService ,public generalService:GeneralService,public dialog:MatDialog,private router: Router) { }
+  constructor(private spinner:NgxSpinnerService,public adminService:AdminService ,public generalService:GeneralService,public dialog:MatDialog,private router: Router) { }
 
+  name:any=''
 
   ngOnInit(): void {
-    this.adminService.getcoursewithcategory();
+
+    this.spinner.show();
+    if (this.name==''){
+
+      this.adminService.getcoursewithcategory();
+    }
+
+    
   }
 
   UploadFile(file:any){
@@ -125,5 +134,19 @@ export class ManageCoursesComponent implements OnInit {
 
       }
     })
+  }
+
+
+  Search(ev:any){
+    this.name=ev.target.value;
+    if(this.name!=''){
+
+       this.adminService.SearchCourse(this.name);
+
+      console.log(this.adminService.AllUser);
+    }else{
+      this.adminService.getUser();
+    }
+
   }
 }

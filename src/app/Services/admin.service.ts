@@ -409,4 +409,14 @@ SearchUser(body:string){
     console.log(err);
   })
 }
+SearchCourse(body:string){
+
+  this.http.get('https://localhost:44343/api/Course/Search/'+body).subscribe((res:any)=>{
+    this.coursesinfo=res
+
+  },err=>{
+    this.toaster.error('Can not Search');
+    console.log(err);
+  })
+}
 }
