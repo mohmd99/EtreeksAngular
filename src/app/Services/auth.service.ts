@@ -6,6 +6,7 @@ import jwt_decode from "jwt-decode";
 import { AdminService } from './admin.service';
 import { GeneralService } from './general.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { timeout } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -41,16 +42,16 @@ export class AuthService {
     },err=>{
       this.toastr.error(err.message,err.status);
     })
-    
+
   }
 
-myLoginId:any
+myLoginId:any=0
   CreateLogin(body:any)
   {
 
-    
+
     this.spinner.show();
-    this.http.post('https://localhost:44343/Login/Create', body).subscribe((resp) => {
+    this.http.post('https://localhost:44343/api/Login/Create', body).subscribe((resp) => {
       this.myLoginId=resp;
     console.log(resp);
     this.spinner.hide();
@@ -66,13 +67,13 @@ myLoginId:any
 
 
 
-  myLogInObj:any
+  myLogInObj:any={}
   GetLoginbyId(id:number)
   {
 
-    
+
     this.spinner.show();
-    this.http.get('https://localhost:44343/CRUDlogin/GetById/'+id).subscribe((resp) => {
+    this.http.get('https://localhost:44343/api/CRUDlogin/GetById/'+id).subscribe((resp) => {
       this.myLogInObj=resp;
     console.log(resp);
     this.spinner.hide();
@@ -91,7 +92,7 @@ myLoginId:any
 
 
   my_id:any;
-createuser(body: any) {
+createuser(body: any,body2:any) {
 
   const headerDic={
     'Content-Type' :'application/json',
@@ -100,7 +101,7 @@ createuser(body: any) {
   const requestOptions={
     headers: new HttpHeaders(headerDic)
   }
-  
+
   body.image = this.adminService.display_image_user;
   this.spinner.show();
   debugger
@@ -108,13 +109,21 @@ createuser(body: any) {
     this.my_id=resp;
     console.log(resp);
 
-    
+
     this.spinner.hide();
     this.toastr.success('Created !!');
+
+setTimeout(()=>{
+
+  this.CreateLogin(body2.value);
+},1000)
+
+
   }, err => {
     this.spinner.hide();
     this.toastr.error(err.message, err.status);
   }
+
   )
 
 
@@ -126,9 +135,9 @@ myVerfiyCode:any;
 SendEmail(VerfiyCode:number, myEmail:String)
 {
   var body ={
-      
-    _VerfiyCode : VerfiyCode, 
-    Email : myEmail 
+
+    _VerfiyCode : VerfiyCode,
+    Email : myEmail
   }
 
   const headerDic={
@@ -143,16 +152,16 @@ SendEmail(VerfiyCode:number, myEmail:String)
 
 
   })
-  
+
 }
 
 SendWhatsapp(id:number)
 {
-  var body ={   
+  var body ={
   }
 
-  
-  
+
+
 
   this.http.post('https://localhost:44343/api/login/SendWhatsapp/'+id,body).subscribe((resp) => {
     console.log(resp);
@@ -165,10 +174,10 @@ SendWhatsapp(id:number)
 DeleteCode(id:number)
 {
 
-  var body ={   
+  var body ={
   }
 
-  
+
   this.http.put('https://localhost:44343/api/login/DeleteCode/'+id,body).subscribe((resp) => {
     console.log(resp);
 

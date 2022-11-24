@@ -14,7 +14,7 @@
       <div class="row justify-content-center">
       </div>
       <div class="row justify-content-center">
-        
+
           <div class="col-md-8 col-sm-6">
               <div class="login-wrap py-5">
             <div class="img d-flex align-items-center justify-content-center" style="background-image: url(../../../assets/login_assets/images/Green\ Modern\ Education\ Online\ Course\ Logo\ \(1\).png); height: 170px; width: 170px; border-radius: 50%;" ></div>
@@ -23,17 +23,17 @@
                   <form class="login-form"  [formGroup]="registerForm" >
                     <div class="row" style="margin:-30px ;">
                     <div class="form-group">
-                      
+
                         <div class="col-4 col-md-4">
                         <div class="form-group">
                         <mat-form-field >
                           <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
                           <!-- <input type="text" class="form-control" placeholder="Username" required> -->
-                          <input class="form-control" matInput formControlName="firstname" type="text"  placeholder="FirstName" >
-                         
-                      
-                     
-                      <mat-error *ngIf="registerForm.controls['firstname'].hasError('required')">
+                          <input class="form-control" matInput formControlName="first_Name" type="text"  placeholder="FirstName" >
+
+
+
+                      <mat-error *ngIf="registerForm.controls['first_Name'].hasError('required')">
                         FirstName is <strong>required</strong>
                       </mat-error>
                     </mat-form-field>
@@ -44,28 +44,28 @@
                     <mat-form-field >
                         <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
                         <!-- <input type="text" class="form-control" placeholder="Username" required> -->
-                        <input class="form-control" matInput formControlName="lastname" type="text"  placeholder="LastName" >
-                       
-                    
-                   
-                    <mat-error *ngIf="registerForm.controls['lastname'].hasError('required')">
+                        <input class="form-control" matInput formControlName="last_Name" type="text"  placeholder="LastName" >
+
+
+
+                    <mat-error *ngIf="registerForm.controls['last_Name'].hasError('required')">
                       LastName is <strong>required</strong>
                     </mat-error>
                   </mat-form-field>
                 </div>
                   </div>
                   </div>
-                  </div>   
-                  <div class="row" style="margin:-30px ;">            
+                  </div>
+                  <div class="row" style="margin:-30px ;">
                 <div class="form-group">
-                    
+
                     <div class="col-4 col-md-4">
                   <mat-form-field >
                     <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
                     <!-- <input type="text" class="form-control" placeholder="Username" required> -->
                     <input class="form-control" matInput formControlName="email" type="text"  placeholder="Email" >
-                   
-                
+
+
                 <mat-error *ngIf="registerForm.controls['email'].hasError('email')">
                   Please enter a valid email address
                 </mat-error>
@@ -76,17 +76,17 @@
                     </div>
             </div>
             <div class="form-group">
-              <div class="col-4 col-md-4"> 
+              <div class="col-4 col-md-4">
               <mat-form-field >
                 <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-phone"></span></div>
                 <!-- <input type="text" class="form-control" placeholder="Username" required> -->
-                <input class="form-control" matInput formControlName="phonenumber" type="text"  placeholder="PhoneNumber" >
-               
-            
-            <mat-error *ngIf="registerForm.controls['phonenumber'].hasError('minlength')">
+                <input class="form-control" matInput formControlName="phone_Number" type="text"  placeholder="PhoneNumber" >
+
+
+            <mat-error *ngIf="registerForm.controls['phone_Number'].hasError('minlength')">
               Please enter a valid Phonenumber
             </mat-error>
-            <mat-error *ngIf="registerForm.controls['phonenumber'].hasError('maxlength')">
+            <mat-error *ngIf="registerForm.controls['phone_Number'].hasError('maxlength')">
               Please enter a valid Phonenumber
             </mat-error>
           </mat-form-field>
@@ -99,9 +99,9 @@
               <mat-form-field  >
               <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
             <!-- <input type="password" class="form-control" placeholder="Password" required> -->
-            
+
             <input class="form-control" type="password" name="password" matInput formControlName="password" placeholder="Password">
-          
+
           <mat-error *ngIf="registerForm.controls['password'].hasError('minlength')">
               Please enter a strong Password
             </mat-error>
@@ -117,10 +117,10 @@
             <mat-form-field  >
             <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
           <!-- <input type="password" class="form-control" placeholder="Password" required> -->
-          
+
           <input class="form-control" type="date"  matInput formControlName="birth_Date" >
-        
-        
+
+
           <mat-error *ngIf="registerForm.controls['birth_Date'].hasError('required')">
             Password is <strong>required</strong>
           </mat-error>
@@ -137,7 +137,7 @@
         <!-- <input type="password" class="form-control" placeholder="Password" required> -->
         <mat-label>Re-type Password</mat-label>
         <input class="form-control" type="password" name="password" matInput formControlName="confirmPassword" (change)="matchError()">
-      
+
       <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('minlength')">
           Please enter a strong Password
         </mat-error>
@@ -152,7 +152,7 @@
     </div>
           </div>
           <div class="form-group w-100 text-center mt-4 text" >
-              <button  type="submit" class="btn form-control btn-primary rounded submit px-3" [disabled]="!registerForm.valid" (click)="submit()"
+              <button  type="submit" class="btn form-control btn-primary rounded submit px-3" (click)="submit()"
               type="submit" value="Register"> Register </button>
           </div>
         </form>
@@ -180,6 +180,5 @@
       <i class="fa fa-check-square-o"></i> Save
   </button>
   </div>
-  
+
   </ng-template>
-  

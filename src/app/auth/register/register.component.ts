@@ -15,13 +15,13 @@ export class RegisterComponent implements OnInit {
   @ViewChild('Verifydialog') callVerify!:TemplateRef<any>;
 
   constructor(public dialog:MatDialog,private authService :AuthService, private route:Router , private spinner:NgxSpinnerService) { }
-  
+
   VerifyCode=new FormControl();
 
   registerForm :FormGroup= new FormGroup({
-  firstname : new FormControl('',[Validators.required]),
-  lastname : new FormControl('',[Validators.required]),
-  phonenumber : new FormControl('+962',[Validators.required,Validators.minLength(13),Validators.maxLength(13)]),
+    first_Name : new FormControl('',[Validators.required]),
+    last_Name : new FormControl('',[Validators.required]),
+    phone_Number : new FormControl('+962',[Validators.required,Validators.minLength(13),Validators.maxLength(13)]),
   email : new FormControl('', [Validators.required, Validators.email]),
   password : new FormControl('', [Validators.required, Validators.minLength(8)]),
   confirmPassword : new FormControl('',[Validators.required,Validators.minLength(8)]),
@@ -32,60 +32,69 @@ export class RegisterComponent implements OnInit {
 
 
 LogInForm :FormGroup= new FormGroup({
- 
+
   email : new FormControl('', [Validators.required, Validators.email]),
   password : new FormControl('', [Validators.required, Validators.minLength(8)]),
-  verify_Code : new FormControl('', [Validators.required]),
+
   role_Id : new FormControl('', [Validators.required]),
-  user_Id : new FormControl('', [Validators.required])
-  
+  user_Id : new FormControl('')
+
 
 })
   ngOnInit(): void {
   }
 
 
-  
+
 
   matchError(){
     if(this.registerForm.controls['password'].value==
     this.registerForm.controls['confirmPassword'].value)
     this.registerForm.controls['confirmPassword'].setErrors(null);
-    else 
+    else
     this.registerForm.controls['confirmPassword'].setErrors({mismatch:true});
 
   }
   goToLogin(){
     this.route.navigate(['auth/login'])
   }
-
+id:any
   submit(){
 
     var body ={
-      
-        firstname : this.registerForm.controls['firstname'].value , 
-        lastname : this.registerForm.controls['lastname'].value , 
-        phonenumber : this.registerForm.controls['email'].value , 
-        birth_Date : this.registerForm.controls['birth_Date'].value 
-        
-    }
-    
 
-    this.authService.createuser(body);
+      first_Name : this.registerForm.controls['first_Name'].value ,
+        last_Name : this.registerForm.controls['last_Name'].value ,
+        phonenumber : this.registerForm.controls['email'].value ,
+        birth_Date : this.registerForm.controls['birth_Date'].value
+
+    }
+
+
+
 
     this.LogInForm.controls['email'].setValue( this.registerForm.controls['email'].value );
     this.LogInForm.controls['password'].setValue( this.registerForm.controls['password'].value );
     this.LogInForm.controls['role_Id'].setValue( 3 );
-    this.LogInForm.controls['user_Id'].setValue( this.authService.my_id );
-
-
-    this.authService.CreateLogin(this.LogInForm.value);
+    this.LogInForm.controls['user_Id'].setValue( 4 );
 
 
 
-    this.SendCode();
+ this.id=this.authService.createuser(body,this.LogInForm);
 
-    
+console.log(this.LogInForm.value);
+
+this.authService.GetLoginbyId(this.authService.myLoginId)
+
+
+setTimeout(() => {
+console.log(this.authService.myLogInObj);
+
+this.authService.SendEmail(this.authService.myLogInObj.Verfiy_Code,this.authService.myLogInObj.email);
+this.authService.DeleteCode(this.authService.myLoginId);
+}, 4000);
+
+
 
   }
 
@@ -100,18 +109,18 @@ LogInForm :FormGroup= new FormGroup({
             this.authService.SendEmail(this.authService.myLogInObj.Verfiy_Code,this.authService.myLogInObj.email);
             this.authService.DeleteCode(this.authService.myLoginId);
           }
-          else if(result=='Whatsapp'){
-            this.authService.SendWhatsapp(this.authService.myLoginId);
-            this.authService.DeleteCode(this.authService.myLoginId);
-          }
+          // else if(result=='Whatsapp'){
+          //   this.authService.SendWhatsapp(this.authService.myLoginId);
+          //   this.authService.DeleteCode(this.authService.myLoginId);
+          // }
 
         }
       })
   }
 
-  
 
-  
+
+
 
 
 
