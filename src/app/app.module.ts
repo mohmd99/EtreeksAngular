@@ -18,6 +18,7 @@ import { CoursePageComponent } from './course-page/course-page.component';
 import { CategoryComponent } from './category/category.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptor } from 'src/Interceptor/token.interceptor';
+import { TeacherModule } from './teacher/teacher.module';
 
 @NgModule({
   declarations: [
