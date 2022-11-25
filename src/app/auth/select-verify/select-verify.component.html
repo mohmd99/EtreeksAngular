@@ -1,24 +1,49 @@
-<section class="ftco-section" style="
-background-image: url('../assets/login_assets/images/blue.jpg');
-background-position: center;
-background-repeat: no-repeat;
 
-background-size: cover;">
- <div class="container">
 
-     <div class="row justify-content-center">
-      <div class="col-6">
-        <div>
 
-          <button (click)="sendWithEmail()"><i class="bi bi-envelope-check"></i></button>
-        </div>
-      </div>
-      <div class="col-6">
-        <div>
 
-          <button (click)="sendWithWhatsapp()"><i class="bi bi-whatsapp"></i></button>
-        </div>
-      </div>
+
+
+
+
+
+
+ <section class="ftco-section" style="
+ background-image: url('../assets/login_assets/images/blue.jpg');
+ background-position: center;
+ background-repeat: no-repeat;
+
+ background-size: cover;">
+  <div class="container">
+
+      <div class="row justify-content-center">
+
+        <div class="col-md-8 col-sm-6">
+          <div class="login-wrap py-5">
+            <div class="img d-flex align-items-center justify-content-center" style="background-image: url(../../../assets/login_assets/images/Green\ Modern\ Education\ Online\ Course\ Logo\ \(1\).png); height: 170px; width: 170px; border-radius: 50%;" ></div>
+            <h3 class="text-center mb-0">Verfiy Account <span style="color:#01BACF">ETreeks</span></h3>
+            <p class="text-center">Choose the method to receive the activation code</p>
+                 
+           <div class="row">
+            <div class="col">
+           <button  type="submit" class="btn form-control btn-primary rounded submit px-3" (click)="sendWithEmail()"
+              type="submit" value="Register"><i class="bi bi-envelope-check"></i> Send With Email </button>
+</div>
+<div class="col">
+              <button  type="submit" class="btn form-control btn-primary rounded submit px-3" (click)="sendWithWhatsapp()"
+         type="submit" value="Register"><i class="bi bi-whatsapp"></i> Send With Whatsapp </button>
+      </div> 
+    </div>
+    </div>
+      
+      
+  </div>
      </div>
- </div>
- </section>
+  </div>
+
+</section>
+
+
+
+
+
