@@ -58,16 +58,16 @@ createuser(body: any) {
 
   
 
-  body.image = this.adminService.display_image_user;
   this.spinner.show();
-  debugger
-  this.http.post('https://localhost:44343/api/user/createuser', body).subscribe((resp) => {
+  
+  this.http.post('https://localhost:44343/api/user/CreateUser', body).subscribe((resp) => {
     this.Ids=resp;
     console.log(resp);
 
 
+    
     this.spinner.hide();
-    this.toastr.success('Created !!');
+    
 
 
 
@@ -87,18 +87,13 @@ myVerfiyCode:any;
 
 SendEmail(id:number)
 {
+  console.log("id is "+id);
   var body ={
   }
 
-  const headerDic={
-    'Content-Type' :'application/json',
-    'Accept':'application/json'
-  }
-  const requestOptions={
-    headers: new HttpHeaders(headerDic)
-  }
-  this.http.post('https://localhost:44343/api/login/SendEmail'+id, body,requestOptions).subscribe((resp) => {
-    console.log(resp);
+  
+  this.http.post('https://localhost:44343/api/login/SendEmail/'+id,body).subscribe((resp) => {
+    console.log("Email Response"+resp);
 
 
   })
