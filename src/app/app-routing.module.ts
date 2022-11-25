@@ -8,6 +8,8 @@ import { CoursePageComponent } from './course-page/course-page.component';
 import { CategoryComponent } from './category/category.component';
 import { AdminModule } from './admin/admin.module';
 import { AuthorizationGuard } from './authorization.guard';
+import { TeacherModule } from './teacher/teacher.module';
+import { StudentModule } from './student/student.module';
 
 const routes: Routes = [
   {
@@ -42,6 +44,15 @@ const routes: Routes = [
     path:'admin',
     loadChildren:()=>AdminModule,
     // canActivate:[AuthorizationGuard]
+  },
+
+  {
+    path:'teacher',
+    loadChildren:()=>TeacherModule
+  },
+  {
+    path:'student',
+    loadChildren:()=>StudentModule
   }
 ];
 
