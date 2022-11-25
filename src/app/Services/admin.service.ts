@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
-})
+}) 
 export class AdminService {
 coursesinfo:any=[{}];
 allcontactus:any=[{}];

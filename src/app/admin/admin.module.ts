@@ -19,6 +19,7 @@ import { ManageTestimonialComponent } from './manage-testimonial/manage-testimon
 import { ManageUserComponent } from './manage-user/manage-user.component';
 
 
+
 @NgModule({
   declarations: [
     AdminPanelComponent,
@@ -30,7 +31,7 @@ import { ManageUserComponent } from './manage-user/manage-user.component';
     MessageComponent,
     ManageAboutComponent,
     ManageTestimonialComponent,
-    ManageUserComponent,
+    ManageUserComponent
     
   ],
   imports: [

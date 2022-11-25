@@ -21,7 +21,7 @@ export class ManageAboutComponent implements OnInit {
       text:new FormControl('',Validators.required),image:new FormControl(),
       title:new FormControl('',Validators.required)
 
-    });
+    }); 
 
     constructor(public adminService:AdminService ,public generalService:GeneralService,public dialog:MatDialog) { }
 

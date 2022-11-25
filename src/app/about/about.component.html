@@ -1,17 +1,21 @@
  <app-navbar></app-navbar>
-        <section class="section">
+        <section  *ngFor="let info of generalService.allabout"  class="section" >
             <div class="container">
                 <div class=" ">
                     <div class="row">
-
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="shop-desc">
-                                <h1>About Us</h1>
+                                <img src="../../assets/images/{{info.image}}" style="height:600px;width:100%;">
+                            </div><!-- end desc -->
+                        </div>
+                        <div class="col-md-6">
+                            <div class="shop-desc">
+                                <h1>{{info.title}}</h1>
 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis consequat condimentum. In a tincidunt purus. Curabitur facilisis luctus aliquet. Aenean a cursus erat, sit amet interdum arcu. Mauris aliquam magna turpis, lobortis pellentesque velit elementum et. Nulla scelerisque a lorem nec posuere. Nunc convallis posuere tincidunt. Pellentesque a aliquet odio. Integer euismod, enim id lacinia auctor, tortor turpis malesuada enim, in semper turpis magna quis enim.</p>
-
+                                <p>{{info.text}}</p>
                             </div><!-- end desc -->
                         </div><!-- end col -->
+                        
                     </div><!-- end row -->
 
 
