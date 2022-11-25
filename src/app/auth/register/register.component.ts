@@ -57,32 +57,29 @@ id:any
 
 
  this.registerForm.removeControl('confirmPassword');
+ this.registerForm.controls['role_Id'].setValue(3);
  this.id=this.authService.createuser(this.registerForm.value);
-
+ console.log(this.authService.Ids[0].value);
+ 
+ 
+//  this.dialog.open(this.callVerify);
 
 
 
 
   }
 
-  SendCode(){
-    const dialogRef=  this.dialog.open(this.callVerify);
-      dialogRef.afterClosed().subscribe((result)=>{
-        if(result!=undefined)
-        {
-          if(result=='Email')
-          {
-           
-            this.authService.SendEmail(this.authService.Ids[0].value);
-            this.authService.DeleteCode(this.authService.Ids[0].value);
-          }
-          else if(result=='Whatsapp'){
-            this.authService.SendWhatsapp(this.authService.Ids[1].value);
-            this.authService.DeleteCode(this.authService.Ids[0].value);
-          }
-
-        }
-      })
+  Sendemail(){
+    this.authService.SendEmail(this.authService.Ids[0].value);
+    
+    // if(num==1)
+    // this.authService.SendEmail(this.authService.Ids[0].value);
+    // else
+    // this.authService.DeleteCode(this.authService.Ids[0].value);
+  
+    // this.authService.SendWhatsapp(this.authService.Ids[1].value);
+    // this.authService.DeleteCode(this.authService.Ids[0].value);
+   
   }
 
 
