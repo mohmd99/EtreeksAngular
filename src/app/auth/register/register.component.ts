@@ -19,28 +19,20 @@ export class RegisterComponent implements OnInit {
   VerifyCode=new FormControl();
 
   registerForm :FormGroup= new FormGroup({
-    first_Name : new FormControl('',[Validators.required]),
-    last_Name : new FormControl('',[Validators.required]),
-    phone_Number : new FormControl('+962',[Validators.required,Validators.minLength(13),Validators.maxLength(13)]),
-  email : new FormControl('', [Validators.required, Validators.email]),
-  password : new FormControl('', [Validators.required, Validators.minLength(8)]),
-  confirmPassword : new FormControl('',[Validators.required,Validators.minLength(8)]),
-  birth_Date : new FormControl('', [Validators.required])
+      first_Name : new FormControl('',[Validators.required]),
+      last_Name : new FormControl('',[Validators.required]),
+      phone_Number : new FormControl('+962',[Validators.required,Validators.minLength(13),Validators.maxLength(13)]),
+      email : new FormControl('', [Validators.required, Validators.email]),
+      password : new FormControl('', [Validators.required, Validators.minLength(8)]),
+      confirmPassword : new FormControl('',[Validators.required,Validators.minLength(8)]),
+      birth_Date : new FormControl('', [Validators.required]),
+      role_Id : new FormControl('', [Validators.required])
 
 })
 
 
 
-LogInForm :FormGroup= new FormGroup({
 
-  email : new FormControl('', [Validators.required, Validators.email]),
-  password : new FormControl('', [Validators.required, Validators.minLength(8)]),
-
-  role_Id : new FormControl('', [Validators.required]),
-  user_Id : new FormControl('')
-
-
-})
   ngOnInit(): void {
   }
 
@@ -61,38 +53,13 @@ LogInForm :FormGroup= new FormGroup({
 id:any
   submit(){
 
-    var body ={
-
-      first_Name : this.registerForm.controls['first_Name'].value ,
-        last_Name : this.registerForm.controls['last_Name'].value ,
-        phonenumber : this.registerForm.controls['email'].value ,
-        birth_Date : this.registerForm.controls['birth_Date'].value
-
-    }
+   
 
 
+ this.registerForm.removeControl('confirmPassword');
+ this.id=this.authService.createuser(this.registerForm.value);
 
 
-    this.LogInForm.controls['email'].setValue( this.registerForm.controls['email'].value );
-    this.LogInForm.controls['password'].setValue( this.registerForm.controls['password'].value );
-    this.LogInForm.controls['role_Id'].setValue( 3 );
-    this.LogInForm.controls['user_Id'].setValue( 4 );
-
-
-
- this.id=this.authService.createuser(body,this.LogInForm);
-
-console.log(this.LogInForm.value);
-
-this.authService.GetLoginbyId(this.authService.myLoginId)
-
-
-setTimeout(() => {
-console.log(this.authService.myLogInObj);
-
-this.authService.SendEmail(this.authService.myLogInObj.Verfiy_Code,this.authService.myLogInObj.email);
-this.authService.DeleteCode(this.authService.myLoginId);
-}, 4000);
 
 
 
@@ -105,14 +72,14 @@ this.authService.DeleteCode(this.authService.myLoginId);
         {
           if(result=='Email')
           {
-            this.authService.GetLoginbyId(this.authService.myLoginId)
-            this.authService.SendEmail(this.authService.myLogInObj.Verfiy_Code,this.authService.myLogInObj.email);
-            this.authService.DeleteCode(this.authService.myLoginId);
+           
+            this.authService.SendEmail(this.authService.Ids[0].value);
+            this.authService.DeleteCode(this.authService.Ids[0].value);
           }
-          // else if(result=='Whatsapp'){
-          //   this.authService.SendWhatsapp(this.authService.myLoginId);
-          //   this.authService.DeleteCode(this.authService.myLoginId);
-          // }
+          else if(result=='Whatsapp'){
+            this.authService.SendWhatsapp(this.authService.Ids[1].value);
+            this.authService.DeleteCode(this.authService.Ids[0].value);
+          }
 
         }
       })

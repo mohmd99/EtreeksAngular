@@ -45,78 +45,31 @@ export class AuthService {
 
   }
 
-myLoginId:any=0
-  CreateLogin(body:any)
-  {
-
-
-    this.spinner.show();
-    this.http.post('https://localhost:44343/api/Login/Create', body).subscribe((resp) => {
-      this.myLoginId=resp;
-    console.log(resp);
-    this.spinner.hide();
-    this.toastr.success('Created !!');
-  }, err => {
-    this.spinner.hide();
-    this.toastr.error(err.message, err.status);
-  }
-  )
-
-
-  }
 
 
 
-  myLogInObj:any={}
-  GetLoginbyId(id:number)
-  {
-
-
-    this.spinner.show();
-    this.http.get('https://localhost:44343/api/CRUDlogin/GetById/'+id).subscribe((resp) => {
-      this.myLogInObj=resp;
-    console.log(resp);
-    this.spinner.hide();
-    this.toastr.success('Created !!');
-  }, err => {
-    this.spinner.hide();
-    this.toastr.error(err.message, err.status);
-  }
-  )
-
-
-  }
+ 
 
 
 
 
+  Ids:any;
+createuser(body: any) {
 
-  my_id:any;
-createuser(body: any,body2:any) {
-
-  const headerDic={
-    'Content-Type' :'application/json',
-    'Accept':'application/json'
-  }
-  const requestOptions={
-    headers: new HttpHeaders(headerDic)
-  }
+  
 
   body.image = this.adminService.display_image_user;
   this.spinner.show();
   debugger
-  this.http.post('https://localhost:44343/api/user/createuser', body,requestOptions).subscribe((resp) => {
-    this.my_id=resp;
+  this.http.post('https://localhost:44343/api/user/createuser', body).subscribe((resp) => {
+    this.Ids=resp;
     console.log(resp);
 
 
     this.spinner.hide();
     this.toastr.success('Created !!');
 
-setTimeout(()=>{
 
-  this.CreateLogin(body2.value);
-},1000)
 
 
   }, err => {
@@ -132,12 +85,9 @@ setTimeout(()=>{
 
 myVerfiyCode:any;
 
-SendEmail(VerfiyCode:number, myEmail:String)
+SendEmail(id:number)
 {
   var body ={
-
-    _VerfiyCode : VerfiyCode,
-    Email : myEmail
   }
 
   const headerDic={
@@ -147,7 +97,7 @@ SendEmail(VerfiyCode:number, myEmail:String)
   const requestOptions={
     headers: new HttpHeaders(headerDic)
   }
-  this.http.post('https://localhost:44343/api/login/SendEmail', body,requestOptions).subscribe((resp) => {
+  this.http.post('https://localhost:44343/api/login/SendEmail'+id, body,requestOptions).subscribe((resp) => {
     console.log(resp);
 
 
