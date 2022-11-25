@@ -7,13 +7,14 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root'
 })
 export class GeneralService {
-
+ 
   homeInfo:any={};
+  allabout:any={};
   allCourses:any=[{}]
   retreavedCourse:any={};
   allcategories:any=[{}];
   coursesbycategory:any=[{}];
-
+ 
   constructor( private toaster:ToastrService,private spinner:NgxSpinnerService,private http:HttpClient ) { }
 
   GetHomeInfo(){
@@ -79,10 +80,10 @@ getCoursesbyCategoryId(cat_id:number){
 
 }
 
-allabout:any={};
+
 getabout(){
   this.spinner.show();
-  this.http.get("https://localhost:44343/api/CRUDabout").subscribe((res:any)=>{
+  this.http.get("https://localhost:44343/api/CRUDAbout").subscribe((res:any)=>{
     this.allabout=res;
     this.spinner.hide();
 
