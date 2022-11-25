@@ -48,7 +48,7 @@ export class AuthService {
 
 
 
- 
+
 
 
 
@@ -56,18 +56,18 @@ export class AuthService {
   Ids:any;
 createuser(body: any) {
 
-  
+
 
   this.spinner.show();
-  
+
   this.http.post('https://localhost:44343/api/user/CreateUser', body).subscribe((resp) => {
     this.Ids=resp;
     console.log(resp);
 
 
-    
+    this.router.navigate(['auth/selectverify']);
     this.spinner.hide();
-    
+
 
 
 
@@ -91,10 +91,10 @@ SendEmail(id:number)
   var body ={
   }
 
-  
+
   this.http.post('https://localhost:44343/api/login/SendEmail/'+id,body).subscribe((resp) => {
     console.log("Email Response"+resp);
-
+    this.router.navigate(['auth/checkverify'])
 
   })
 
@@ -110,7 +110,7 @@ SendWhatsapp(id:number)
 
   this.http.post('https://localhost:44343/api/login/SendWhatsapp/'+id,body).subscribe((resp) => {
     console.log(resp);
-
+    this.router.navigate(['auth/checkverify'])
 
   })
 
@@ -131,7 +131,22 @@ DeleteCode(id:number)
 
 }
 
+checkVerify(code:number){
+  var body={
 
+  }
+  this.spinner.show()
+this.http.post('https://localhost:44343/api/VerfiyAccount/VerfiyAccount/'+code,body).subscribe((resp)=>{
+if(code==1)
+  this.router.navigate(["auth/login"]);
+
+  this.spinner.hide()
+},err=>{
+this.spinner.hide();
+this.toastr.error(err.message,err.status)
+
+})
+}
 
 
 }
