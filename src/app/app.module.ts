@@ -43,7 +43,11 @@ import { TeacherModule } from './teacher/teacher.module';
     ReactiveFormsModule
     
   ],
-  exports:[],
+  exports:[
+    CoursesComponent,
+    CoursePageComponent
+
+  ],
   providers: [{
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptor,

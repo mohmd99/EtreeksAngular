@@ -17,14 +17,11 @@ export class HomeComponent implements OnInit {
   constructor(public authService :AuthService,public generalServise:GeneralService,public adminService:AdminService,private router:Router) { }
 
   ngOnInit(): void {
-    console.log(this.authService.data.ID);
-
     this.generalServise.GetHomeInfo();
     this.generalServise.GetAllCourses();
     this.generalServise.getAllCategory();
     this.adminService.getTestimonial();
 
-    this.adminService.getuserbyid(this.authService.data.ID);
 
 
   }

@@ -1,6 +1,6 @@
-<app-navbar  [first_Name]="adminService.userbyid.first_Name" [last_Name]="adminService.userbyid.last_Name" [image]="adminService.userbyid.image"></app-navbar>
+<!-- <app-navbar  [first_Name]="adminService.userbyid.first_Name" [last_Name]="adminService.userbyid.last_Name" [image]="adminService.userbyid.image"></app-navbar> -->
 
-
+<app-guest-navbar></app-guest-navbar>
 
 <section *ngFor="let info of generalServise.homeInfo" id="home" class="video-section js-height-full">
   <div class="overlay" style=" background-image: url('../../assets/images/{{info.image}}');"></div>
