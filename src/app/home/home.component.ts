@@ -1,3 +1,4 @@
+import { AdminService } from './../Services/admin.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -12,12 +13,13 @@ import { Route, Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
 
-  constructor(public generalServise:GeneralService,private router:Router) { }
+  constructor(public generalServise:GeneralService,public adminService:AdminService,private router:Router) { }
 
   ngOnInit(): void {
     this.generalServise.GetHomeInfo();
     this.generalServise.GetAllCourses();
     this.generalServise.getAllCategory();
+    this.adminService.getTestimonial();
 
     // setTimeout(() => {
 

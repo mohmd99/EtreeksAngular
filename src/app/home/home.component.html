@@ -2,7 +2,7 @@
 
  <app-navbar></app-navbar>
 
- 
+
 
  <section *ngFor="let info of generalServise.homeInfo" id="home" class="video-section js-height-full">
      <div class="overlay" style=" background-image: url('../../assets/images/{{info.image}}');"></div>
@@ -87,23 +87,23 @@
              <h3>Recent Courses</h3>
              <p>Maecenas sit amet tristique turpis. Quisque porttitor eros quis leo pulvinar, at hendrerit sapien iaculis. Donec consectetur accumsan arcu, sit amet fringilla ex ultricies.</p>
          </div><!-- end title -->
- 
+
          <!-- <div id="owl-01" class="owl-carousel owl-theme owl-theme-01"> -->
-                     
-             
- 
+
+
+
              <div class="row">
              <app-courses *ngFor="let course of generalServise.allCourses"  [coursE_NAME]="course.coursE_NAME" [description]="course.description" [id]="course.id"></app-courses>
              </div>
 
- 
-             
- 
- 
+
+
+
+
          <!-- </div> -->
- 
+
          <hr class="invis">
- 
+
          <div class="section-button text-center">
              <a href="#" class="btn btn-primary">View All Courses</a>
          </div>
@@ -140,7 +140,7 @@
 
          <hr class="invis">
 
-          
+
      </div><!-- end container -->
  </section>
 
@@ -182,10 +182,13 @@
          </div><!-- end title -->
 
          <div class="row">
-             <div class="col-md-4">
-                 <div class="box testimonial">
-                     <p class="testiname"><strong><img src="../../assets/assets_template/upload/testimonial_01.png" alt="" class="img-circle"> Jenny LUXURY</strong></p>
-                     <p>Quisque porttitor eros quis leo pulvinar, at hendrerit sapien iaculis. Donec consectetur accumsan arcu, sit amet fringilla ex ultricies.</p>
+             <div class="col-md-4" *ngFor="let item of adminService.allTestimonial">
+              <div *ngIf="item.status==1">
+                  <div class="box testimonial">
+                     <p class="testiname"><strong><img src="../../assets/images/{{ item.image }}" alt="" class="img-circle">{{ item.first_Name |uppercase }} {{ item.last_Name |uppercase}}Y</strong></p>
+                     <p>
+                      {{ item.text }}
+                     </p>
                      <div class="rating">
                          <i class="fa fa-star"></i>
                          <i class="fa fa-star"></i>
@@ -194,35 +197,10 @@
                          <i class="fa fa-star"></i>
                      </div>
                  </div><!-- end testimonial -->
+              </div>
+
              </div><!-- end col -->
 
-             <div class="col-md-4">
-                 <div class="box testimonial">
-                     <p class="testiname"><strong><img src="../../assets/assets_template/upload/testimonial_02.png" alt="" class="img-circle"> Martin LEO</strong></p>
-                     <p>Quisque porttitor eros quis leo pulvinar, at hendrerit sapien iaculis. Donec consectetur accumsan arcu, sit amet fringilla ex ultricies.</p>
-                     <div class="rating">
-                         <i class="fa fa-star"></i>
-                         <i class="fa fa-star"></i>
-                         <i class="fa fa-star"></i>
-                         <i class="fa fa-star"></i>
-                         <i class="fa fa-star-o"></i>
-                     </div>
-                 </div><!-- end testimonial -->
-             </div><!-- end col -->
-
-             <div class="col-md-4">
-                 <div class="box testimonial">
-                     <p class="testiname"><strong><img src="../../assets/assets_template/upload/testimonial_03.png" alt="" class="img-circle"> John DOE</strong></p>
-                     <p>Quisque porttitor eros quis leo pulvinar, at hendrerit sapien iaculis. Donec consectetur accumsan arcu, sit amet fringilla ex ultricies.</p>
-                     <div class="rating">
-                         <i class="fa fa-star"></i>
-                         <i class="fa fa-star"></i>
-                         <i class="fa fa-star"></i>
-                         <i class="fa fa-star"></i>
-                         <i class="fa fa-star"></i>
-                     </div>
-                 </div><!-- end testimonial -->
-             </div><!-- end col -->
          </div><!-- end row -->
      </div><!-- end container -->
  </section>

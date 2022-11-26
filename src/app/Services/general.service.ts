@@ -7,14 +7,14 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root'
 })
 export class GeneralService {
- 
+
   homeInfo:any={};
   allabout:any={};
   allCourses:any=[{}]
   retreavedCourse:any={};
   allcategories:any=[{}];
   coursesbycategory:any=[{}];
- 
+
   constructor( private toaster:ToastrService,private spinner:NgxSpinnerService,private http:HttpClient ) { }
 
   GetHomeInfo(){
