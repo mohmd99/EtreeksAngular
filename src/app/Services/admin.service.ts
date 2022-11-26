@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
-}) 
+})
 export class AdminService {
 coursesinfo:any=[{}];
 allcontactus:any=[{}];
@@ -361,7 +361,7 @@ deleteUser(id:number)
   })
 }
 getUser(){
- 
+
 
   this.http.get('https://localhost:44343/api/CRUDuser').subscribe((resp) => {
     console.log(resp);
@@ -374,7 +374,19 @@ getUser(){
   }
   )
 }
+userbyid:any={}
+getuserbyid(id:number){
+  this.http.get('https://localhost:44343/api/CRUDuser/Getbyid/'+id).subscribe((resp) => {
+    console.log(resp);
+    this.userbyid=resp
+    this.spinner.hide();
 
+  }, err => {
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  }
+  )
+}
 
 uploadAttachmentuser(file: FormData) {
   this.http.post('https://localhost:44343/api/user/uploadImage', file).subscribe((resp: any) => {

@@ -13,6 +13,7 @@ import { timeout } from 'rxjs';
 export class AuthService {
 
   constructor(private adminService : AdminService, private spinner : NgxSpinnerService, private toastr:ToastrService,private router : Router ,private http : HttpClient , private admin:AdminService , private general :GeneralService) { }
+ data:any;
   submit(email:any, password:any)
   {
     var body ={
@@ -31,14 +32,14 @@ export class AuthService {
         token :resp.toString()
       }
       localStorage.setItem('token',responce.token);
-      let data :any=jwt_decode(responce.token);
-      localStorage.setItem('user',JSON.stringify({...data}));
-      if(data.Roleid =='1')
+       this.data =jwt_decode(responce.token);
+      localStorage.setItem('user',JSON.stringify({...this.data}));
+      if(this.data.Roleid =='1')
       this.router.navigate(['admin']);
-      else if (data.Roleid =='2')
+      else if (this.data.Roleid =='2')
       this.router.navigate(['admin/AllCourses']);
-      else if (data.Roleid =='3')
-      this.router.navigate(['admin/category']);
+      else if (this.data.Roleid =='3')
+      this.router.navigate(['']);
     },err=>{
       this.toastr.error(err.message,err.status);
     })

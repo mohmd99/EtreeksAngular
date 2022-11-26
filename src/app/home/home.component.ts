@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/Services/auth.service';
 import { AdminService } from './../Services/admin.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
@@ -13,18 +14,18 @@ import { Route, Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
 
-  constructor(public generalServise:GeneralService,public adminService:AdminService,private router:Router) { }
+  constructor(public authService :AuthService,public generalServise:GeneralService,public adminService:AdminService,private router:Router) { }
 
   ngOnInit(): void {
+    console.log(this.authService.data.ID);
+
     this.generalServise.GetHomeInfo();
     this.generalServise.GetAllCourses();
     this.generalServise.getAllCategory();
     this.adminService.getTestimonial();
 
-    // setTimeout(() => {
+    this.adminService.getuserbyid(this.authService.data.ID);
 
-    //   this.spinner.hide();
-    //   }, 3000);
 
   }
 
