@@ -8,7 +8,7 @@
 </aside>
   <main class="main-content position-relative border-radius-lg ">
     <!-- Navbar -->
-   <app-admin-navbar></app-admin-navbar>
+   <app-admin-navbar [first_Name]="adminService.userbyid.first_Name" [last_Name]="adminService.userbyid.last_Name" [image]="adminService.userbyid.image" [color]="this.adminService.color"></app-admin-navbar>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
       <div class="row">

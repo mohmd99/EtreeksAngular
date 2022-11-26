@@ -1,5 +1,5 @@
 import { AdminService } from 'src/app/Services/admin.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -9,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 
 export class AdminNavbarComponent implements OnInit {
 name:any="";
+@Input() first_Name:string="";
+@Input() last_Name:string="";
+@Input() image:string|undefined;
+@Input() color:string="";
+
   constructor(private adminService:AdminService) { }
 
   ngOnInit(): void {
+    console.log(this.first_Name)
+
+
+
   }
- 
+
+
+
+
+
 }

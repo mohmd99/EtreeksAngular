@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.adminService.userbyid.last_Name);
+
   }
   Colors:any[]=[
   "#8B7E74",

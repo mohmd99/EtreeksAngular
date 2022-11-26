@@ -375,10 +375,46 @@ getUser(){
   )
 }
 userbyid:any={}
+Colors:any[]=[
+  "#8B7E74",
+"#344D67",
+"#8B7E74",
+"#C7BCA1",
+"#497174",
+"#3A8891",
+"#6D9886",
+"#8D9EFF",
+"#9BA17B",
+"#5DA7DB",
+"#9E7676",
+"#98A8F8",
+"#251B37",
+"#1C6758",
+"#704F4F",
+"#FF731D",
+"#AC4425",
+"#A10035",
+"#D1512D",
+"#18978F",
+"#B20600",
+"#00092C",
+"#D9534F",
+"#8A8635",
+"#630000",
+"#334756",
+"#6C4A4A",
+"#105652",
+"#694E4E"
+  ]
+  color:any="";
 getuserbyid(id:number){
   this.http.get('https://localhost:44343/api/CRUDuser/Getbyid/'+id).subscribe((resp) => {
     console.log(resp);
     this.userbyid=resp
+
+    this.color=this.Colors[this.userbyid.last_Name[0].charCodeAt()-97]
+    console.log(this.color);
+
     this.spinner.hide();
 
   }, err => {
