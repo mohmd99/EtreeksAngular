@@ -406,13 +406,14 @@ Colors:any[]=[
 "#105652",
 "#694E4E"
   ]
+  
   color:any="";
 getuserbyid(id:number){
   this.http.get('https://localhost:44343/api/CRUDuser/Getbyid/'+id).subscribe((resp) => {
     console.log(resp);
     this.userbyid=resp
 
-    this.color=this.Colors[this.userbyid.last_Name[0].charCodeAt()-97]
+    this.color=this.Colors[this.userbyid.last_Name.toUpperCase().charCodeAt(0)-65]
     console.log(this.color);
 
     this.spinner.hide();
