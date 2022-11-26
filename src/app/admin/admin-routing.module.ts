@@ -1,3 +1,4 @@
+import { ManageProfileComponent } from './manage-profile/manage-profile.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 import { ManageAboutComponent } from './manage-about/manage-about.component';
@@ -25,6 +26,8 @@ const routes: Routes = [
     path:"testimonial",component:ManageTestimonialComponent
   },{
     path:"user", component:ManageUserComponent
+  },{
+    path:"profile",component:ManageProfileComponent
   }
 ];
 

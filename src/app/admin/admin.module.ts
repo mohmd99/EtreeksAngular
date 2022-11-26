@@ -17,6 +17,7 @@ import { MessageComponent } from './message/message.component';
 import { ManageAboutComponent } from './manage-about/manage-about.component';
 import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
+import { ManageProfileComponent } from './manage-profile/manage-profile.component';
 
 
 
@@ -31,7 +32,8 @@ import { ManageUserComponent } from './manage-user/manage-user.component';
     MessageComponent,
     ManageAboutComponent,
     ManageTestimonialComponent,
-    ManageUserComponent
+    ManageUserComponent,
+    ManageProfileComponent
     
   ],
   imports: [
