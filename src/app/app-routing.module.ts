@@ -10,6 +10,7 @@ import { AdminModule } from './admin/admin.module';
 import { AuthorizationGuard } from './authorization.guard';
 import { TeacherModule } from './teacher/teacher.module';
 import { StudentModule } from './student/student.module';
+import { SharedModule } from './shared/shared.module';
 
 const routes: Routes = [
   {

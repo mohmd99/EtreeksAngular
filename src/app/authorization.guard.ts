@@ -34,9 +34,39 @@ export class AuthorizationGuard implements CanActivate {
           return false;
         }
         
-      }
-      else{
+        }
+      
+        else{
         this.toastr.warning('Sorry , this page for teacher');
+        this.router.navigate(['contact']);
+        return false;
+        }
+      
+      
+    }
+    else if(state.url.indexOf('student')>=0)
+      {
+        let user:any = localStorage.getItem('user');
+        if(user)
+        {
+          user = JSON.parse(user);
+          if(user.Roleid =='3')
+          {
+            this.toastr.success('Welcome student');
+            return true;
+          }
+        
+        else {
+          this.toastr.warning('Sorry , this page for student');
+          this.router.navigate(['auth/login']);
+          localStorage.clear();
+          return false;
+        }
+        
+      }
+      
+      else{
+        this.toastr.warning('Sorry , this page for student');
         this.router.navigate(['contact']);
         return false;
       }

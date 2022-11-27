@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from '../Services/general.service';
 
-
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',

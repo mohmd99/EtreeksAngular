@@ -1,0 +1,28 @@
+<app-navbar  [first_Name]="adminService.userbyid.first_Name" [last_Name]="adminService.userbyid.last_Name" [image]="adminService.userbyid.image"></app-navbar> 
+
+<section  *ngFor="let info of generalService.allabout"  class="section" >
+    <div class="container">
+        <div class=" ">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="shop-desc">
+                        <img src="../../assets/images/{{info.image}}" style="height:600px;width:100%;">
+                    </div><!-- end desc -->
+                </div>
+                <div class="col-md-6">
+                    <div class="shop-desc">
+                        <h1>{{info.title}}</h1>
+
+                        <p>{{info.text}}</p>
+                    </div><!-- end desc -->
+                </div><!-- end col -->
+                
+            </div><!-- end row -->
+
+
+        </div><!-- end boxed -->
+    </div><!-- end container -->
+</section>
+<app-footer></app-footer>
+
+

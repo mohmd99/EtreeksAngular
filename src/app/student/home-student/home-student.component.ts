@@ -5,11 +5,11 @@ import { AuthService } from 'src/app/Services/auth.service';
 import { GeneralService } from 'src/app/Services/general.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-home-student',
+  templateUrl: './home-student.component.html',
+  styleUrls: ['./home-student.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeStudentComponent implements OnInit {
 
   constructor(public authService :AuthService,public generalServise:GeneralService,public adminService:AdminService,private router:Router) { }
 
@@ -22,14 +22,11 @@ export class HomeComponent implements OnInit {
     this.adminService.getTestimonial();
 
     this.adminService.getuserbyid(this.authService.data.ID);
-
   }
-
   OpenCategory(id:number){
 
     this.generalServise.getCoursesbyCategoryId(id);
     this.router.navigate(['Category']);
 
   }
-
 }

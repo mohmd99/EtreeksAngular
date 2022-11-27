@@ -2,17 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { StudentRoutingModule } from './student-routing.module';
-import { HomeComponent } from './home/home.component';
-import { CoursesComponent } from '../courses/courses.component';
 
 import { SharedModule } from '../shared/shared.module';
-import { AppComponent } from '../app.component';
-import { AppModule } from '../app.module';
+import { ContactStudentComponent } from './contact-student/contact-student.component';
+import { AboutStudentComponent } from './about-student/about-student.component';
+import { HomeStudentComponent } from './home-student/home-student.component';
 
 
 @NgModule({
     declarations: [
-        HomeComponent
+        ContactStudentComponent,
+        AboutStudentComponent,
+        HomeStudentComponent
     ],
     imports: [
         CommonModule,

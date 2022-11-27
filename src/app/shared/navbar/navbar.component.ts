@@ -1,5 +1,7 @@
 import { AdminService } from 'src/app/Services/admin.service';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +13,7 @@ export class NavbarComponent implements OnInit {
   @Input() last_Name:string="";
   @Input() image:string|undefined;
 
-  constructor(private adminService:AdminService) { }
+  constructor(private adminService:AdminService , private router:Router) { }
 
   ngOnInit(): void {
 
@@ -52,5 +54,13 @@ export class NavbarComponent implements OnInit {
     color:this.Colors[this.first_Name.toUpperCase().charCodeAt(0)-97],
 
   }
-
+  GoToHome(){
+    this.router.navigate(['student/home'])
+  }
+  GoToAbout(){
+    this.router.navigate(['student/about'])
+  }
+  GoToContact(){
+    this.router.navigate(['student/contact'])
+  }
 }
