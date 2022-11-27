@@ -16,6 +16,7 @@ export class AdminPanelComponent implements OnInit {
 
   ngOnInit(): void {
     this.adminService.getuserbyid(this.authService.data.ID);
+    this.adminService.getloginuserbyid(this.authService.data.ID);
   }
 
 

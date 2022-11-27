@@ -375,6 +375,7 @@ getUser(){
   )
 }
 userbyid:any={}
+loginuserbyid:any={}
 Colors:any[]=[
   "#8B7E74",
 "#344D67",
@@ -454,5 +455,23 @@ SearchCourse(body:string){
     this.toaster.error('Can not Search');
     console.log(err);
   })
+}
+
+
+getloginuserbyid(id:number){
+  this.http.get('https://localhost:44343/api/CRUDuser/Getbyid/'+id).subscribe((resp) => {
+    console.log(resp);
+    this.loginuserbyid=resp
+
+    this.color=this.Colors[this.userbyid.last_Name.toUpperCase().charCodeAt(0)-65]
+    console.log(this.color);
+
+    this.spinner.hide();
+
+  }, err => {
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  }
+  )
 }
 }
