@@ -37,8 +37,14 @@
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Phone number</label>
+                    <input matInput formControlName="phone_Number" [(ngModel)]="userData.phone_Number" class="form-control" type="email" >
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Email address</label>
-                    <input [(ngModel)]="userData.email" class="form-control" type="email" >
+                    <input matInput formControlName="email" [(ngModel)]="loginData.email" class="form-control" type="email" >
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -51,7 +57,7 @@
                 <div class="col-md-6">
                   <div [ngStyle]="{'pointer-events': !changepass ? 'none':''}" class="form-group">
                     <label for="example-text-input" class="form-control-label">New Password</label>
-                    <input [(ngModel)]="userData.password" class="form-control" type="text" >
+                    <input matInput formControlName="password" class="form-control" type="text" >
                   </div>
                 </div>
                 <div class="col-md-12">
