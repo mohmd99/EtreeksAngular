@@ -355,7 +355,7 @@ updateUserlogin(body:any)
   body.image = this.display_image_user;
 
   this.spinner.show();
-  this.http.put('https://localhost:44343/api/user/update',body).subscribe((resp)=>{
+  this.http.put('https://localhost:44343/api/User/Update',body).subscribe((resp)=>{
     this.spinner.hide();
     this.toaster.success('Updated Successfully !!');
   },err=>{
@@ -474,8 +474,9 @@ SearchCourse(body:string){
 
 
 getloginuserbyid(id:number){
-  this.http.get('https://localhost:44343/api/CRUDuser/Getbyid/'+id).subscribe((resp) => {
-    console.log(resp);
+  this.http.get('https://localhost:44343/api/Login/GetByUserId/'+id).subscribe((resp) => {
+    console.log("loginuserbyid id = "+id.toString());
+    console.log("loginuserbyid = "+resp);
     this.loginuserbyid=resp
 
     this.color=this.Colors[this.userbyid.last_Name.toUpperCase().charCodeAt(0)-65]
