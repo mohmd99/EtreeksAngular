@@ -19,6 +19,7 @@ import { CategoryComponent } from './category/category.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptor } from 'src/Interceptor/token.interceptor';
 import { TeacherModule } from './teacher/teacher.module';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TeacherModule } from './teacher/teacher.module';
     ContactComponent,
     CoursesComponent,
     CoursePageComponent,
-    CategoryComponent
+    CategoryComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

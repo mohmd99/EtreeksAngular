@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { AuthModule } from './auth/auth.module';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
