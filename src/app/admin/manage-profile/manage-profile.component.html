@@ -43,6 +43,12 @@
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Birth Date</label>
+                    <input matInput style="pointer-events:none" formControlName="birth_Date" (ngModelChange)="userData.birth_Date" [ngModel]="userData.birth_Date |date" class="form-control" type="text"  >
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Email address</label>
                     <input matInput formControlName="email" [(ngModel)]="loginData.email" class="form-control" type="email" >
                   </div>
@@ -63,7 +69,7 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">image</label>
-                    <input  #file class="form-control" type="file" >
+                    <input  matInput formControlName="image" [(ngModel)]='userData.image'   #file  (change)="UploadFile(file.files)" class="form-control" type="file" >
                   </div>
                 </div>
                 <!-- <div class="col-md-6">
@@ -117,48 +123,24 @@
         </div>
         <div class="col-md-4">
           <div class="card card-profile">
-            <img *ngIf="adminService.loginuserbyid.image==null" src="../../../assets/admin_assests/assets/img/l60Hf.png" alt="Image placeholder" class="card-img-top">
-            <img *ngIf="adminService.loginuserbyid.image==!null" src="../../../assets/images/{{adminService.loginuserbyid.image}}" alt="Image placeholder" class="card-img-top">
+            <img *ngIf="adminService.userbyid.image==null" src="../../../assets/admin_assests/assets/img/l60Hf.png" alt="Image placeholder" class="card-img-top">
+            <img *ngIf="adminService.userbyid.image!=null" src="../../../assets/images/{{adminService.userbyid.image}}" alt="Image placeholder" class="card-img-top">
        
-            <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
-              <div class="d-flex justify-content-between">
-                <a href="javascript:;" class="btn btn-sm btn-info mb-0 d-none d-lg-block">Connect</a>
-                <a href="javascript:;" class="btn btn-sm btn-info mb-0 d-block d-lg-none"><i class="ni ni-collection"></i></a>
-                <a href="javascript:;" class="btn btn-sm btn-dark float-right mb-0 d-none d-lg-block">Message</a>
-                <a href="javascript:;" class="btn btn-sm btn-dark float-right mb-0 d-block d-lg-none"><i class="ni ni-email-83"></i></a>
-              </div>
-            </div>
+           
             <div class="card-body pt-0">
-              <div class="row">
-                <div class="col">
-                  <div class="d-flex justify-content-center">
-                    <div class="d-grid text-center">
-                      <span class="text-lg font-weight-bolder">22</span>
-                      <span class="text-sm opacity-8">Friends</span>
-                    </div>
-                    <div class="d-grid text-center mx-4">
-                      <span class="text-lg font-weight-bolder">10</span>
-                      <span class="text-sm opacity-8">Photos</span>
-                    </div>
-                    <div class="d-grid text-center">
-                      <span class="text-lg font-weight-bolder">89</span>
-                      <span class="text-sm opacity-8">Comments</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
               <div class="text-center mt-4">
                 <h5>
-                  Mark Davis<span class="font-weight-light">, 35</span>
+                  {{userData.first_Name}} {{userData.last_Name}}<span class="font-weight-light"></span>
                 </h5>
-                <div class="h6 font-weight-300">
+                <!-- <div class="h6 font-weight-300">
                   <i class="ni location_pin mr-2"></i>Bucharest, Romania
-                </div>
+                </div> -->
                 <div class="h6 mt-4">
-                  <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+                  <i class="ni business_briefcase-24 mr-2"></i>Admin 
                 </div>
                 <div>
-                  <i class="ni education_hat mr-2"></i>University of Computer Science
+                  <i class="ni education_hat mr-2"></i>{{userData.birth_Date | date}}
                 </div>
               </div>
             </div>

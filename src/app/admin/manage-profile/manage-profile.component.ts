@@ -2,6 +2,7 @@ import { AdminService } from 'src/app/Services/admin.service';
 import { AdminModule } from './../admin.module';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-manage-profile',
@@ -10,14 +11,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ManageProfileComponent implements OnInit {
 
-  constructor(public adminService:AdminService) { }
+  constructor(public adminService:AdminService,private authService : AuthService) { }
   unvisible=false;
   userData:any;
   loginData:any;
   ngOnInit(): void {
+    this.adminService.getuserbyid(this.authService.data.ID);
     this.userData=this.adminService.userbyid;
     this.loginData=this.adminService.loginuserbyid;
     this.updateForm.controls['image'].setValue(this.userData.image);
+    
   }
 
   
@@ -46,7 +49,9 @@ export class ManageProfileComponent implements OnInit {
 
     UpdateProfile(){
 
-      
+      if(this.updateForm.controls['password'].value==null)
+      this.updateForm.controls['password'].setValue(this.loginData.password);
+
       this.updateForm.controls['Verify_Code'].setValue(this.loginData.verify_Code);
       this.updateForm.controls['Role_Id'].setValue(this.loginData.role_Id);
       this.updateForm.controls['Id'].setValue(this.loginData.id);
@@ -70,7 +75,7 @@ export class ManageProfileComponent implements OnInit {
       let filetoupload=<File>file[0];
       const formData=new FormData();
       formData.append(file,filetoupload,filetoupload.name);
-      this.adminService.uploadAttachment(formData);
+      this.adminService.uploadAttachmentuser(formData);
   
     }
 
