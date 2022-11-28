@@ -13,11 +13,11 @@ import { TeacherService } from 'src/app/Services/teacher.service';
   styleUrls: ['./register-teacher.component.css']
 })
 export class RegisterTeacherComponent implements OnInit {
-  
-  
+
+
   constructor(private teacherService:TeacherService,private router:Router, private authService:AuthService , private spinner:NgxSpinnerService , private http:HttpClient ,private adminService:AdminService) { }
   certificate1 :any;
- 
+
   registerTeacherForm:FormGroup=new FormGroup({
     first_Name : new FormControl('',[Validators.required]),
     last_Name : new FormControl('',[Validators.required]),
@@ -44,13 +44,15 @@ export class RegisterTeacherComponent implements OnInit {
   }
   id:any
   submit(){
-    console.log("certificate is :  "+ this.registerTeacherForm.controls['certificate'].value);
+
  this.registerTeacherForm.removeControl('confirmPassword');
  this.registerTeacherForm.controls['role_Id'].setValue(2);
- this.id=this.authService.createuser(this.registerTeacherForm.value);
+ this.id=this.teacherService.createTeacher(this.registerTeacherForm.value);
+
  console.log(this.authService.Ids[0].value);
 }
 UploadFile(file:any){
+  debugger
   if(file.length==0)
   {
     return;
@@ -58,7 +60,7 @@ UploadFile(file:any){
   let filetoupload=<File>file[0];
   const formData=new FormData();
   formData.append(file,filetoupload,filetoupload.name);
-  this.registerTeacherForm.controls['certificate'].setValue(filetoupload.name);
+
   this.teacherService.uploadAttachmentteacher(formData);
 
 }
