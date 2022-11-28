@@ -492,7 +492,7 @@ MEGA MENU
 .yamm .dropdown .dropdown-menu {
     border-radius: 0;
     border-top: 3px solid #ddd;
-    background-color: #fff !important;
+    background-color: darkgrey !important;
     margin-top: 24px;
     padding: 20px 30px;
 }
@@ -2030,6 +2030,7 @@ BUTTONS
 .btn {
     border-radius: 0;
     font-size: 14px;
+    background-color: dimgrey;
     border: 1px solid #fff;
     font-weight: bold;
     color: #ffffff !important;

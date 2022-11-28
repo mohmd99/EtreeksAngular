@@ -9,13 +9,15 @@ import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SelectVerifyComponent } from './select-verify/select-verify.component';
 import { CheckVerifyComponent } from './check-verify/check-verify.component';
+import { RegisterTeacherComponent } from './register-teacher/register-teacher.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
     SelectVerifyComponent,
-    CheckVerifyComponent
+    CheckVerifyComponent,
+    RegisterTeacherComponent
   ],
   imports: [
     CommonModule,

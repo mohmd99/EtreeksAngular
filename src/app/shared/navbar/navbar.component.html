@@ -46,7 +46,18 @@
                     font-size: 21px;">{{ first_Name[0] |uppercase }}{{ last_Name[0] |uppercase}}</div>
                     </div>
                 </li>
-                <li style=" padding-left: 60px;" ><a>{{ first_Name |uppercase }} {{ last_Name |uppercase}}</a></li>
+                <li style=" padding-left: 60px;"  >
+                   <div class="dropdown show">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ first_Name |uppercase }} {{ last_Name |uppercase}}
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="width: 260px;">
+                        <a class="dropdown-item" href="#" style="font-size: 20px;">Update Profile</a><br>
+                        <a class="dropdown-item" href="#" style="font-size: 20px;" (click)="Logout()">Logout</a>
+                    </div>
+                    </div>
+                </li>
               </ul>
           </div>
       </nav><!-- end navbar -->

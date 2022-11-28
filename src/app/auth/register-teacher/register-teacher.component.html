@@ -19,8 +19,8 @@
             <div class="img d-flex align-items-center justify-content-center" style="background-image: url(../../../assets/login_assets/images/Green\ Modern\ Education\ Online\ Course\ Logo\ \(1\).png); height: 170px; width: 170px; border-radius: 50%;" ></div>
             <h3 class="text-center mb-0">Welcome <span style="color:#01BACF">ETreeks</span></h3>
             <p class="text-center">Sign in by entering the information below</p>
-                  <form class="login-form"  [formGroup]="registerForm" style="padding-left: 20px;">
-                    <div class="row" style="margin-left:-30px ;">
+                  <form class="login-form"  [formGroup]="registerTeacherForm" style="padding-left: 18px;">
+                    <div class="row" style="margin:-30px ;">
                     <div class="form-group">
 
                         <div class="col-4 col-md-4">
@@ -32,7 +32,7 @@
 
 
 
-                      <mat-error *ngIf="registerForm.controls['first_Name'].hasError('required')">
+                      <mat-error *ngIf="registerTeacherForm.controls['first_Name'].hasError('required')">
                         FirstName is <strong>required</strong>
                       </mat-error>
                     </mat-form-field>
@@ -47,7 +47,7 @@
 
 
 
-                    <mat-error *ngIf="registerForm.controls['last_Name'].hasError('required')">
+                    <mat-error *ngIf="registerTeacherForm.controls['last_Name'].hasError('required')">
                       LastName is <strong>required</strong>
                     </mat-error>
                   </mat-form-field>
@@ -65,10 +65,10 @@
                     <input class="form-control" matInput formControlName="email" type="text"  placeholder="Email" >
 
 
-                <mat-error *ngIf="registerForm.controls['email'].hasError('email')">
+                <mat-error *ngIf="registerTeacherForm.controls['email'].hasError('email')">
                   Please enter a valid email address
                 </mat-error>
-                <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
+                <mat-error *ngIf="registerTeacherForm.controls['email'].hasError('required')">
                   email is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
@@ -82,10 +82,10 @@
                 <input class="form-control" matInput formControlName="phone_Number" type="text"  placeholder="PhoneNumber" >
 
 
-            <mat-error *ngIf="registerForm.controls['phone_Number'].hasError('minlength')">
+            <mat-error *ngIf="registerTeacherForm.controls['phone_Number'].hasError('minlength')">
               Please enter a valid Phonenumber
             </mat-error>
-            <mat-error *ngIf="registerForm.controls['phone_Number'].hasError('maxlength')">
+            <mat-error *ngIf="registerTeacherForm.controls['phone_Number'].hasError('maxlength')">
               Please enter a valid Phonenumber
             </mat-error>
           </mat-form-field>
@@ -101,10 +101,10 @@
 
             <input class="form-control" type="password" name="password" matInput formControlName="password" placeholder="Password">
 
-          <mat-error *ngIf="registerForm.controls['password'].hasError('minlength')">
+          <mat-error *ngIf="registerTeacherForm.controls['password'].hasError('minlength')">
               Please enter a strong Password
             </mat-error>
-            <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
+            <mat-error *ngIf="registerTeacherForm.controls['password'].hasError('required')">
               Password is <strong>required</strong>
             </mat-error>
           </mat-form-field>
@@ -120,15 +120,15 @@
           <input class="form-control" type="date"  matInput formControlName="birth_Date" >
 
 
-          <mat-error *ngIf="registerForm.controls['birth_Date'].hasError('required')">
+          <mat-error *ngIf="registerTeacherForm.controls['birth_Date'].hasError('required')">
             Password is <strong>required</strong>
           </mat-error>
         </mat-form-field>
       </div>
-      </div>
+      </div>--
+          </div>
 
-
-
+      <div class="row" style="margin:-30px ;">
         <div class="form-group">
           <div class="col-4 col-md-4">
           <mat-form-field  >
@@ -137,19 +137,33 @@
         <mat-label>Re-type Password</mat-label>
         <input class="form-control" type="password" name="password" matInput formControlName="confirmPassword" (change)="matchError()">
 
-      <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('minlength')">
+      <mat-error *ngIf="registerTeacherForm.controls['confirmPassword'].hasError('minlength')">
           Please enter a strong Password
         </mat-error>
-        <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
+        <mat-error *ngIf="registerTeacherForm.controls['confirmPassword'].hasError('required')">
           Password is <strong>required</strong>
         </mat-error>
-        <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('mismatch')">
+        <mat-error *ngIf="registerTeacherForm.controls['confirmPassword'].hasError('mismatch')">
           confirmPassword must match with password
         </mat-error>
       </mat-form-field>
-          </div>
+          </div>         
     </div>
-          </div>
+    <div class="form-group">
+        <div class="col-4 col-md-4">
+            <mat-form-field >
+              <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
+              <!-- <input type="text" class="form-control" placeholder="Username" required> -->
+
+              <input class="form-control" matInput formControlName="certificate" type="text" (change)="upload($event)" placeholder="Attach File" >
+           <mat-error *ngIf="registerTeacherForm.controls['certificate'].hasError('required')">
+            certificate is <strong>required</strong>
+          </mat-error> 
+        </mat-form-field>
+              </div>
+            </div>
+      </div>
+          
           <div class="form-group w-100 text-center mt-4 text" >
               <button  type="submit" class="btn form-control btn-primary rounded submit px-3" (click)="submit()"
               type="submit" value="Register"> Register </button>
@@ -167,18 +181,3 @@
 
 </section>
 
-
-
-<ng-template #Verifydialog>
-  <h5>Choose a way to recive the code</h5>
-  <br>
-  <div class="form-actions">
-    <button  class="btn btn-warning mr-1">
-        <i class="feather icon-x"></i> Email
-    </button>
-    <button    style="margin-left:20px" type="submit" class="btn btn-primary">
-        <i class="fa fa-check-square-o"></i> Save
-    </button>
-</div>
-
-  </ng-template>

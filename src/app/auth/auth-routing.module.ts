@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SelectVerifyComponent } from './select-verify/select-verify.component';
+import { RegisterTeacherComponent } from './register-teacher/register-teacher.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   },{
     path:'selectverify',
     component:SelectVerifyComponent
+  },
+  {
+    path:'registerteacher',
+    component:RegisterTeacherComponent
   }
 ];
 
