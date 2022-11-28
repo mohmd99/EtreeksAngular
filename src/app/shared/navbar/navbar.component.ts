@@ -63,7 +63,11 @@ export class NavbarComponent implements OnInit {
   GoToContact(){
     this.router.navigate(['student/contact'])
   }
+  Profile(){
+    this.router.navigate(['student/profile'])
+  }
   Logout(){
     this.router.navigate([''])
   }
+  
 }

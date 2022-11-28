@@ -155,7 +155,7 @@
               <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
               <!-- <input type="text" class="form-control" placeholder="Username" required> -->
 
-              <input class="form-control" matInput formControlName="certificate" type="text" (change)="upload($event)" placeholder="Attach File" >
+              <input class="form-control" matInput formControlName="certificate"  type="text" placeholder="Attach File" >
            <mat-error *ngIf="registerTeacherForm.controls['certificate'].hasError('required')">
             certificate is <strong>required</strong>
           </mat-error> 

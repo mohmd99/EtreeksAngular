@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AdminService } from 'src/app/Services/admin.service';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -48,9 +49,5 @@ export class RegisterTeacherComponent implements OnInit {
  this.id=this.authService.createuser(this.registerTeacherForm.value);
  console.log(this.authService.Ids[0].value);
 }
-upload(event: Event) {
-  const target = event.target as HTMLInputElement;
-  const files = target.files as FileList;
-  console.log(files);
-}
+
 }

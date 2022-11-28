@@ -86,7 +86,7 @@ export class ManageCoursesComponent implements OnInit {
     description:new FormControl('',Validators.required),
     cat_Id:new FormControl(Number,Validators.required),
     image:new FormControl()
-  });
+  }); 
    getcategory=this.generalService.allcategories;
 
   openUpdateDailog(obj:any){
