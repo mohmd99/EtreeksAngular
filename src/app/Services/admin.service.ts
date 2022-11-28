@@ -348,6 +348,21 @@ updateUser(body:any)
     this.toaster.error(err.message, err.status);
   })
 }
+
+updateUserlogin(body:any)
+{
+  if(this.display_image_user !=null)
+  body.image = this.display_image_user;
+
+  this.spinner.show();
+  this.http.put('https://localhost:44343/api/user/update',body).subscribe((resp)=>{
+    this.spinner.hide();
+    this.toaster.success('Updated Successfully !!');
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  })
+}
 deleteUser(id:number)
 {
   this.spinner.show();

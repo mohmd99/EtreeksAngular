@@ -11,52 +11,60 @@
         <div class="col-md-8">
           <div class="card">
             <div class="card-header pb-0">
-              <div class="d-flex align-items-center">
-                <p class="mb-0">Edit Profile</p>
-                <button class="btn btn-primary btn-sm ms-auto">Settings</button>
-              </div>
+              
             </div>
             <div class="card-body">
               <p class="text-uppercase text-sm">User Information</p>
-              <form class="form" [formGroup]="updateForm">
+              <form class="form" [formGroup]="updateForm" >
+                <div class="d-flex align-items-center">
+                  <p class="mb-0">Edit Profile</p>
+                  <button (click)="UpdateProfile()" class="btn btn-primary btn-sm ms-auto">Save Info</button>
+                </div>
                 <div class="form-body">
               <div class="row">
              
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">First name</label>
-                    <input class="form-control" type="text" value="Jesse">
+                    <input matInput formControlName="first_Name" [(ngModel)]="userData.first_Name" class="form-control" type="text" >
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Last name</label>
-                    <input class="form-control" type="text" value="Lucky">
+                    <input matInput formControlName="last_Name" [(ngModel)]="userData.last_Name" class="form-control" type="text" >
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Email address</label>
-                    <input class="form-control" type="email" value="jesse@example.com">
+                    <input [(ngModel)]="userData.email" class="form-control" type="email" >
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Old Password</label>
-                    <input (keyup)="Changepass($event)"  class="form-control" type="text" value="Lucky">
+                    <input (keyup)="Changepass($event)"  class="form-control" type="text" >
                   </div>
                 </div>
+                <!-- matInput formControlName="first_Name" [(ngModel)]="p_data.first_Name" -->
                 <div class="col-md-6">
                   <div [ngStyle]="{'pointer-events': !changepass ? 'none':''}" class="form-group">
                     <label for="example-text-input" class="form-control-label">New Password</label>
-                    <input class="form-control" type="text" value="Lucky">
+                    <input [(ngModel)]="userData.password" class="form-control" type="text" >
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">image</label>
+                    <input  #file class="form-control" type="file" >
+                  </div>
+                </div>
+                <!-- <div class="col-md-6">
                   <div  class="form-group">
                     <button (click)="UpdateProfile()"> Save </button>
                   </div>
-                </div>
+                </div> -->
               </div>
               <hr class="horizontal dark">
               <!-- <p class="text-uppercase text-sm">Contact Information</p>

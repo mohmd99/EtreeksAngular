@@ -11,11 +11,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ManageProfileComponent implements OnInit {
 
   constructor(public adminService:AdminService) { }
-  unvisible=false
+  unvisible=false;
+  userData:any;
   ngOnInit(): void {
+    this.userData=this.adminService.loginuserbyid;
   }
 
-  userData=this.adminService.loginuserbyid;
+  
   changepass:boolean=false;
   updateForm:FormGroup=new FormGroup
     ({
@@ -37,6 +39,8 @@ export class ManageProfileComponent implements OnInit {
     }
 
     UpdateProfile(){
+
+      this.adminService.updateUserlogin(this.updateForm.value);
 
     }
 
