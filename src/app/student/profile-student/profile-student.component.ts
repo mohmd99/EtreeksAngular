@@ -1,3 +1,6 @@
+import { AuthService } from 'src/app/Services/auth.service';
+import { AdminService } from 'src/app/Services/admin.service';
+import { AdminModule } from './../../admin/admin.module';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -8,8 +11,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfileStudentComponent implements OnInit {
 
-  constructor() { }
+  constructor(public adminService :AdminService,private authService:AuthService) { }
 
   ngOnInit(): void {
+    this.adminService.getuserbyid(this.authService.data.ID);
+    this.adminService.getloginuserbyid(this.authService.data.ID);
   }
 }
