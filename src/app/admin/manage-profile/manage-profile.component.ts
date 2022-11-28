@@ -21,6 +21,7 @@ export class ManageProfileComponent implements OnInit {
     this.loginData=this.adminService.loginuserbyid;
     this.updateForm.controls['image'].setValue(this.userData.image);
     
+    
   }
 
   
@@ -56,6 +57,7 @@ export class ManageProfileComponent implements OnInit {
       this.updateForm.controls['Role_Id'].setValue(this.loginData.role_Id);
       this.updateForm.controls['Id'].setValue(this.loginData.id);
       this.updateForm.controls['User_Id'].setValue(this.userData.id);
+      this.updateForm.controls['birth_Date'].setValue(this.userData.birth_Date);
       console.log("loginData  : ");
       console.log(this.loginData);
       console.log("userData  : ");

@@ -137,32 +137,29 @@
         <mat-label>Re-type Password</mat-label>
         <input class="form-control" type="password" name="password" matInput formControlName="confirmPassword" (change)="matchError()">
 
-      <mat-error *ngIf="registerTeacherForm.controls['confirmPassword'].hasError('minlength')">
-          Please enter a strong Password
-        </mat-error>
-        <mat-error *ngIf="registerTeacherForm.controls['confirmPassword'].hasError('required')">
-          Password is <strong>required</strong>
-        </mat-error>
-        <mat-error *ngIf="registerTeacherForm.controls['confirmPassword'].hasError('mismatch')">
-          confirmPassword must match with password
-        </mat-error>
-      </mat-form-field>
-          </div>         
-    </div>
-    <div class="form-group">
-        <div class="col-4 col-md-4">
-            <mat-form-field >
-              <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
-              <!-- <input type="text" class="form-control" placeholder="Username" required> -->
-
-              <input class="form-control"  matInput formControlName="certificate" [(ngModel)]='certificate' (change)="UploadFile(file.files)"  #file type="file" placeholder="Attach File" >
-           <!-- <mat-error *ngIf="registerTeacherForm.controls['certificate'].hasError('required')">
-            certificate is <strong>required</strong>
-          </mat-error>  -->
-        </mat-form-field>
-              </div>
+          <mat-error *ngIf="registerTeacherForm.controls['confirmPassword'].hasError('minlength')">
+              Please enter a strong Password
+            </mat-error>
+            <mat-error *ngIf="registerTeacherForm.controls['confirmPassword'].hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="registerTeacherForm.controls['confirmPassword'].hasError('mismatch')">
+              confirmPassword must match with password
+            </mat-error>
+          </mat-form-field>
+              </div>         
+        </div>
+        <div class="form-group">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="example-text-input" class="form-control-label">Certificate</label>
+              <input type="file"   formControlName="certificate" [(ngModel)]='certificate1'   #file  (change)="UploadFile(file.files)" class="form-control"  >
             </div>
+          </div>
+        </div>
       </div>
+
+      
           
           <div class="form-group w-100 text-center mt-4 text" >
               <button  type="submit" class="btn form-control btn-primary rounded submit px-3" (click)="submit()"

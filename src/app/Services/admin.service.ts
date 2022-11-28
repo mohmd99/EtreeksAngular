@@ -12,7 +12,7 @@ allcontactus:any=[{}];
 allTestimonial:any=[{}];
 display_image:any;
 
-  constructor( private toaster:ToastrService,private spinner:NgxSpinnerService,private http:HttpClient) { }
+  constructor( private toaster:ToastrService,private spinner:NgxSpinnerService,private http:HttpClient,private http2 :HttpClient) { }
 
   getcoursewithcategory(){
     this.spinner.show();
@@ -354,8 +354,10 @@ updateUserlogin(body:any)
   if(this.display_image_user !=null)
   body.image = this.display_image_user;
 
+  console.log('body is: ');
+  console.log(body);
   this.spinner.show();
-  this.http.put('https://localhost:44343/api/User/Update',body).subscribe((resp)=>{
+  this.http2.put('https://localhost:44343/api/User/Update',body).subscribe((resp)=>{
     this.spinner.hide();
     this.toaster.success('Updated Successfully !!');
   },err=>{

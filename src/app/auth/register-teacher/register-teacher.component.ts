@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AdminService } from 'src/app/Services/admin.service';
 import { AuthService } from 'src/app/Services/auth.service';
+import { TeacherService } from 'src/app/Services/teacher.service';
 
 @Component({
   selector: 'app-register-teacher',
@@ -14,19 +15,19 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class RegisterTeacherComponent implements OnInit {
   
   
-  constructor(private router:Router, private authService:AuthService , private spinner:NgxSpinnerService , private http:HttpClient ,private adminService:AdminService) { }
-  certificate :any;
+  constructor(private teacherService:TeacherService,private router:Router, private authService:AuthService , private spinner:NgxSpinnerService , private http:HttpClient ,private adminService:AdminService) { }
+  certificate1 :any;
  
-  registerTeacherForm :FormGroup= new FormGroup({
+  registerTeacherForm:FormGroup=new FormGroup({
     first_Name : new FormControl('',[Validators.required]),
     last_Name : new FormControl('',[Validators.required]),
     phone_Number : new FormControl('+962',[Validators.required,Validators.minLength(13),Validators.maxLength(13)]),
     email : new FormControl('', [Validators.required, Validators.email]),
-    certificate : new FormControl('',[Validators.required]),
+    certificate : new FormControl(),
     password : new FormControl('', [Validators.required, Validators.minLength(8)]),
     confirmPassword : new FormControl('',[Validators.required,Validators.minLength(8)]),
     birth_Date : new FormControl('', [Validators.required]),
-    role_Id : new FormControl('', [Validators.required])
+    role_Id : new FormControl()
   })
   ngOnInit(): void {
   }
@@ -43,7 +44,7 @@ export class RegisterTeacherComponent implements OnInit {
   }
   id:any
   submit(){
-
+    console.log("certificate is :  "+ this.registerTeacherForm.controls['certificate'].value);
  this.registerTeacherForm.removeControl('confirmPassword');
  this.registerTeacherForm.controls['role_Id'].setValue(2);
  this.id=this.authService.createuser(this.registerTeacherForm.value);
@@ -57,7 +58,8 @@ UploadFile(file:any){
   let filetoupload=<File>file[0];
   const formData=new FormData();
   formData.append(file,filetoupload,filetoupload.name);
-  this.adminService.uploadAttachmentuser(formData);
+  this.registerTeacherForm.controls['certificate'].setValue(filetoupload.name);
+  this.teacherService.uploadAttachmentteacher(formData);
 
 }
 }
