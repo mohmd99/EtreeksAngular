@@ -155,10 +155,10 @@
               <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
               <!-- <input type="text" class="form-control" placeholder="Username" required> -->
 
-              <input class="form-control" matInput formControlName="certificate"  type="text" placeholder="Attach File" >
-           <mat-error *ngIf="registerTeacherForm.controls['certificate'].hasError('required')">
+              <input class="form-control"  matInput formControlName="certificate" [(ngModel)]='certificate' (change)="UploadFile(file.files)"  #file type="file" placeholder="Attach File" >
+           <!-- <mat-error *ngIf="registerTeacherForm.controls['certificate'].hasError('required')">
             certificate is <strong>required</strong>
-          </mat-error> 
+          </mat-error>  -->
         </mat-form-field>
               </div>
             </div>
@@ -172,7 +172,7 @@
         </form>
         <div class="w-100 text-center mt-4 text">
             <p class="mb-0" style="color: white; cursor: pointer;" (click)="goToLogin()">Already have account</p>
-            <a href="#" style="color: #01BACF;">Sign Up</a>
+            <a style="color: #01BACF;">Sign Up</a>
         </div>
       </div>
           </div>

@@ -14,8 +14,8 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class RegisterTeacherComponent implements OnInit {
   
   
-  constructor(private router:Router, private authService:AuthService , private spinner:NgxSpinnerService , private http:HttpClient) { }
-
+  constructor(private router:Router, private authService:AuthService , private spinner:NgxSpinnerService , private http:HttpClient ,private adminService:AdminService) { }
+  certificate :any;
  
   registerTeacherForm :FormGroup= new FormGroup({
     first_Name : new FormControl('',[Validators.required]),
@@ -49,5 +49,15 @@ export class RegisterTeacherComponent implements OnInit {
  this.id=this.authService.createuser(this.registerTeacherForm.value);
  console.log(this.authService.Ids[0].value);
 }
+UploadFile(file:any){
+  if(file.length==0)
+  {
+    return;
+  }
+  let filetoupload=<File>file[0];
+  const formData=new FormData();
+  formData.append(file,filetoupload,filetoupload.name);
+  this.adminService.uploadAttachmentuser(formData);
 
+}
 }
