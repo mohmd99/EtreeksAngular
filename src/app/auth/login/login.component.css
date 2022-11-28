@@ -275,7 +275,7 @@ th {
 
 label {
   display: inline-block;
-  margin-bottom: 0.5rem; 
+  margin-bottom: 0.5rem;
 color: #01bacf;}
 
 button {
@@ -8307,8 +8307,8 @@ h1, h2, h3, h4, h5,
     top: 0;
     left: 0;
     bottom: 0;
-    width: 20px;
-    height: 48px;
+    width: 34px;
+    height: 8px;
     background: transparent;
     font-size: 18px; }
     .form-group .icon span {
@@ -8316,7 +8316,8 @@ h1, h2, h3, h4, h5,
 
 .form-control {
   height: 48px;
-  width: 250px;
+  width: 290px;
+  margin-bottom: 10px;
   background: rgba(0, 0, 0, 0.05);
   color: rgba(255, 255, 255, 0.8) !important;
   font-size: 14px;
@@ -8408,7 +8409,7 @@ h1, h2, h3, h4, h5,
   content: "\f14a";
   font-family: "Gill Sans", sans-serif;
   color: rgba(0, 0, 0, 0.2); }
- 
+
 /* Style the checkmark/indicator */
 .checkbox-primary {
   color: #b689b0; }
@@ -8439,4 +8440,3 @@ h1, h2, h3, h4, h5,
         border: 1px solid transparent;
         background: #b689b0;
         color: #fff; }
-        
