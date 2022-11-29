@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SelectVerifyComponent } from './select-verify/select-verify.component';
 import { CheckVerifyComponent } from './check-verify/check-verify.component';
 import { RegisterTeacherComponent } from './register-teacher/register-teacher.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { AppModule } from '../app.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { RegisterTeacherComponent } from './register-teacher/register-teacher.co
     AuthRoutingModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GoogleMapsModule
   ]
 })
 export class AuthModule { }

@@ -20,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptor } from 'src/Interceptor/token.interceptor';
 import { TeacherModule } from './teacher/teacher.module';
 import { ProfileComponent } from './profile/profile.component';
-
+import { GooglemapComponent } from './Maps/googlemap/googlemap.component';
+import { GoogleMapsModule } from '@angular/google-maps'
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { ProfileComponent } from './profile/profile.component';
     CoursesComponent,
     CoursePageComponent,
     CategoryComponent,
-    ProfileComponent
+    ProfileComponent,
+    GooglemapComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { ProfileComponent } from './profile/profile.component';
     SharedModule,
     NgxSpinnerModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GoogleMapsModule
     
   ],
   exports:[

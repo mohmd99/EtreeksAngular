@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AdminService } from 'src/app/Services/admin.service';
 import { AuthService } from 'src/app/Services/auth.service';
 import { TeacherService } from 'src/app/Services/teacher.service';
+
 
 @Component({
   selector: 'app-register-teacher',
@@ -14,8 +16,10 @@ import { TeacherService } from 'src/app/Services/teacher.service';
 })
 export class RegisterTeacherComponent implements OnInit {
 
+  @ViewChild('callLocationDailog') callLocation!:TemplateRef<any>
 
-  constructor(private teacherService:TeacherService,private router:Router, private authService:AuthService , private spinner:NgxSpinnerService , private http:HttpClient ,private adminService:AdminService) { }
+
+  constructor(public dialog:MatDialog,private teacherService:TeacherService,private router:Router, private authService:AuthService , private spinner:NgxSpinnerService , private http:HttpClient ,private adminService:AdminService) { }
   certificate1 :any;
 
   registerTeacherForm:FormGroup=new FormGroup({
@@ -28,7 +32,8 @@ export class RegisterTeacherComponent implements OnInit {
     password : new FormControl('', [Validators.required, Validators.minLength(8)]),
     confirmPassword : new FormControl('',[Validators.required,Validators.minLength(8)]),
     birth_Date : new FormControl('', [Validators.required]),
-    role_Id : new FormControl()
+    role_Id : new FormControl(),
+    location : new FormControl()
   })
   ngOnInit(): void {
   }
@@ -78,4 +83,39 @@ UploadCV(file:any){
   this.teacherService.uploadCVTeacher(formData);
 
 }
+
+
+
+OpenLocationDialog(){
+  
+  this.dialog.open(this.callLocation);
+}
+
+
+// maps
+
+display : any;
+  center: google.maps.LatLngLiteral = {lat: 31.9539, lng: 35.9106};
+  zoom = 10;
+  markerOptions: google.maps.MarkerOptions = {draggable: false};
+
+  //temp value
+  markerPosition: google.maps.LatLngLiteral={lat: 31.9539, lng: 35.9106} ;
+
+  // select(event: google.maps.MapMouseEvent) {
+  //   if(event.latLng != null)
+  //   this.display = event.latLng.toJSON();
+  // }
+  
+  addMarker(event: google.maps.MapMouseEvent) {
+    if(event.latLng != null)
+    this.markerPosition=event.latLng.toJSON();
+  }
+
+  ConfirmLocation(){
+
+    this.registerTeacherForm.controls['location'].setValue(this.markerPosition);
+    console.log(this.registerTeacherForm.controls['location'].value);
+
+  }
 }

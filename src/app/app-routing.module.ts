@@ -12,6 +12,7 @@ import { AuthorizationGuard } from './authorization.guard';
 import { TeacherModule } from './teacher/teacher.module';
 import { StudentModule } from './student/student.module';
 import { SharedModule } from './shared/shared.module';
+import { GooglemapComponent } from './Maps/googlemap/googlemap.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,11 @@ const routes: Routes = [
   {
     path:'student',
     loadChildren:()=>StudentModule
+  },
+
+  {
+    path:'Maps',
+    component:GooglemapComponent
   }
 ];
 

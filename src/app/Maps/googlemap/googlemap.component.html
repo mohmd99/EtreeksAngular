@@ -1,0 +1,20 @@
+<!-- google-maps-demo.component.html -->
+<google-map height="400px"
+            width="750px"
+            [center]="center"
+            [zoom]="zoom"
+            
+            (mapClick)="select($event)"
+            (mapClick)="addMarker($event)">
+  <map-marker [position]="markerPosition"
+              [options]="markerOptions"></map-marker>
+</google-map>
+
+<button (click)="ConfirmLocation()">Conferm</button>
+
+<div>Latitude: {{display?.lat}}</div>
+<div>Longitude: {{display?.lng}}</div>
+
+<!-- (mapMousemove)="select($event)" 
+
+    (mapClick)="moveMap($event)"-->
