@@ -65,7 +65,7 @@ export class ManageProfileComponent implements OnInit {
       console.log("updated info : ");
       console.log(this.updateForm.value);
       this.adminService.updateUserlogin(this.updateForm.value);
-
+ 
     }
 
 
