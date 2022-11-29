@@ -87,7 +87,7 @@ UploadCV(file:any){
 
 
 OpenLocationDialog(){
-  
+
   this.dialog.open(this.callLocation);
 }
 
@@ -106,16 +106,17 @@ display : any;
   //   if(event.latLng != null)
   //   this.display = event.latLng.toJSON();
   // }
-  
+selectedPosition:any
   addMarker(event: google.maps.MapMouseEvent) {
     if(event.latLng != null)
     this.markerPosition=event.latLng.toJSON();
+    this.selectedPosition=this.markerOptions.toString();
   }
 
   ConfirmLocation(){
 
-    this.registerTeacherForm.controls['location'].setValue(this.markerPosition);
+    this.registerTeacherForm.controls['location'].setValue(this.selectedPosition);
     console.log(this.registerTeacherForm.controls['location'].value);
-
+this.dialog.closeAll();
   }
 }

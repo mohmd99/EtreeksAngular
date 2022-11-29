@@ -36,7 +36,6 @@ import { ManageTrainerComponent } from './manage-trainer/manage-trainer.componen
     ManageTestimonialComponent,
     ManageUserComponent,
     ManageProfileComponent,
-
     ManageTrainerComponent
 
   ],
