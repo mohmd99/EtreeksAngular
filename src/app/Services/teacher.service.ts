@@ -38,4 +38,16 @@ export class TeacherService {
       console.log(err);
     })
   }
+  trainerUser:any
+  getTrainerUser(){
+    this.spinner.show();
+    this.http.get("https://localhost:44343/api/trainer/getTrainer").subscribe((res)=>{
+this.trainerUser=res;
+this.spinner.hide()
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message,err.status);
+      console.log(err);
+    })
+  }
 }

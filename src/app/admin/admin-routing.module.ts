@@ -1,3 +1,4 @@
+import { ManageTrainerComponent } from './manage-trainer/manage-trainer.component';
 import { ManageProfileComponent } from './manage-profile/manage-profile.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
@@ -28,6 +29,9 @@ const routes: Routes = [
     path:"user", component:ManageUserComponent
   },{
     path:"profile",component:ManageProfileComponent
+  },{
+    path:"trainer",
+    component:ManageTrainerComponent
   }
 ];
 

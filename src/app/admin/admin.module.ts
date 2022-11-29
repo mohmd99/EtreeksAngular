@@ -19,6 +19,8 @@ import { ManageTestimonialComponent } from './manage-testimonial/manage-testimon
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { ManageProfileComponent } from './manage-profile/manage-profile.component';
 
+import { ManageTrainerComponent } from './manage-trainer/manage-trainer.component';
+
 
 
 @NgModule({
@@ -33,8 +35,10 @@ import { ManageProfileComponent } from './manage-profile/manage-profile.componen
     ManageAboutComponent,
     ManageTestimonialComponent,
     ManageUserComponent,
-    ManageProfileComponent
-    
+    ManageProfileComponent,
+
+    ManageTrainerComponent
+
   ],
   imports: [
     CommonModule,

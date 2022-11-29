@@ -1,0 +1,126 @@
+<div class="position-absolute w-100 min-height-300 top-0" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/profile-layout-header.jpg'); background-position-y: 50%;">
+  <span class="mask bg-primary opacity-6"></span>
+</div>
+<aside [ngStyle]="{'display': unvisible?'none':'block'}" class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+    <app-side-nav></app-side-nav>
+   </aside>
+
+<main class="main-content position-relative border-radius-lg ">
+   <!-- Navbar -->
+   <app-admin-navbar [first_Name]="adminService.userbyid.first_Name" [last_Name]="adminService.userbyid.last_Name" [image]="adminService.userbyid.image" [color]="this.adminService.color"></app-admin-navbar>
+    <!-- End Navbar -->
+
+   <div class="row mt-4">
+        <div class="col-lg-11 mb-lg-11 mb-11" style="margin-left: 50px;">
+        <div class="card ">
+            <div class="card-header pb-0 p-3">
+            <div class="d-flex justify-content-between">
+                <h6 class="customtabletitle">Testimonial </h6>
+
+            </div>
+            </div>
+            <div class="table-responsive" style="margin-top:15px" >
+            <table class="table align-items-center ">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+
+
+                        <th>
+                            Category
+                        </th>
+                        <th>
+                          certificate
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of teacherService.trainerUser">
+                    <td class="w-30" >
+                    <div class="d-flex px-2 py-1 align-items-center">
+
+                        <div class="ms-4">
+
+                        <h6 class="text-sm mb-0">{{ item.first_Name  }} {{ item.last_Name }}</h6>
+                        </div>
+
+
+                    </div>
+                    </td>
+                    <td class="w-30" >
+                      <div class="d-flex px-2 py-1 align-items-center">
+
+                          <div class="ms-4">
+
+                          <h6 class="text-sm mb-0">{{ item.categorY_NAME}}</h6>
+                          </div>
+
+
+                      </div>
+                      </td>
+
+                      <td class="w-30" >
+                        <div class="d-flex px-2 py-1 align-items-center">
+
+                            <div class="ms-4">
+                              <a href="../../../assets/files/{{ item.certificate }}" download>
+                                <i class="bi bi-file-earmark-pdf-fill">certifcate</i>
+                              </a>
+                              <!-- <embed src="../../../assets/files/{{ item.certificate }}" width="800px" height="2100px" />-->
+                            </div>
+                        </div>
+                        </td>
+                        <td   *ngIf="item.status==null">
+                          <i  class="bi bi-check-square text-success" style="margin-right: 15px; cursor: pointer; font-size: x-large; " (click)="openAcceptDailog(item)"></i>  <i class="bi bi-x-square text-danger" style=" cursor: pointer;  font-size: x-large;" (click)="openRejectDailog(item)"></i>
+                        </td>
+                        <td *ngIf="item.status==1">Accept</td>
+                        <td *ngIf="item.status==0">Reject</td>
+
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        </div>
+    </div>
+</main>
+
+
+
+
+
+
+<ng-template #callAcceptDailog>
+<h5>Are you sure you want to Accept Trainer ? </h5>
+<br>
+<div class="form-actions">
+  <button mat-dialog-close="no" type="reset" class="btn btn-warning mr-1">
+      <i class="feather icon-x"></i> Cancel
+  </button>
+  <button  mat-dialog-close="yes"  style="margin-left:20px" type="submit" class="btn btn-primary">
+      <i class="fa fa-check-square-o"></i> Save
+  </button>
+</div>
+
+</ng-template>
+<ng-template #callRejectDailog>
+  <h5>Are you sure you want to Reject Trainer ? </h5>
+  <br>
+  <div class="form-actions">
+    <button mat-dialog-close="no" type="reset" class="btn btn-warning mr-1">
+        <i class="feather icon-x"></i> Cancel
+    </button>
+    <button  mat-dialog-close="yes"  style="margin-left:20px" type="submit" class="btn btn-primary">
+        <i class="fa fa-check-square-o"></i> Save
+    </button>
+  </div>
+
+  </ng-template>
+
+

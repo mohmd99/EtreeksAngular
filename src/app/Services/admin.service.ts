@@ -424,7 +424,7 @@ Colors:any[]=[
 "#105652",
 "#694E4E"
   ]
-  
+
   color:any="";
 getuserbyid(id:number){
   this.http.get('https://localhost:44343/api/CRUDuser/Getbyid/'+id).subscribe((resp) => {
@@ -486,6 +486,29 @@ getloginuserbyid(id:number){
 
     this.spinner.hide();
 
+  }, err => {
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  }
+  )
+}
+updateTeacher(body:any){
+  this.spinner.show();
+  this.http.put('https://localhost:44343/api/CRUDtrainer',body).subscribe((resp)=>{
+    this.spinner.hide();
+    this.toaster.success('Updated Successfully !!');
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  })
+}
+sendEmailTrainer(id:number){
+ let body={
+
+  }
+  this.http.post('https://localhost:44343/api/trainer/SendEmail/'+id, body).subscribe((resp) => {
+    console.log(resp);
+    
   }, err => {
     this.spinner.hide();
     this.toaster.error(err.message, err.status);
