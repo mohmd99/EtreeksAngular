@@ -110,7 +110,7 @@ selectedPosition:any
   addMarker(event: google.maps.MapMouseEvent) {
     if(event.latLng != null)
     this.markerPosition=event.latLng.toJSON();
-    this.selectedPosition=this.markerOptions.toString();
+    this.selectedPosition= JSON.stringify(this.markerPosition);
   }
 
   ConfirmLocation(){

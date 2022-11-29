@@ -4,7 +4,7 @@
             [center]="center"
             [zoom]="zoom"
             
-            (mapClick)="select($event)"
+            (mapMousemove)="select($event)"
             (mapClick)="addMarker($event)">
   <map-marker [position]="markerPosition"
               [options]="markerOptions"></map-marker>
