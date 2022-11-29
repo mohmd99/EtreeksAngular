@@ -9,8 +9,16 @@
     <div class="d-flex flex-column">
 
       <div class="profile">
-        <img src="../../../assets/assets_teacher/assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Alex Smith</a></h1>
+        <!-- <img src="../../../assets/assets_teacher/assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle"> -->
+        <li class="iconitem"><div id="profileImage" *ngIf="image" style="position: absolute;" ><img src="../../../assets/images/{{ image }}" alt=""></div></li>
+        <li class="iconitem"><div id="profileImage" *ngIf="!image" style="position: absolute;" [ngStyle]="{'background-color':default.color}">
+            <div style=" position: relative;
+              font-size: 21px;">{{ first_Name[0] |uppercase }}{{ last_Name[0] |uppercase}}</div>
+              </div>
+        </li>
+        <h1 class="text-light"><a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ first_Name |uppercase }}jehad {{ last_Name |uppercase}}
+      </a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
