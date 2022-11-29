@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AdminService } from 'src/app/Services/admin.service';
 import { AuthService } from 'src/app/Services/auth.service';
 import { GeneralService } from 'src/app/Services/general.service';
+import { StudentService } from 'src/app/Services/student.service';
 
 @Component({
   selector: 'app-home-student',
@@ -11,9 +12,12 @@ import { GeneralService } from 'src/app/Services/general.service';
 })
 export class HomeStudentComponent implements OnInit {
 
-  constructor(public authService :AuthService,public generalServise:GeneralService,public adminService:AdminService,private router:Router) { }
+  constructor(public authService :AuthService,public studentService:StudentService,public generalServise:GeneralService,public adminService:AdminService,private router:Router) { }
 
   ngOnInit(): void {
+
+
+
     console.log(this.authService.data.ID);
 
     this.generalServise.GetHomeInfo();
@@ -21,7 +25,7 @@ export class HomeStudentComponent implements OnInit {
     this.generalServise.getAllCategory();
     this.adminService.getTestimonial();
 
-    this.adminService.getuserbyid(this.authService.data.ID);
+    this.studentService.getuserbyid(this.authService.data.ID);
   }
   OpenCategory(id:number){
 
