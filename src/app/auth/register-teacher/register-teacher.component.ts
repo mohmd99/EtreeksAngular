@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AdminService } from 'src/app/Services/admin.service';
 import { AuthService } from 'src/app/Services/auth.service';
+import { GeneralService } from 'src/app/Services/general.service';
 import { TeacherService } from 'src/app/Services/teacher.service';
 
 
@@ -19,7 +20,7 @@ export class RegisterTeacherComponent implements OnInit {
   @ViewChild('callLocationDailog') callLocation!:TemplateRef<any>
 
 
-  constructor(public dialog:MatDialog,private teacherService:TeacherService,private router:Router, private authService:AuthService , private spinner:NgxSpinnerService , private http:HttpClient ,private adminService:AdminService) { }
+  constructor(public generalService:GeneralService,public dialog:MatDialog,private teacherService:TeacherService,private router:Router, private authService:AuthService , private spinner:NgxSpinnerService , private http:HttpClient ,private adminService:AdminService) { }
   certificate1 :any;
 
   registerTeacherForm:FormGroup=new FormGroup({
@@ -33,9 +34,11 @@ export class RegisterTeacherComponent implements OnInit {
     confirmPassword : new FormControl('',[Validators.required,Validators.minLength(8)]),
     birth_Date : new FormControl('', [Validators.required]),
     role_Id : new FormControl(),
+    cat_Id : new FormControl(),
     location : new FormControl()
   })
   ngOnInit(): void {
+    this.generalService.getAllCategory();
   }
   matchError(){
     if(this.registerTeacherForm.controls['password'].value==
