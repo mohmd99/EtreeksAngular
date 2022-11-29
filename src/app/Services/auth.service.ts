@@ -7,12 +7,13 @@ import { AdminService } from './admin.service';
 import { GeneralService } from './general.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { timeout } from 'rxjs';
+import { TeacherService } from './teacher.service';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private adminService : AdminService, private spinner : NgxSpinnerService, private toastr:ToastrService,private router : Router ,private http : HttpClient , private admin:AdminService , private general :GeneralService) { }
+  constructor(private adminService : AdminService, private spinner : NgxSpinnerService, private toastr:ToastrService,private router : Router ,private http : HttpClient , private admin:AdminService , private general :GeneralService ,private teacherService:TeacherService) { }
  data:any;
   submit(email:any, password:any)
   {
@@ -37,7 +38,7 @@ export class AuthService {
       if(this.data.Roleid =='1')
       this.router.navigate(['admin']);
       else if (this.data.Roleid =='2')
-      this.router.navigate(['admin/AllCourses']);
+      this.router.navigate(['teacher/home']);
       else if (this.data.Roleid =='3')
       this.router.navigate(['student/home']);
     },err=>{

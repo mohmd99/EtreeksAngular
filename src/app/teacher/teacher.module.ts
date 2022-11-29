@@ -5,6 +5,7 @@ import { TeacherRoutingModule } from './teacher-routing.module';
 import { HomeComponent } from './home/home.component';
 
 
+
 @NgModule({
   declarations: [
     HomeComponent

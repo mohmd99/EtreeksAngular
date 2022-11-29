@@ -24,6 +24,7 @@ export class RegisterTeacherComponent implements OnInit {
     phone_Number : new FormControl('+962',[Validators.required,Validators.minLength(13),Validators.maxLength(13)]),
     email : new FormControl('', [Validators.required, Validators.email]),
     certificate : new FormControl(),
+    cv : new FormControl(),
     password : new FormControl('', [Validators.required, Validators.minLength(8)]),
     confirmPassword : new FormControl('',[Validators.required,Validators.minLength(8)]),
     birth_Date : new FormControl('', [Validators.required]),
@@ -62,6 +63,19 @@ UploadFile(file:any){
   formData.append(file,filetoupload,filetoupload.name);
 
   this.teacherService.uploadAttachmentteacher(formData);
+
+}
+UploadCV(file:any){
+  debugger
+  if(file.length==0)
+  {
+    return;
+  }
+  let filetouploadcv=<File>file[0];
+  const formData=new FormData();
+  formData.append(file,filetouploadcv,filetouploadcv.name);
+
+  this.teacherService.uploadCVTeacher(formData);
 
 }
 }

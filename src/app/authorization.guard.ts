@@ -41,36 +41,62 @@ export class AuthorizationGuard implements CanActivate {
         this.router.navigate(['contact']);
         return false;
         }
-      
-      
-    }
-    else if(state.url.indexOf('student')>=0)
+      }
+        else if(state.url.indexOf('trainer')>=0)
       {
         let user:any = localStorage.getItem('user');
         if(user)
         {
           user = JSON.parse(user);
-          if(user.Roleid =='3')
+          if(user.Roleid =='2')
           {
-            this.toastr.success('Welcome student');
+            this.toastr.success('Welcome Trainer');
             return true;
           }
         
         else {
-          this.toastr.warning('Sorry , this page for student');
-          this.router.navigate(['auth/login']);
+          this.toastr.warning('Sorry , this page for teacher');
+          this.router.navigate(['teacher/home']);
           localStorage.clear();
           return false;
         }
         
-      }
+        }
       
-      else{
-        this.toastr.warning('Sorry , this page for student');
+        else{
+        this.toastr.warning('Sorry , this page for teacher');
         this.router.navigate(['contact']);
         return false;
+        }
       }
-    }
+        else if(state.url.indexOf('student')>=0)
+      {
+          let user:any = localStorage.getItem('user');
+          if(user)
+          {
+            user = JSON.parse(user);
+            if(user.Roleid =='3')
+            {
+              this.toastr.success('Welcome student');
+              return true;
+            }
+          
+          else {
+            this.toastr.warning('Sorry , this page for student');
+            this.router.navigate(['auth/login']);
+            localStorage.clear();
+            return false;
+          }
+          
+        }
+        
+        else{
+          this.toastr.warning('Sorry , this page for student');
+          this.router.navigate(['contact']);
+          return false;
+        }
+      }
+       
     return true;
     }
       else
