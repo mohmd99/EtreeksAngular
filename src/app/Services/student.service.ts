@@ -11,7 +11,8 @@ export class StudentService {
   constructor( private toaster:ToastrService,private spinner:NgxSpinnerService,private http:HttpClient) { }
   
   
-  AllUser:any=[{}]
+  AllUser:any=[{}];
+  AllTrainerCourse:any=[{}];
   display_image_user:any;
 
 
@@ -136,5 +137,18 @@ export class StudentService {
       this.toaster.error(err.message, err.status);
     }
     )
+  }
+
+  GetTrainerCourse(){
+    this.spinner.show();
+    this.http.get('https://localhost:44343/api/CRUDtrainercourse').subscribe((resp)=>{
+      console.log(resp);
+      
+      this.AllTrainerCourse=resp;
+      this.spinner.hide();
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message , err.status);
+    })
   }
 }

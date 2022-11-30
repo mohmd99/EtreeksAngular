@@ -10,6 +10,8 @@ import { GeneralService } from 'src/app/Services/general.service';
 export class CourseStudentComponent implements OnInit {
   @Input() coursE_NAME:string|undefined;
   @Input() description:string|undefined;
+  @Input() trainer_Id:number|undefined;
+  @Input() course_Id:number|undefined;
   @Input() id:number=0;
   constructor(public generalServise:GeneralService , private router:Router) { }
 

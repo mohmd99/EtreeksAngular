@@ -13,6 +13,8 @@ import { StudentService } from 'src/app/Services/student.service';
 export class HomeStudentComponent implements OnInit {
   @Input() coursE_NAME:string|undefined;
   @Input() description:string|undefined;
+  @Input() trainer_Id:number|undefined;
+  @Input() course_Id:number|undefined;
   constructor(public authService :AuthService,public studentService:StudentService,public generalServise:GeneralService,public adminService:AdminService,private router:Router) { }
 
   ngOnInit(): void {
@@ -25,6 +27,7 @@ export class HomeStudentComponent implements OnInit {
     this.generalServise.GetAllCourses();
     this.generalServise.getAllCategory();
     this.adminService.getTestimonial();
+    this.studentService.GetTrainerCourse();
 
     this.studentService.getuserbyid(this.authService.data.ID);
   }
