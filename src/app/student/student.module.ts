@@ -8,7 +8,7 @@ import { ContactStudentComponent } from './contact-student/contact-student.compo
 import { AboutStudentComponent } from './about-student/about-student.component';
 import { HomeStudentComponent } from './home-student/home-student.component';
 import { ProfileStudentComponent } from './profile-student/profile-student.component';
-import { HomeCourseComponent } from './home-course/home-course.component';
+
 
 
 @NgModule({
@@ -17,7 +17,7 @@ import { HomeCourseComponent } from './home-course/home-course.component';
         AboutStudentComponent,
         HomeStudentComponent,
         ProfileStudentComponent,
-        HomeCourseComponent
+        
     ],
     imports: [
         CommonModule,
