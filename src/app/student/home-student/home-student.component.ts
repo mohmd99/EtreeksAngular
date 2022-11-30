@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/Services/admin.service';
 import { AuthService } from 'src/app/Services/auth.service';
@@ -11,7 +11,8 @@ import { StudentService } from 'src/app/Services/student.service';
   styleUrls: ['./home-student.component.css']
 })
 export class HomeStudentComponent implements OnInit {
-
+  @Input() coursE_NAME:string|undefined;
+  @Input() description:string|undefined;
   constructor(public authService :AuthService,public studentService:StudentService,public generalServise:GeneralService,public adminService:AdminService,private router:Router) { }
 
   ngOnInit(): void {

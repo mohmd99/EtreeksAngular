@@ -60,6 +60,9 @@ export class NavbarComponent implements OnInit {
   GoToCourse(){
     this.router.navigate(['student/course'])
   }
+  GoToCategory(){
+    this.router.navigate(['student/category'])
+  }
   GoToAbout(){
     this.router.navigate(['student/about'])
   }

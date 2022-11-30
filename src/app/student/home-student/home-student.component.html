@@ -89,16 +89,13 @@
         Donec consectetur accumsan arcu, sit amet fringilla ex ultricies.</p>
     </div><!-- end title -->
 
-    <div id="owl-01" class="owl-carousel owl-theme owl-theme-01">
 
 
 
- <div class="row">
-      <app-home-course *ngFor="let course of generalServise.allCourses" [coursE_NAME]="course.coursE_NAME"
-        [description]="course.description" [id]="course.id"></app-home-course>
+    <div class="row">
+      <app-course-student *ngFor="let course of generalServise.allCourses" [coursE_NAME]="course.coursE_NAME"
+        [description]="course.description" [id]="course.id"></app-course-student>
     </div>
-    </div>
-
 
 
 

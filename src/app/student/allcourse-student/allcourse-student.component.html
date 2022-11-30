@@ -1,0 +1,7 @@
+<app-navbar  [first_Name]="studentService.userbyid.first_Name" [last_Name]="studentService.userbyid.last_Name" [image]="studentService.userbyid.image"></app-navbar>
+
+<div class="row">
+    <app-course-student *ngFor="let course of generalServise.allCourses" [coursE_NAME]="course.coursE_NAME"
+      [description]="course.description" [id]="course.id"></app-course-student>
+  </div>
+<app-footer></app-footer>

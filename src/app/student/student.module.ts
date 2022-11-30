@@ -8,6 +8,9 @@ import { ContactStudentComponent } from './contact-student/contact-student.compo
 import { AboutStudentComponent } from './about-student/about-student.component';
 import { HomeStudentComponent } from './home-student/home-student.component';
 import { ProfileStudentComponent } from './profile-student/profile-student.component';
+import { CourseStudentComponent } from './course-student/course-student.component';
+import { AllcourseStudentComponent } from './allcourse-student/allcourse-student.component';
+import { CategoryStudentComponent } from './category-student/category-student.component';
 
 
 
@@ -17,6 +20,9 @@ import { ProfileStudentComponent } from './profile-student/profile-student.compo
         AboutStudentComponent,
         HomeStudentComponent,
         ProfileStudentComponent,
+        CourseStudentComponent,
+        AllcourseStudentComponent,
+        CategoryStudentComponent,
         
     ],
     imports: [
