@@ -14,6 +14,7 @@ export class TeacherService {
 
   AllUser:any=[{}];
   display_image_user:any;
+
   uploadAttachmentteacher(file: FormData) {
 
     this.http.post('https://localhost:44343/api/user/UploadFile', file).subscribe((resp: any) => {
@@ -54,13 +55,42 @@ export class TeacherService {
       console.log(err);
     })
   }
+  updateUser(body:any)
+  {
+  if(this.display_image_user !=null)
+  body.image = this.display_image_user;
 
+  this.spinner.show();
+  this.http.put('https://localhost:44343/api/CRUDuser',body).subscribe((resp)=>{
+    this.spinner.hide();
+    this.toaster.success('Updated Successfully !!');
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  })
+  }
+  updateUserlogin(body:any)
+  {
+  if(this.display_image_user !=null)
+  body.image = this.display_image_user;
+
+  console.log('body is: ');
+  console.log(body);
+  this.spinner.show();
+  this.http.put('https://localhost:44343/api/User/Update',body).subscribe((resp)=>{
+    this.spinner.hide();
+    this.toaster.success('Updated Successfully !!');
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  })
+  }
   trainerUser:any
   getTrainerUser(){
     this.spinner.show();
     this.http.get("https://localhost:44343/api/trainer/getTrainer").subscribe((res)=>{
-this.trainerUser=res;
-this.spinner.hide()
+    this.trainerUser=res;
+    this.spinner.hide()
     },err=>{
       this.spinner.hide();
       this.toaster.error(err.message,err.status);
@@ -70,18 +100,17 @@ this.spinner.hide()
   getUser(){
     this.http.get('https://localhost:44343/api/CRUDuser').subscribe((resp) => {
       console.log(resp);
-      this.AllUser=resp;
+      this.AllUser=resp
       this.spinner.hide();
-
+  
     }, err => {
       this.spinner.hide();
       this.toaster.error(err.message, err.status);
     }
     )
   }
-  userbyid:any={};
-  loginuserbyid:any={};
-
+  userbyid:any={}
+  loginuserbyid:any={}
   Colors:any[]=[
     "#8B7E74",
   "#344D67",
@@ -113,18 +142,18 @@ this.spinner.hide()
   "#105652",
   "#694E4E"
     ]
-
+  
     color:any="";
   getuserbyid(id:number){
     this.http.get('https://localhost:44343/api/CRUDuser/Getbyid/'+id).subscribe((resp) => {
       console.log(resp);
-      this.userbyid=resp;
-
+      this.userbyid=resp
+  
       this.color=this.Colors[this.userbyid.last_Name.toUpperCase().charCodeAt(0)-65]
       console.log(this.color);
-
+  
       this.spinner.hide();
-
+  
     }, err => {
       this.spinner.hide();
       this.toaster.error(err.message, err.status);
@@ -149,4 +178,15 @@ this.spinner.hide()
     )
 
   }
+  uploadAttachmentuser(file: FormData) {
+    this.http.post('https://localhost:44343/api/user/uploadImage', file).subscribe((resp: any) => {
+      this.display_image_user = resp.image;
+      console.log(this.display_image_user);
+  
+    }, err => {
+      this.toaster.error('Can not Upload Image');
+      console.log(err);
+    })
+  }
+  
 }

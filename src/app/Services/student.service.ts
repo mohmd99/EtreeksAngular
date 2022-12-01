@@ -47,8 +47,6 @@ export class StudentService {
   })
   }
   getUser(){
-
-
     this.http.get('https://localhost:44343/api/CRUDuser').subscribe((resp) => {
       console.log(resp);
       this.AllUser=resp

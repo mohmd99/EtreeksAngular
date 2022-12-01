@@ -78,7 +78,7 @@ body {
     z-index: 9997;
     transition: all 0.5s;
     padding: 0 15px;
-    background: #040b14;
+    background: #222529;
     overflow-y: auto;
   }
   
@@ -1082,7 +1082,7 @@ body {
     bottom: 0;
     width: 300px;
     z-index: 9999;
-    background: #040b14;
+    background: #222529;
   }
   
   #footer .copyright {

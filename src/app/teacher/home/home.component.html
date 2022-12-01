@@ -10,22 +10,14 @@
 
       <div class="profile">
         <!-- <img src="../../../assets/assets_teacher/assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle"> -->
-        <li class="iconitem"><div id="profileImage" *ngIf="image" style="position: absolute;" ><img src="../../../assets/images/{{ image }}" alt=""></div></li>
-        <li class="iconitem"><div id="profileImage" *ngIf="!image" style="position: absolute;" [ngStyle]="{'background-color':default.color}">
-            <div style=" position: relative;
-              font-size: 21px;">{{ first_Name[0] |uppercase }}{{ last_Name[0] |uppercase}}</div>
-              </div>
-        </li>
-        <h1 class="text-light"><a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ first_Name |uppercase }}jehad {{ last_Name |uppercase}}
-      </a></h1>
-        <div class="social-links mt-3 text-center">
+        <app-bar [first_Name]="teacherService.userbyid.first_Name" [last_Name]="teacherService.userbyid.last_Name" [image]="teacherService.userbyid.image"></app-bar>
+        <!-- <div class="social-links mt-3 text-center">
           <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
           <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
           <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
           <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div>
+        </div> -->
       </div>
 
       <nav id="navbar" class="nav-menu navbar">
@@ -36,6 +28,8 @@
           <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
           <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
           <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+          <li><a (click)="UpdateProfile()" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Update Profile</span></a></li>
+          <li><a (click)="Logout()" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Logout</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>

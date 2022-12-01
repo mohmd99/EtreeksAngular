@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 import { TeacherService } from 'src/app/Services/teacher.service';
 
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   @Input() last_Name:string="";
   @Input() image:string|undefined;
   @Input() color:string="";
-  constructor(public teacherService:TeacherService,private authService:AuthService) { }
+  constructor(public teacherService:TeacherService,public authService:AuthService ,private router:Router) { }
 
   ngOnInit(): void {
     this.teacherService.getuserbyid(this.authService.data.ID);
@@ -55,5 +56,11 @@ export class HomeComponent implements OnInit {
     default={
       color:this.Colors[this.first_Name.toUpperCase().charCodeAt(0)-97],
   
+    }
+    UpdateProfile(){
+      this.router.navigate(['teacher/updateprofile'])
+    }
+    Logout(){
+      this.router.navigate([''])
     }
 }
