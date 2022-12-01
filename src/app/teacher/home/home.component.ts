@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
+import { GeneralService } from 'src/app/Services/general.service';
 import { TeacherService } from 'src/app/Services/teacher.service';
 
 @Component({
@@ -13,12 +15,12 @@ export class HomeComponent implements OnInit {
   @Input() last_Name:string="";
   @Input() image:string|undefined;
   @Input() color:string="";
-  constructor(public teacherService:TeacherService,private authService:AuthService) { }
+  constructor(public teacherService:TeacherService,public authService:AuthService ,private router:Router,public generalService:GeneralService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    this.generalService.GetHomeInfo();
     this.teacherService.getuserbyid(this.authService.data.ID);
     this.teacherService.getloginuserbyid(this.authService.data.ID);
-    console.log("first name is :" ,this.first_Name);
   }
   myName:string=this.teacherService.userbyid.first_Name;
   Colors:any[]=[
@@ -56,4 +58,20 @@ export class HomeComponent implements OnInit {
       color:this.Colors[this.first_Name.toUpperCase().charCodeAt(0)-97],
   
     }
+    GoToHome(){
+      this.router.navigate(['teacher/home'])
+    }
+    GoToAbout(){
+      this.router.navigate(['teacher/about'])
+    }
+    GoToContact(){
+      this.router.navigate(['teacher/contact'])
+    }
+    UpdateProfile(){
+      this.router.navigate(['teacher/updateprofile'])
+    }
+    Logout(){
+      this.router.navigate([''])
+    }
+    
 }

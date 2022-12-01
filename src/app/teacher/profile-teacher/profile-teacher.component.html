@@ -1,0 +1,55 @@
+<head><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+
+<div class="wrapper bg-white mt-sm-5">
+    <h4 class="pb-4 border-bottom">Account settings</h4>
+    <div class="d-flex align-items-start py-3 border-bottom">
+        <img style="width:200px ; height: 200px; margin: 35px;" *ngIf="teacherService.userbyid.image==null" src="../../../assets/admin_assests/assets/img/l60Hf.png" alt="Image placeholder" >
+        <img style="width:200px ; height: 200px; margin: 35px;" *ngIf="teacherService.userbyid.image!=null" src="../../../assets/images/{{teacherService.userbyid.image}}" alt="Image placeholder" >
+        <div class="pl-sm-4 pl-2" id="img-section">
+            <b>Profile Photo</b>
+            <p>Accepted file type .png. Less than 1MB</p>
+            <button class="btn btn-primary mr-3">Upload</button>
+        </div>
+    </div>
+    <form class="form" [formGroup]="updateForm" style="margin: 50px;">
+        <div class="py-2">
+            <div class="row py-2">
+                <div class="col-md-6">
+                    <input matInput formControlName="first_Name" [(ngModel)]="userData.first_Name" type="text" class="bg-light form-control" placeholder="First Name">
+                </div>
+                <div class="col-md-6 pt-md-0 pt-3">
+                    <input matInput formControlName="first_Name" [(ngModel)]="userData.last_Name" type="text" class="bg-light form-control" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-md-6">
+                    <input formControlName="email" [(ngModel)]="loginData.email" type="email" class="bg-light form-control" placeholder="Email">
+                </div>
+                <div class="col-md-6 pt-md-0 pt-3">
+                    <input matInput formControlName="phone_Number" [(ngModel)]="userData.phone_Number" type="text" class="bg-light form-control" placeholder="Phone Number">
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-md-6">
+                    <input matInput formControlName="birth_Date" (ngModelChange)="userData.birth_Date" [ngModel]="userData.birth_Date |date" type="text" class="bg-light form-control" placeholder="Birth Date">
+                </div>
+                <div class="col-md-6 pt-md-0 pt-3">
+                    <input matInput formControlName="image" [(ngModel)]='userData.image'   #file  (change)="UploadFile(file.files)" type="file" class="bg-light form-control" placeholder="Upload Image">
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-md-6">
+                    <input (keyup)="Changepass($event)" type="text" class="bg-light form-control" placeholder="Birth Date">
+                </div>
+                <div class="col-md-6 pt-md-0 pt-3" [ngStyle]="{'pointer-events': !changepass ? 'none':''}">
+                    <input matInput formControlName="password" type="text" class="bg-light form-control" placeholder="Upload Image">
+                </div>
+            </div>
+            <div class="py-3 pb-4 border-bottom">
+                <button class="btn btn-primary mr-3" (click)="UpdateProfile()">Save Changes</button>
+                <button class="btn btn-primary mr-3" (click)="Cancel()">Cancel</button>
+            </div>   
+        </div>
+    </form>
+</div>
