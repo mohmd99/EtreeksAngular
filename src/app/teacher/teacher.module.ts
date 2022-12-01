@@ -6,6 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { BarComponent } from './bar/bar.component';
 import { ProfileTeacherComponent } from './profile-teacher/profile-teacher.component';
 import { SharedModule } from '../shared/shared.module';
+import { ContactTeacherComponent } from './contact-teacher/contact-teacher.component';
+import { AboutTeacherComponent } from './about-teacher/about-teacher.component';
 
 
 
@@ -13,7 +15,9 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     HomeComponent,
     BarComponent,
-    ProfileTeacherComponent
+    ProfileTeacherComponent,
+    ContactTeacherComponent,
+    AboutTeacherComponent
   ],
   imports: [
     CommonModule,
