@@ -149,4 +149,16 @@ this.spinner.hide()
     )
 
   }
+  searchTrainer(name:string){
+
+
+      this.http.get("https://localhost:44343/api/trainer/searchTrainer/"+name).subscribe((res)=>{
+  this.trainerUser=res;
+
+      },err=>{
+        this.spinner.hide();
+        this.toaster.error(err.message,err.status);
+        console.log(err);
+      })
+  }
 }

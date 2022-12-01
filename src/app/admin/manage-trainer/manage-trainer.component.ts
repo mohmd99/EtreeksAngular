@@ -130,4 +130,16 @@ export class ManageTrainerComponent implements OnInit {
     })
 
   }
+  name:any;
+  Search(ev:any){
+    this.name=ev.target.value;
+    if(this.name!=''){
+
+       this.teacherService.searchTrainer(this.name);
+
+     
+    }else{
+      this.teacherService.getTrainerUser();
+    }
+  }
 }
