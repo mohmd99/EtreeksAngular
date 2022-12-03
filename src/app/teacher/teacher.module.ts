@@ -30,10 +30,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     TeacherRoutingModule,
     SharedModule,
     BrowserAnimationsModule,
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory,
-    }),
+    
   ]
 })
 export class TeacherModule { }
