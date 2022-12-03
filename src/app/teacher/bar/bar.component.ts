@@ -1,16 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TeacherService } from 'src/app/Services/teacher.service';
 
 @Component({
   selector: 'app-bar',
   templateUrl: './bar.component.html',
-  styleUrls: ['./bar.component.css']
+  styleUrls: ['../home/home.component.css']
 })
 export class BarComponent implements OnInit {
   @Input() first_Name:string="";
   @Input() last_Name:string="";
   @Input() image:string|undefined;
-  constructor( public teacherService:TeacherService) { }
+  constructor( private router :Router,public teacherService:TeacherService) { }
 
   ngOnInit(): void {
   }
@@ -48,6 +49,16 @@ export class BarComponent implements OnInit {
   default={
     color:this.Colors[this.first_Name.toUpperCase().charCodeAt(0)-97],
 
+  }
+
+  GoToHome(){
+    this.router.navigate(['teacher/home'])
+  }
+  UpdateProfile(){
+    this.router.navigate(['teacher/updateprofile'])
+  }
+  Logout(){
+    this.router.navigate([''])
   }
 
 }

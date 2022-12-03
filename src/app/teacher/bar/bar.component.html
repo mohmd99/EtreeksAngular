@@ -1,16 +1,32 @@
-<li class="iconitem">
-    <div id="profileImage" *ngIf="image" style=" padding-top: 25px;padding-left: 115px;"><img
-            style="width:50px; height: 50px; border-radius: 50%;" src="../../../assets/images/{{ image }}" alt=""></div>
-</li>
-<li class="iconitem">
-    <div id="profileImage" *ngIf="!image"  [ngStyle]="{'background-color':default.color}">
-        <div style=" padding-top: 25px; padding-left: 115px;
-                    font-size: 18px;">{{ first_Name[0] |uppercase }}{{ last_Name[0] |uppercase}}</div>
+<header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+
+            <li class="iconitem">
+                <div id="profileImage" *ngIf="image" style=" padding-top: 25px;padding-left: 115px;"><img
+                        style="width:50px; height: 50px; border-radius: 50%;" src="../../../assets/images/{{ image }}" alt=""></div>
+            </li>
+            <li class="iconitem">
+                <div id="profileImage" *ngIf="!image"  [ngStyle]="{'background-color':default.color}">
+                    <div style=" padding-top: 25px; padding-left: 115px;
+                                font-size: 18px;">{{ first_Name[0] |uppercase }}{{ last_Name[0] |uppercase}}</div>
+                </div>
+            </li>
+            <li style="padding-top: 10px;">
+                    <a  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        {{ first_Name |uppercase }} {{ last_Name |uppercase}}
+                    </a>
+            </li>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a (click)="GoToHome()" class="nav-link scrollto active"><i class="bx bx-home"></i> <i class="bi bi-house"></i> <span>Home</span></a></li>
+          <li><a (click)="UpdateProfile()" class="nav-link scrollto"><i class="bx bx-envelope"></i> <i class="bi bi-person"></i> <span>Update Profile</span></a></li>
+          <li><a (click)="Logout()" class="nav-link scrollto"><i class="bx bx-envelope"></i> <i class="bi bi-box-arrow-left"></i> <span>Logout</span></a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
     </div>
-</li>
-<li style="padding-top: 10px;">
-        <a  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            {{ first_Name |uppercase }} {{ last_Name |uppercase}}
-        </a>
-</li>
+  </header>

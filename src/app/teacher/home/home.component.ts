@@ -58,20 +58,6 @@ export class HomeComponent implements OnInit {
       color:this.Colors[this.first_Name.toUpperCase().charCodeAt(0)-97],
   
     }
-    GoToHome(){
-      this.router.navigate(['teacher/home'])
-    }
-    GoToAbout(){
-      this.router.navigate(['teacher/about'])
-    }
-    GoToContact(){
-      this.router.navigate(['teacher/contact'])
-    }
-    UpdateProfile(){
-      this.router.navigate(['teacher/updateprofile'])
-    }
-    Logout(){
-      this.router.navigate([''])
-    }
+  
     
 }
