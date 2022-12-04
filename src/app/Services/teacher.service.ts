@@ -217,4 +217,32 @@ export class TeacherService {
     });
   }
 
+  createTime(body:any){
+
+    this.spinner.show();
+  this.http.post('https://localhost:44343/api/CRUDAvailableTime/',body).subscribe((resp)=>{
+    this.spinner.hide();
+    this.toaster.success('Created Successfully !!');
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  })
+
+    //CRUDAvailableTime
+
+  }
+
+  deleteTime(id:number){
+    this.spinner.show();
+
+  this.http.delete('https://localhost:44343/api/CRUDAvailableTime/Delete/'+id).subscribe((resp)=>{
+    this.spinner.hide();
+      this.toaster.success('Deleted Successfully !!');
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  })
+
+  }
+
 }
