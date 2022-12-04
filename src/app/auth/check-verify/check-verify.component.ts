@@ -16,9 +16,9 @@ export class CheckVerifyComponent implements OnInit {
     setTimeout(() => {
       this.resendcode();
     },10000);
-    
+
     this.authService.getloginbyid(this.authService.Ids[0].value);
-   
+
   }
 
   checkverify(ev:any){
@@ -38,7 +38,7 @@ else{
   console.log(this.disable);
  this.disable=true;
  console.log(this.disable);
-
+this.authService.resendCode(this.authService.Ids[0].value);
 
  }
 }

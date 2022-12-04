@@ -29,6 +29,7 @@ export class AuthService {
       headers: new HttpHeaders(headerDic)
     }
     this.http.post('https://localhost:44343/api/Jwt/',body,requestOptions).subscribe((resp:any)=>{
+      
       const responce={
         token :resp.toString()
       }
@@ -162,5 +163,15 @@ this.loginbyid=resp;
 
   })
 }
+resendCode(id:number){
+  var body ={
+  }
 
+
+  this.http.put('https://localhost:44343/api/user/resend/'+id,body).subscribe((resp) => {
+
+    this.router.navigate(['auth/selectverify'])
+
+  })
+}
 }

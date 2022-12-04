@@ -24,13 +24,13 @@
 
 
               <input  style="margin-left: 175px;"  (change)="checkverify($event)"  type="text" class="btn form-control btn-primary rounded submit px-3">
-       
-              
-              <h3 style="margin-left: 250px; margin-top: 5px;" *ngIf="disable"><button   routerLink="/auth/selectverify" class="btn btn-primary">resend code</button></h3>
-         
+
+
+              <h3 style="margin-left: 250px; margin-top: 5px;" *ngIf="disable"><button  (click)="resendcode()" class="btn btn-primary">resend code</button></h3>
+
     </div>
     </div>
-   
+
       <button ng-click="reset()" ng-disabled="buttonDisabled">Reset</button>
 
 
