@@ -26,6 +26,8 @@ export class ManageAvailableTimeComponent implements OnInit {
 
   ngOnInit(): void {
     // this.teacherService.GetAllTimes(this.authService.data.ID)
+    
+    this.teacherService.GetAllTimes(this.authService.data.ID);
     console.log(this.teacherService.AvailableTimes);
     
    

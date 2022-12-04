@@ -15,6 +15,7 @@ export class TeacherService {
   AllUser:any=[{}];
   display_image_user:any;
 
+  Courses:any;
   AvailableTimes:any;
 
   uploadAttachmentteacher(file: FormData) {
@@ -243,6 +244,19 @@ export class TeacherService {
     this.toaster.error(err.message, err.status);
   })
 
+  }
+
+  GetCourses(teacher_id:number){
+    this.spinner.show();
+    this.http.get("https://localhost:44343/api/trainercourse/GetTrainerCourse/"+teacher_id).subscribe((res:any)=>{
+      this.Courses=res;
+      console.log(this.Courses);
+      this.spinner.hide();
+
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message,err.status);
+    });
   }
 
 }

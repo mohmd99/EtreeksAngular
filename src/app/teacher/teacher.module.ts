@@ -10,6 +10,7 @@ import { ContactTeacherComponent } from './contact-teacher/contact-teacher.compo
 import { AboutTeacherComponent } from './about-teacher/about-teacher.component';
 
 import { ManageAvailableTimeComponent } from './manage-available-time/manage-available-time.component';
+import { SelectCourseComponent } from './select-course/select-course.component';
 
 
 
@@ -20,7 +21,8 @@ import { ManageAvailableTimeComponent } from './manage-available-time/manage-ava
     ProfileTeacherComponent,
     ContactTeacherComponent,
     AboutTeacherComponent,
-    ManageAvailableTimeComponent
+    ManageAvailableTimeComponent,
+    SelectCourseComponent
   ],
   imports: [
     CommonModule,

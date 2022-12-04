@@ -5,6 +5,7 @@ import { ContactTeacherComponent } from './contact-teacher/contact-teacher.compo
 import { HomeComponent } from './home/home.component';
 import { ManageAvailableTimeComponent } from './manage-available-time/manage-available-time.component';
 import { ProfileTeacherComponent } from './profile-teacher/profile-teacher.component';
+import { SelectCourseComponent } from './select-course/select-course.component';
 
 const routes: Routes = [{
   path:'home',
@@ -25,6 +26,10 @@ const routes: Routes = [{
 {
   path:'AvailableTime',
   component:ManageAvailableTimeComponent
+},
+{
+  path:'Courses',
+  component:SelectCourseComponent
 }
 ];
 
