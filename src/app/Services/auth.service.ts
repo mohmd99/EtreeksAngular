@@ -134,14 +134,13 @@ DeleteCode(id:number)
 
 }
 
-checkVerify(code:number){
+checkVerify(code:number,id:number){
   var body={
 
   }
   this.spinner.show()
-this.http.post('https://localhost:44343/api/VerfiyAccount/VerfiyAccount/'+code,body).subscribe((resp)=>{
-if(code==1)
-  this.router.navigate(["auth/login"]);
+this.http.post('https://localhost:44343/api/VerfiyAccount/VerfiyAccount/'+code+'/'+id,body).subscribe((resp)=>{
+
 
   this.spinner.hide()
 },err=>{

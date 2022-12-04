@@ -15,7 +15,7 @@ export class CheckVerifyComponent implements OnInit {
   }
   disable:boolean=false;
   checkverify(ev:any){
-this.authService.checkVerify(ev.target.value);
+this.authService.checkVerify(ev.target.value,this.authService.Ids[0].value);
 setTimeout(() => {
 if(this.authService.loginbyid.verify_Code==0){
 this.disable=true;
