@@ -38,7 +38,7 @@ export class AuthService {
       if(this.data.Roleid =='1')
       this.router.navigate(['admin']);
       else if (this.data.Roleid =='2')
-      
+
       this.router.navigate(['teacher/home']);
       else if (this.data.Roleid =='3')
       this.router.navigate(['student/home']);
@@ -150,6 +150,18 @@ this.toastr.error(err.message,err.status)
 
 })
 }
+loginbyid:any;
+getloginbyid(id:number){
 
+  this.http.get('https://localhost:44343/api/crudlogin/getbyid/'+id).subscribe((resp)=>{
+this.loginbyid=resp;
+
+
+  },err=>{
+
+  this.toastr.error(err.message,err.status)
+
+  })
+}
 
 }
