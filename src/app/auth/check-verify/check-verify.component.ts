@@ -18,8 +18,10 @@ export class CheckVerifyComponent implements OnInit {
 this.authService.checkVerify(ev.target.value,this.authService.Ids[0].value);
 setTimeout(() => {
 if(this.authService.loginbyid.verify_Code==0){
+  
 this.disable=true;
+console.log("display = "+this.disable);
 }
-}, 30000);
+}, 1000);
   }
 }

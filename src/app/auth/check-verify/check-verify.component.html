@@ -23,7 +23,7 @@
 
 
 
-              <input style="margin-left: 175px;" [disabled]="disable" (keyup)="checkverify($event)"  type="text" class="btn form-control btn-primary rounded submit px-3">
+              <input style="margin-left: 175px;" [disabled]="disable" (change)="checkverify($event)"  type="text" class="btn form-control btn-primary rounded submit px-3">
               <button *ngIf="disable" routerLink="/auth/selectverify" class="btn btn-primary">resend code</button>
     </div>
     </div>
