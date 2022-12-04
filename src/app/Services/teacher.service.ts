@@ -15,6 +15,8 @@ export class TeacherService {
   AllUser:any=[{}];
   display_image_user:any;
 
+  AvailableTimes:any;
+
   uploadAttachmentteacher(file: FormData) {
 
     this.http.post('https://localhost:44343/api/user/UploadFile', file).subscribe((resp: any) => {
@@ -201,6 +203,18 @@ export class TeacherService {
       this.toaster.error('Can not Upload Image');
       console.log(err);
     })
+  }
+
+  GetAllTimes(teacher_id:number){
+    this.spinner.show();
+    this.http.get("https://localhost:44343/api/AvailableTime/GetByTrainer/"+teacher_id).subscribe((res:any)=>{
+      this.AvailableTimes=res;
+      this.spinner.hide();
+
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message,err.status);
+    });
   }
 
 }

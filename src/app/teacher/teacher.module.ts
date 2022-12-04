@@ -8,11 +8,8 @@ import { ProfileTeacherComponent } from './profile-teacher/profile-teacher.compo
 import { SharedModule } from '../shared/shared.module';
 import { ContactTeacherComponent } from './contact-teacher/contact-teacher.component';
 import { AboutTeacherComponent } from './about-teacher/about-teacher.component';
-import { CalenderComponent } from './calender/calender.component';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { ManageAvailableTimeComponent } from './manage-available-time/manage-available-time.component';
 
 
 
@@ -23,14 +20,12 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     ProfileTeacherComponent,
     ContactTeacherComponent,
     AboutTeacherComponent,
-    CalenderComponent
+    ManageAvailableTimeComponent
   ],
   imports: [
     CommonModule,
     TeacherRoutingModule,
-    SharedModule,
-    BrowserAnimationsModule,
-    
+    SharedModule
   ]
 })
 export class TeacherModule { }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutTeacherComponent } from './about-teacher/about-teacher.component';
 import { ContactTeacherComponent } from './contact-teacher/contact-teacher.component';
 import { HomeComponent } from './home/home.component';
+import { ManageAvailableTimeComponent } from './manage-available-time/manage-available-time.component';
 import { ProfileTeacherComponent } from './profile-teacher/profile-teacher.component';
 
 const routes: Routes = [{
@@ -20,6 +21,10 @@ const routes: Routes = [{
 {
   path:'about',
   component:AboutTeacherComponent
+},
+{
+  path:'AvailableTime',
+  component:ManageAvailableTimeComponent
 }
 ];
 

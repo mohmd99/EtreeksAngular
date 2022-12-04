@@ -38,6 +38,7 @@ export class AuthService {
       if(this.data.Roleid =='1')
       this.router.navigate(['admin']);
       else if (this.data.Roleid =='2')
+      
       this.router.navigate(['teacher/home']);
       else if (this.data.Roleid =='3')
       this.router.navigate(['student/home']);

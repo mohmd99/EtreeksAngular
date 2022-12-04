@@ -1,0 +1,64 @@
+<app-bar [first_Name]="adminService.userbyid.first_Name" [last_Name]="adminService.userbyid.last_Name" [image]="adminService.userbyid.image" [color]="this.adminService.color"></app-bar>
+
+<div class="row mt-4">
+    <div class="col-lg-11 mb-lg-11 mb-11" style="margin-left: 50px;">
+    <div class="card ">
+        <div class="card-header pb-0 p-3">
+        <div class="d-flex justify-content-between">
+            <h6 class="customtabletitle">Category </h6>
+            <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                <i class="bi bi-file-plus" (click)="OpenCreateDialouge()"></i>
+              </div>
+        </div>
+        </div>
+        <div class="table-responsive" style="margin-top:15px" >
+        <table class="table align-items-center ">
+            <thead>
+                <tr>
+                    <th>
+                        Start Date
+                    </th>
+
+
+                    <th>
+                        End Date
+                    </th>
+                    
+                    <th>
+                        Manage
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of teacherService.AvailableTimes">
+                <td class="w-30" >
+                <div class="d-flex px-2 py-1 align-items-center">
+
+                    <div class="ms-4">
+
+                    <h6 class="text-sm mb-0">{{ item.start_Date }}</h6>
+                    </div>
+                </div>
+                </td>
+
+                  <td class="w-30" >
+                    <div class="d-flex px-2 py-1 align-items-center">
+
+                        <div class="ms-4">
+
+                        <h6 class="text-sm mb-0">{{ item.end_Date }}</h6>
+                        </div>
+                    </div>
+                    </td>
+                 
+                    <td>
+                      <i class="bi bi-pencil-square" style="margin-right: 15px; cursor: pointer;" (click)="openUpdateDailog(item)"></i>  <i class="bi bi-trash3" style=" cursor: pointer;" (click)="openDeleteDailog(item.id)"></i>
+                    </td>
+
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    </div>
+</div>

@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+   this.teacherService.GetAllTimes(this.authService.data.ID);
     this.adminService.getuserbyid(this.authService.data.ID);
     this.teacherService.getloginuserbyid(this.authService.data.ID);
   }
