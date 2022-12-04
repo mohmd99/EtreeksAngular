@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/Services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckVerifyComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private authService:AuthService) { }
+ disable:boolean=true;
   ngOnInit(): void {
+    this.authService.getloginbyid(this.authService.Ids[0].value);
+    setTimeout(() => {
+      if(this.authService.loginbyid.verify_Code==0){
+      this.disable=true;
+      }
+      }, 35000);
   }
 
+  checkverify(ev:any){
+this.authService.checkVerify(ev.target.value,this.authService.Ids[0].value);
+ }
 }

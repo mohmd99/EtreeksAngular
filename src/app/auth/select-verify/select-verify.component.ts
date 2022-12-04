@@ -17,14 +17,14 @@ export class SelectVerifyComponent implements OnInit {
     this.authService.SendEmail(this.authService.Ids[0].value);
     setTimeout(() => {
       this.authService.DeleteCode(this.authService.Ids[0].value);
-    }, 120000);
+    }, 30000);
 
   }
   sendWithWhatsapp(){
     this.authService.SendWhatsapp(this.authService.Ids[0].value)
     setTimeout(() => {
       this.authService.DeleteCode(this.authService.Ids[0].value);
-    }, 120000);
-    
+    }, 30000);
+
   }
 }

@@ -20,15 +20,15 @@
             <div class="img d-flex align-items-center justify-content-center" style="background-image: url(../../../assets/login_assets/images/Green\ Modern\ Education\ Online\ Course\ Logo\ \(1\).png); height: 170px; width: 170px; border-radius: 50%;" ></div>
             <h3 class="text-center mb-0">Verfiy Account <span style="color:#01BACF">ETreeks</span></h3>
             <p class="text-center">Enter the activation code you received:</p>
-                 
-        
 
-              <input style="margin-left: 175px;"  type="text" class="btn form-control btn-primary rounded submit px-3"> 
-    
+
+
+              <input style="margin-left: 175px;" [disabled]="disable" (change)="checkverify($event)"  type="text" class="btn form-control btn-primary rounded submit px-3">
+              <button *ngIf="disable" routerLink="/auth/selectverify" class="btn btn-primary">resend code</button>
     </div>
     </div>
-      
-      
+
+
   </div>
      </div>
 
