@@ -1,5 +1,7 @@
 import { AuthService } from 'src/app/Services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { Toast, ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-check-verify',
@@ -8,18 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckVerifyComponent implements OnInit {
 
-  constructor(private authService:AuthService) { }
- disable:boolean=true;
+  constructor(private authService:AuthService,public toast:ToastrService,public router:Router) { }
+ disable:boolean=false;
   ngOnInit(): void {
-    this.authService.getloginbyid(this.authService.Ids[0].value);
     setTimeout(() => {
-      if(this.authService.loginbyid.verify_Code==0){
-      this.disable=true;
-      }
-      }, 35000);
+      this.resendcode();
+    },10000);
+    
+    this.authService.getloginbyid(this.authService.Ids[0].value);
+   
   }
 
   checkverify(ev:any){
-this.authService.checkVerify(ev.target.value,this.authService.Ids[0].value);
+
+
+if(ev.target.value==this.authService.loginbyid.verify_Code){
+  this.authService.checkVerify(ev.target.value,this.authService.Ids[0].value);
+  this.toast.success('the verfiy is successs');
+  this.router.navigate(['/auth/login']);
+}
+else{
+  this.toast.error('the verfiy is notsuccess ');
+}
+ }
+
+ resendcode(){
+  console.log(this.disable);
+ this.disable=true;
+ console.log(this.disable);
+
+
  }
 }
