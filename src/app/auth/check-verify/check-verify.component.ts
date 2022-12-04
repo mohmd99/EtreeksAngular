@@ -14,8 +14,8 @@ export class CheckVerifyComponent implements OnInit {
  disable:boolean=false;
   ngOnInit(): void {
     setTimeout(() => {
-      this.resendcode();
-    },10000);
+     this.disable=true;
+    },60000);
 
     this.authService.getloginbyid(this.authService.Ids[0].value);
 
