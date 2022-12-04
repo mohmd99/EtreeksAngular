@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class CheckVerifyComponent implements OnInit {
 
   constructor(private authService:AuthService) { }
- disable:boolean=false;
+ disable:boolean=true;
   ngOnInit(): void {
     this.authService.getloginbyid(this.authService.Ids[0].value);
     setTimeout(() => {
