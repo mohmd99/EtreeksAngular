@@ -173,7 +173,9 @@
                     <div class="col-md-3" *ngFor="let item of this.studentService.trainersbycourse">
                         <div class="course-box shop-wrapper">
                             <div class="image-wrap entry">
-                                <img src="../../assets/assets_template/upload/shop_01.jpg" alt="" class="img-responsive">
+                                <!-- *ngIf="item.image!=null" -->
+                                <img *ngIf="item.image!=null" src="../../assets/images/{{item.image}}"  class="img-responsive">
+                                <img *ngIf="item.image==null" src="../../assets/admin_assests/assets/img/l60Hf.png" alt="" class="img-responsive"> 
                                 <div class="magnifier">
                                     <a href="shop-single.html" title=""><i class="flaticon-add"></i></a>
                                 </div>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { StudentService } from './student.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class GeneralService {
   allcategories:any=[{}];
   coursesbycategory:any=[{}];
 
-  constructor( private toaster:ToastrService,private spinner:NgxSpinnerService,private http:HttpClient ) { }
+  constructor(private studentService:StudentService, private toaster:ToastrService,private spinner:NgxSpinnerService,private http:HttpClient ) { }
 
   GetHomeInfo(){
 
@@ -44,6 +45,10 @@ export class GeneralService {
   }
 
   GetCourseById(id:number){
+
+    // this.studentService.GetTrainerByCourseId(id);
+    // console.log(this.studentService.trainersbycourse);
+
     this.spinner.show();
     this.http.get("https://localhost:44343/api/CRUDCourse/getbyid/"+id).subscribe((res:any)=>{
       this.retreavedCourse=res;

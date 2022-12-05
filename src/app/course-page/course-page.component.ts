@@ -13,7 +13,8 @@ export class CoursePageComponent implements OnInit {
   constructor( public generalServise:GeneralService,public studentService:StudentService ) { }
 
   ngOnInit(): void {
-    this.studentService.GetTrainerByCourseId(this.generalServise.retreavedCourse.id);
+    
+   
   }
 
 
