@@ -9,8 +9,8 @@ import { ToastrService } from 'ngx-toastr';
 export class StudentService {
 
   constructor( private toaster:ToastrService,private spinner:NgxSpinnerService,private http:HttpClient) { }
-  
-  
+
+
   AllUser:any=[{}];
   AllTrainerCourse:any=[{}];
   display_image_user:any;
@@ -51,7 +51,7 @@ export class StudentService {
       console.log(resp);
       this.AllUser=resp
       this.spinner.hide();
-  
+
     }, err => {
       this.spinner.hide();
       this.toaster.error(err.message, err.status);
@@ -91,18 +91,18 @@ export class StudentService {
   "#105652",
   "#694E4E"
     ]
-  
+
     color:any="";
   getuserbyid(id:number){
     this.http.get('https://localhost:44343/api/CRUDuser/Getbyid/'+id).subscribe((resp) => {
       console.log(resp);
       this.userbyid=resp
-  
+
       this.color=this.Colors[this.userbyid.last_Name.toUpperCase().charCodeAt(0)-65]
       console.log(this.color);
-  
+
       this.spinner.hide();
-  
+
     }, err => {
       this.spinner.hide();
       this.toaster.error(err.message, err.status);
@@ -113,7 +113,7 @@ export class StudentService {
     this.http.post('https://localhost:44343/api/user/uploadImage', file).subscribe((resp: any) => {
       this.display_image_user = resp.image;
       console.log(this.display_image_user);
-  
+
     }, err => {
       this.toaster.error('Can not Upload Image');
       console.log(err);
@@ -124,12 +124,12 @@ export class StudentService {
       console.log("loginuserbyid id = "+id.toString());
       console.log("loginuserbyid = "+resp);
       this.loginuserbyid=resp
-  
+
       this.color=this.Colors[this.userbyid.last_Name.toUpperCase().charCodeAt(0)-65]
       console.log(this.color);
-  
+
       this.spinner.hide();
-  
+
     }, err => {
       this.spinner.hide();
       this.toaster.error(err.message, err.status);
@@ -141,8 +141,21 @@ export class StudentService {
     this.spinner.show();
     this.http.get('https://localhost:44343/api/CRUDtrainercourse').subscribe((resp)=>{
       console.log(resp);
-      
+
       this.AllTrainerCourse=resp;
+      this.spinner.hide();
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message , err.status);
+    })
+  }
+  trainersbycourse:any;
+  GetTrainerByCourseId(course_id:number){
+    this.spinner.show();
+    this.http.get('https://localhost:44343/api/trainercourse/GetTrainerByCourseId/'+course_id).subscribe((resp)=>{
+      console.log(resp);
+
+      this.trainersbycourse=resp;
       this.spinner.hide();
     },err=>{
       this.spinner.hide();

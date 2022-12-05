@@ -18,8 +18,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    debugger
     
+    console.log(this.authService.data.ID);
     this.adminService.getuserbyid(this.authService.data.ID);
     this.teacherService.getloginuserbyid(this.authService.data.ID);
   }

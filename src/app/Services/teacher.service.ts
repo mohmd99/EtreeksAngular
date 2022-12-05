@@ -258,5 +258,39 @@ export class TeacherService {
       this.toaster.error(err.message,err.status);
     });
   }
+  Traineruserbyid:any;
+getTraineruserbyid(id:number){
 
+  this.http.get("https://localhost:44343/api/Trainer/getTrainerUser/"+id).subscribe((res:any)=>{
+    this.Traineruserbyid=res;
+    console.log(res);
+
+
+  },err=>{
+
+    this.toaster.error(err.message,err.status);
+  });
+}
+createtrainercourse(body:any){
+  this.spinner.show();
+  this.http.post('https://localhost:44343/api/CRUDtrainercourse/',body).subscribe((resp)=>{
+    this.spinner.hide();
+    this.toaster.success('Created Successfully !!');
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  })
+}
+deleteTrainerCourse(id:number){
+  this.spinner.show();
+
+this.http.delete('https://localhost:44343/api/CRUDAvailableTime/Delete/'+id).subscribe((resp)=>{
+  this.spinner.hide();
+    this.toaster.success('Deleted Successfully !!');
+},err=>{
+  this.spinner.hide();
+  this.toaster.error(err.message, err.status);
+})
+
+}
 }

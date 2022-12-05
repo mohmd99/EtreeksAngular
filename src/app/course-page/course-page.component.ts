@@ -1,3 +1,4 @@
+import { StudentService } from 'src/app/Services/student.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { GeneralService } from '../Services/general.service';
 
@@ -9,11 +10,12 @@ import { GeneralService } from '../Services/general.service';
 export class CoursePageComponent implements OnInit {
 
 
-  constructor( public generalServise:GeneralService ) { }
+  constructor( public generalServise:GeneralService,public studentService:StudentService ) { }
 
   ngOnInit(): void {
+    this.studentService.GetTrainerByCourseId(this.generalServise.retreavedCourse.id);
   }
 
- 
+
 
 }

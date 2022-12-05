@@ -13,24 +13,59 @@ import { TeacherService } from 'src/app/Services/teacher.service';
 })
 export class SelectCourseComponent implements OnInit {
 
-  @ViewChild('CreateTimeDialoug') callCreateTime!:TemplateRef<any>;
-  @ViewChild('DeleteDailog') callDeleteTime!:TemplateRef<any>;
+  @ViewChild('CreateTimeDialoug') callCreate!:TemplateRef<any>;
+  @ViewChild('DeleteDailog') callDelete!:TemplateRef<any>;
   createForm:FormGroup=new FormGroup
   ({
+    course_Id:new FormControl(),
     trainer_Id:new FormControl(),
-    start_Date:new FormControl('',Validators.required),
-    end_Date:new FormControl('',Validators.required)
-    
+
+
   });
 
   constructor(public dialog:MatDialog,public generalService :GeneralService,public adminService:AdminService,private authService:AuthService,public teacherService:TeacherService) { }
 
   ngOnInit(): void {
     this.teacherService.GetCourses(this.authService.data.ID);
+    this.teacherService.getTraineruserbyid(Number(this.authService.data.ID));
+
+
   }
 
-  OpenCreateDialouge(){}
-  openDeleteDailog(id:number){}
-  SaveData(){}
+
+  OpenCreateDialouge(){
+
+
+     this.generalService.getCoursesbyCategoryId(this.teacherService.Traineruserbyid[0].cat_Id);
+
+    console.log(this.generalService.coursesbycategory);
+    this.dialog.open(this.callCreate);
+  }
+  openDeleteDailog(id:number){
+    const dialogRef=  this.dialog.open(this.callDelete);
+    dialogRef.afterClosed().subscribe((result)=>{
+      if(result!=undefined)
+      {
+        if(result=='yes')
+        {
+          console.log(id);
+
+
+          this.teacherService.deleteTrainerCourse(id);
+        }
+
+          else if(result=='no')
+          console.log('thank you ');
+
+      }
+    })
+  }
+  SaveData(){
+
+
+    this.createForm.controls['trainer_Id'].setValue(this.teacherService.Traineruserbyid[0].id);
+    console.log(this.createForm.value);
+    this.teacherService.createtrainercourse(this.createForm.value)
+  }
 
 }

@@ -27,7 +27,7 @@ export class HomeStudentComponent implements OnInit {
     this.generalServise.GetAllCourses();
     this.generalServise.getAllCategory();
     this.adminService.getTestimonial();
-    this.studentService.GetTrainerCourse();
+  
 
     this.studentService.getuserbyid(this.authService.data.ID);
   }
