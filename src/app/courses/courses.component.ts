@@ -21,8 +21,7 @@ export class CoursesComponent implements OnInit {
    
   }
   ShowCourse(id:number){
-    this.studentService.GetTrainerByCourseId(id);
-    console.log(this.studentService.trainersbycourse);
+ 
     this.generalService.GetCourseById(id);    
     
     this.router.navigate(['Course']);

@@ -180,6 +180,8 @@
                                     <a href="shop-single.html" title=""><i class="flaticon-add"></i></a>
                                 </div>
                             </div>
+
+        
                             <!-- end image-wrap -->
                             <div class="course-details shop-box text-center">
                                 <h4>
@@ -191,15 +193,11 @@
                             <div class="course-footer clearfix">
                                 <div class="pull-left">
                                     <ul class="list-inline">
-                                        <li><a href="#"><i class="fa fa-shopping-basket"></i> Add Cart</a></li>
+                                        <li><a (click)="OpenCreateDialouge(item)" ><i class="bi bi-bookmark-plus"></i> Book apointment </a></li>
                                     </ul>
                                 </div><!-- end left -->
 
-                                <div class="pull-right">
-                                    <ul class="list-inline">
-                                        <li><a href="#">$441.00</a></li>
-                                    </ul>
-                                </div><!-- end left -->
+                                
                             </div><!-- end footer -->
                         </div><!-- end box -->
                     </div><!-- end col -->
@@ -212,4 +210,72 @@
 </section>
 
 <app-footer></app-footer>
+
+
+
+
+<ng-template #CreateReservationDialoug >
+
+
+    <div class="card" >
+
+        <div class="card-content collapse show">
+            <div class="card-body">
+                <h3>{{trainer.first_Name}}</h3>
+                <h3>{{trainer.last_Name}}</h3>
+                <h5>{{location.lat}}  {{location.lng}}</h5>
+               
+                    <iframe 
+                    width="300" 
+                    height="200" 
+                    frameborder="0" 
+                    scrolling="no" 
+                    marginheight="0" 
+                    marginwidth="0" 
+                    src='https://www.google.com/maps/embed/v1/place?&q={{location.lat}}+{{location.lng}}&zoom=10&key=AIzaSyAVn6ea2iJcMq9Wp0pKGlr3RpA8SVK1MCM&maptype=roadmap'
+                    >
+                </iframe>
+
+                    
+                       
+                       
+
+
+
+
+                <h3>Add Secion</h3>
+                <form class="form" [formGroup]="createForm">
+                    <div class="form-body">
+
+                        <div class="form-group">
+                            <label for="issueinput1">Start Date</label>
+                            <input type="datetime-local" matInput formControlName="start_Date"   id="issueinput1" class="form-control" placeholder="issue title"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Issue Title">
+                            <mat-error *ngIf="createForm.controls['start_Date'].hasError('required')" >  </mat-error>
+                        </div>
+
+
+
+                        <div class="row">
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-actions">
+                        <button mat-dialog-close type="reset" class="btn btn-warning mr-1">
+                            <i class="feather icon-x"></i> Cancel
+                        </button>
+                        <button  [mat-dialog-close]="true" (click)="SaveData()" style="margin-left:20px" type="submit" class="btn btn-primary">
+                            <i class="fa fa-check-square-o"></i> Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</ng-template>
 
