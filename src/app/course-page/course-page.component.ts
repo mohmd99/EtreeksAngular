@@ -3,6 +3,7 @@ import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core'
 import { GeneralService } from '../Services/general.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import nextDay from 'date-fns/nextDay';
 
 @Component({
   selector: 'app-course-page',
@@ -29,6 +30,7 @@ export class CoursePageComponent implements OnInit {
   }
 
   // temp="{\"lat\":32.0453809970146,\"lng\":36.10676384863419}";
+  loook:any;
   location:any={};
   trainer:any;
    googlemapSource = "https://www.google.com/maps/embed/v1/place?&q=";
@@ -40,12 +42,14 @@ export class CoursePageComponent implements OnInit {
     let lctn= JSON.parse(item.location); 
     console.log(lctn); 
     this.location=lctn;
+    
     this.googlemapSource+=lctn.lat.toString();
-    this.googlemapSource+="+";
+    this.googlemapSource+=",";
     this.googlemapSource+=lctn.lng.toString();
-    this.googlemapSource+="&zoom=10&key=AIzaSyAVn6ea2iJcMq9Wp0pKGlr3RpA8SVK1MCM&maptype=roadmap";
+    this.googlemapSource+="&zoom=12&key=AIzaSyAVn6ea2iJcMq9Wp0pKGlr3RpA8SVK1MCM&maptype=roadmap";
     console.log( this.googlemapSource); 
     this.dialog.open(this.callCreateReservation);
+    this.loook="https://www.google.com/maps/embed/v1/place?&q="+this.location.lat+","+this.location.lng+"&zoom=12&key=AIzaSyAVn6ea2iJcMq9Wp0pKGlr3RpA8SVK1MCM&maptype=roadmap"; 
 
     //console.log(this.createForm.value)
 
