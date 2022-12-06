@@ -223,8 +223,8 @@
             <div class="card-body">
                 <h3>{{trainer.first_Name}}</h3>
                 <h3>{{trainer.last_Name}}</h3>
-                <h5>{{location.lat}}  {{location.lng}}</h5>
-               
+                <!-- <h5>{{this.teacherService.AvailableTimes[0].start_Date}}  </h5> -->
+
                     <iframe id="frame"
                     width="300" 
                     height="200" 
@@ -257,6 +257,14 @@
 
                         <div class="row">
 
+                        </div>
+                        <div class="form-group">
+                            <label for="issueinput5">Category</label>
+                            <select type="number"  matInput formControlName="id" id="issueinput5"  class="form-control" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Priority">
+                              <option *ngFor="let option of this.av">{{option.start_Date}}  {{option.end_Date}}</option>
+                          </select>
+    
+                            <mat-error *ngIf="createForm.controls['cat_Id'].hasError('required')" >  </mat-error>
                         </div>
 
 

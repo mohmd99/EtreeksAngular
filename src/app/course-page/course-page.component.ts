@@ -3,7 +3,7 @@ import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core'
 import { GeneralService } from '../Services/general.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import nextDay from 'date-fns/nextDay';
+import { TeacherService } from '../Services/teacher.service';
 
 @Component({
   selector: 'app-course-page',
@@ -22,7 +22,7 @@ export class CoursePageComponent implements OnInit {
   });
 
 
-  constructor(public dialog:MatDialog, public generalServise:GeneralService,public studentService:StudentService ) { }
+  constructor(public teacherService:TeacherService,public dialog:MatDialog, public generalServise:GeneralService,public studentService:StudentService ) { }
 
   ngOnInit(): void {
     
@@ -34,9 +34,11 @@ export class CoursePageComponent implements OnInit {
   location:any={};
   trainer:any;
    googlemapSource = "https://www.google.com/maps/embed/v1/place?&q=";
-
+   av:any =this.teacherService.AvailableTimes;
   OpenCreateDialouge(item:any)
   {
+    this.teacherService.GetAllTimes(item.user_Id);
+    
     this.trainer=item;
     console.log(item.location) 
     let lctn= JSON.parse(item.location); 
@@ -50,8 +52,11 @@ export class CoursePageComponent implements OnInit {
     console.log( this.googlemapSource); 
     this.dialog.open(this.callCreateReservation);
     this.loook="https://www.google.com/maps/embed/v1/place?&q="+this.location.lat+","+this.location.lng+"&zoom=12&key=AIzaSyAVn6ea2iJcMq9Wp0pKGlr3RpA8SVK1MCM&maptype=roadmap"; 
-
+    
     //console.log(this.createForm.value)
+    console.log(this.av);
+    
+    
 
   }
 
