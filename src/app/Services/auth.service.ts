@@ -21,6 +21,8 @@ export class AuthService {
       email:email.value.toString(),
       password: password.value.toString()
     }
+    this.getloginbyemail(body.email);
+    this.getloginbyid(this.login_id);
     const headerDic={
       'Content-Type' :'application/json',
       'Accept':'application/json'
@@ -42,10 +44,22 @@ export class AuthService {
       {
           this.teacherService.getTraineruserbyid(this.data.ID);
       this.router.navigate(['teacher/home']);
-      }
+    }
 
-      else if (this.data.Roleid =='3')
+      else if (this.data.Roleid =='3'){
+        debugger;
+        if(this.loginbyid.verify_Code==1){
+        
       this.router.navigate(['student/home']);
+    }
+       
+        else{
+          console.log(this.login_id);
+        
+          this.resendCode(this.login_id);
+
+        }
+      } 
     },err=>{
       this.toastr.error(err.message,err.status);
     })
@@ -176,5 +190,17 @@ resendCode(id:number){
     this.router.navigate(['auth/selectverify'])
 
   })
+}
+login_id:any;
+getloginbyemail(email:string){
+  this.http.get('https://localhost:44343/api/Login/GetIdByEmail/'+email).subscribe((resp) => {
+    console.log("loginuserbyid id = "+email);
+    console.log("loginuserbyid = "+resp);
+    this.login_id=resp
+
+  
+
+  }
+  )
 }
 }
