@@ -308,4 +308,36 @@ getReservationRequest(tr_id:number){
     this.toaster.error(err.message,err.status);
   });
 }
+updateReservation(body:any){
+  this.spinner.show();
+  this.http.put('https://localhost:44343/api/CRUDreservation/',body).subscribe((resp)=>{
+    this.spinner.hide();
+    this.toaster.success('updated Successfully !!');
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  })
+}
+deleteAvailabletime(id:number){
+  this.http.delete('https://localhost:44343/api/CRUDAvailableTime/Delete/'+id).subscribe((resp)=>{
+    this.spinner.hide();
+    this.toaster.success('updated Successfully !!');
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+});
+}
+sendEmailResrvation(id:number,status:any){
+  let body={
+
+   }
+   this.http.post('https://localhost:44343/api/reservation/SendEmail/'+id+'/'+status, body).subscribe((resp) => {
+     console.log(resp);
+
+   }, err => {
+     this.spinner.hide();
+     this.toaster.error(err.message, err.status);
+   }
+   )
+ }
 }

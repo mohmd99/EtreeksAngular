@@ -11,6 +11,8 @@ import { ProfileStudentComponent } from './profile-student/profile-student.compo
 import { CourseStudentComponent } from './course-student/course-student.component';
 import { AllcourseStudentComponent } from './allcourse-student/allcourse-student.component';
 import { CategoryStudentComponent } from './category-student/category-student.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { ReservationComponent } from './reservation/reservation.component';
 
 
 
@@ -23,13 +25,14 @@ import { CategoryStudentComponent } from './category-student/category-student.co
         CourseStudentComponent,
         AllcourseStudentComponent,
         CategoryStudentComponent,
-        
+        ReservationComponent,
+
     ],
     imports: [
         CommonModule,
         StudentRoutingModule,
-        SharedModule
-        
+        SharedModule,MatTabsModule
+
     ]
 })
 export class StudentModule { }
