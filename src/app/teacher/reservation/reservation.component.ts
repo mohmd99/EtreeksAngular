@@ -23,6 +23,7 @@ export class ReservationComponent implements OnInit {
     trainer_Course_Id:new FormControl()
 
   });
+
   ngOnInit(): void {
     debugger
     this.teacherService.getReservationRequest(this.teacherService.Traineruserbyid[0].id);
@@ -62,7 +63,7 @@ export class ReservationComponent implements OnInit {
 
           console.log(this.updateForm.value);
           this.teacherService.updateReservation(this.updateForm.value);
-          this.teacherService.deleteAvailabletime(obj.avaliable_time_id)
+          this.teacherService.updatestatus(obj.avaliable_time_id,1);
           if(this.updateForm.controls['status'].value!=null)
           this.teacherService.sendEmailResrvation(obj.loginid,this.updateForm.controls['status'].value);
         }
@@ -108,7 +109,7 @@ export class ReservationComponent implements OnInit {
 
           console.log(this.updateForm.value);
           this.teacherService.updateReservation(this.updateForm.value);
-          
+
           if(this.updateForm.controls['status'].value!=null)
           this.teacherService.sendEmailResrvation(obj.loginid,this.updateForm.controls['status'].value);
         }

@@ -340,4 +340,18 @@ sendEmailResrvation(id:number,status:any){
    }
    )
  }
+
+ updatestatus(id:number,status:any){
+  let body={
+
+}
+  this.http.put('https://localhost:44343/api/availabletime/update/'+id+'/'+status, body).subscribe((resp) => {
+    console.log(resp);
+
+  }, err => {
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  }
+  )
+ }
 }
