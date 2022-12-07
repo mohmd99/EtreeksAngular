@@ -16,22 +16,41 @@ export class CheckVerifyComponent implements OnInit {
     setTimeout(() => {
      this.disable=true;
     },60000);
-
+    
+    if(this.authService.login_id!=null){
+      this.authService.getloginbyid(this.authService.login_id);
+    }
+    else{
     this.authService.getloginbyid(this.authService.Ids[0].value);
-
+    }
   }
 
   checkverify(ev:any){
 
 
-if(ev.target.value==this.authService.loginbyid.verify_Code){
+
+  if(this.authService.login_id!=null){
+    if(ev.target.value==this.authService.loginbyid.verify_Code){
+    this.authService.checkVerify(ev.target.value,this.authService.login_id);
+    this.toast.success('the verfiy is successs');
+    this.router.navigate(['/auth/login']);
+  }
+  else{
+    this.toast.error('the verfiy is notsuccess ');
+  }
+  }
+  else{
+    if(ev.target.value==this.authService.loginbyid.verify_Code){
   this.authService.checkVerify(ev.target.value,this.authService.Ids[0].value);
   this.toast.success('the verfiy is successs');
-  this.router.navigate(['/auth/login']);
+  this.router.navigate(['/auth/login']);}
+  else{
+    this.toast.error('the verfiy is notsuccess ');
+  }
+
 }
-else{
-  this.toast.error('the verfiy is notsuccess ');
-}
+
+
  }
 
  resendcode(){
