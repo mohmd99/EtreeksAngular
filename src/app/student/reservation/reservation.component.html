@@ -1,8 +1,284 @@
 <app-navbar  [first_Name]="studentService.userbyid.first_Name" [last_Name]="studentService.userbyid.last_Name" [image]="studentService.userbyid.image"></app-navbar>
 <mat-tab-group>
-  <mat-tab label="First"> Content 1 </mat-tab>
-  <mat-tab label="Second"> Content 2 </mat-tab>
-  <mat-tab label="Third"> Content 3 </mat-tab>
+  <mat-tab>
+    
+    <ng-template mat-tab-label>
+        <span style="font-size: 20px;" class="tab-number">{{studentService.AcceptedReservation.length}}</span>
+        
+        <span class="tab-text">Accepted</span>
+      </ng-template>
+
+                    <div class="table-responsive" style="margin-top:15px" >
+                    <table style="    margin-top: 50px;
+                    width: 90%;" class="table align-items-center ">
+                        <thead>
+                            <tr>
+                              <th>
+                                Course
+                            </th>
+
+                                <th>
+                                    Start Date
+                                </th>
+
+
+                                <th>
+                                    End Date
+                                </th>
+                                <th>
+                                  Teacher
+                              </th>
+                              <th>
+                                Address Directions
+                            </th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of studentService.AcceptedReservation">
+                          <td class="w-30" >
+                            <div class="d-flex px-2 py-1 align-items-center">
+
+                                <div class="ms-4">
+
+                                <h6 class="text-sm mb-0">{{ item.coursE_NAME }}</h6>
+                                </div>
+                            </div>
+                            </td>
+
+                            <td class="w-30" >
+                            <div class="d-flex px-2 py-1 align-items-center">
+
+                                <div class="ms-4">
+
+                                <h6 class="text-sm mb-0">{{ item.start_Date |date:'medium' }}</h6>
+                                </div>
+                            </div>
+                            </td>
+
+                            <td class="w-30" >
+                                <div class="d-flex px-2 py-1 align-items-center">
+
+                                    <div class="ms-4">
+
+                                    <h6 class="text-sm mb-0">{{ item.end_Date |date:'medium' }}</h6>
+                                    </div>
+                                </div>
+                                </td>
+                                <td class="w-30" >
+                                  <div class="d-flex px-2 py-1 align-items-center">
+
+                                      <div class="ms-4">
+
+                                      <h6 class="text-sm mb-0">{{ item.first_Name  }} {{ item.last_Name  }}</h6>
+                                      </div>
+                                  </div>
+                                  </td>
+
+                                  <td class="w-30" >
+                                    <div class="d-flex px-2 py-1 align-items-center">
+  
+                                  <button style="font-weight: bold; cursor: pointer;" (click)="OpenLocation(item)"><i style="font-size: 18px;" class="bi bi-globe-central-south-asia"></i></button>
+                                        </div>
+                                        </td>
+
+
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
+       
+    
+  
+  </mat-tab>
+
+
+
+
+
+
+  <mat-tab > 
+     <ng-template mat-tab-label>
+    <span style="font-size: 20px;" class="tab-number">{{studentService.PendingReservation.length}}</span>
+    
+    <span class="tab-text">Pending</span>
+  </ng-template>
+
+                <div class="table-responsive" style="margin-top:15px" >
+                <table style="    margin-top: 50px;
+                width: 90%;" class="table align-items-center ">
+                    <thead>
+                        <tr>
+                          <th>
+                            Course
+                        </th>
+
+                            <th>
+                                Start Date
+                            </th>
+
+
+                            <th>
+                                End Date
+                            </th>
+                            <th>
+                              Teacher
+                          </th>
+                          <th>
+                            Address Directions
+                        </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of studentService.PendingReservation">
+                      <td class="w-30" >
+                        <div class="d-flex px-2 py-1 align-items-center">
+
+                            <div class="ms-4">
+
+                            <h6 class="text-sm mb-0">{{ item.coursE_NAME }}</h6>
+                            </div>
+                        </div>
+                        </td>
+
+                        <td class="w-30" >
+                        <div class="d-flex px-2 py-1 align-items-center">
+
+                            <div class="ms-4">
+
+                            <h6 class="text-sm mb-0">{{ item.start_Date |date:'medium' }}</h6>
+                            </div>
+                        </div>
+                        </td>
+
+                        <td class="w-30" >
+                            <div class="d-flex px-2 py-1 align-items-center">
+
+                                <div class="ms-4">
+
+                                <h6 class="text-sm mb-0">{{ item.end_Date |date:'medium' }}</h6>
+                                </div>
+                            </div>
+                            </td>
+                            <td class="w-30" >
+                              <div class="d-flex px-2 py-1 align-items-center">
+
+                                  <div class="ms-4">
+
+                                  <h6 class="text-sm mb-0">{{ item.first_Name  }} {{ item.last_Name  }}</h6>
+                                  </div>
+                              </div>
+                              </td>
+
+                              <td class="w-30" >
+                                <div class="d-flex px-2 py-1 align-items-center">
+
+                              <button style="font-weight: bold; cursor: pointer;" (click)="OpenLocation(item)"><i style="font-size: 18px;" class="bi bi-globe-central-south-asia"></i></button>
+                                    </div>
+                                    </td>
+
+
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+   
+ </mat-tab>
+
+
+
+
+
+
+  <mat-tab > 
+    <ng-template mat-tab-label>
+    <span style="font-size: 20px;" class="tab-number">{{studentService.RejectedReservations.length}}</span>
+    
+    <span class="tab-text">Rejected</span>
+  </ng-template>
+
+                <div class="table-responsive" style="margin-top:15px" >
+                <table style="    margin-top: 50px;
+                width: 90%;" class="table align-items-center ">
+                    <thead>
+                        <tr>
+                          <th>
+                            Course
+                        </th>
+
+                            <th>
+                                Start Date
+                            </th>
+
+
+                            <th>
+                                End Date
+                            </th>
+                            <th>
+                              Teacher
+                          </th>
+                          <th>
+                            Address Directions
+                        </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of studentService.RejectedReservations">
+                      <td class="w-30" >
+                        <div class="d-flex px-2 py-1 align-items-center">
+
+                            <div class="ms-4">
+
+                            <h6 class="text-sm mb-0">{{ item.coursE_NAME }}</h6>
+                            </div>
+                        </div>
+                        </td>
+
+                        <td class="w-30" >
+                        <div class="d-flex px-2 py-1 align-items-center">
+
+                            <div class="ms-4">
+
+                            <h6 class="text-sm mb-0">{{ item.start_Date |date:'medium' }}</h6>
+                            </div>
+                        </div>
+                        </td>
+
+                        <td class="w-30" >
+                            <div class="d-flex px-2 py-1 align-items-center">
+
+                                <div class="ms-4">
+
+                                <h6 class="text-sm mb-0">{{ item.end_Date |date:'medium' }}</h6>
+                                </div>
+                            </div>
+                            </td>
+                            <td class="w-30" >
+                              <div class="d-flex px-2 py-1 align-items-center">
+
+                                  <div class="ms-4">
+
+                                  <h6 class="text-sm mb-0">{{ item.first_Name  }} {{ item.last_Name  }}</h6>
+                                  </div>
+                              </div>
+                              </td>
+
+                              <td class="w-30" >
+                                <div class="d-flex px-2 py-1 align-items-center">
+
+                              <button style="font-weight: bold; cursor: pointer;" (click)="OpenLocation(item)"><i style="font-size: 18px;" class="bi bi-globe-central-south-asia"></i></button>
+                                    </div>
+                                    </td>
+
+
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+   
+ </mat-tab>
 </mat-tab-group>
 
 <app-footer></app-footer>

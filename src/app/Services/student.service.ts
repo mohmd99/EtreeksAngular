@@ -188,4 +188,44 @@ export class StudentService {
       this.toaster.error(err.message , err.status);
     })
   }
+
+  AvailableTimes:any;
+  GetAllTimes(teacher_id:number){
+    this.spinner.show();
+    this.http.get("https://localhost:44343/api/AvailableTime/GetByTrainer/"+teacher_id).subscribe((res:any)=>{
+      this.AvailableTimes=res;
+      this.AvailableTimes=this.AvailableTimes.filter((x:any) => x.status == null);
+
+    console.log(res) ;
+      this.spinner.hide();
+
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message,err.status);
+    });
+  }
+
+
+  // 
+  PendingReservation:any;
+  RejectedReservations:any;
+  AcceptedReservation:any;
+  AllReservations:any;
+  GetAllReservations(user_id:number){
+    this.spinner.show();
+    this.http.get("https://localhost:44343/api/reservation/getreservationbyuser/"+user_id).subscribe((res:any)=>{
+      this.AllReservations=res;
+      this.AcceptedReservation=this.AllReservations.filter((x:any) => x.status == 1);
+      this.PendingReservation=this.AllReservations.filter((x:any) => x.status == null);
+      this.RejectedReservations=this.AllReservations.filter((x:any) => x.status == 0);
+
+    console.log(res) ;
+      this.spinner.hide();
+
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message,err.status);
+    });
+  }
+
 }

@@ -258,7 +258,7 @@
                         <div class="form-group">
                             <label for="issueinput5">Lecture Period</label>
                             <select type="number"  matInput formControlName="avaliable_time_id"  id="issueinput5"  class="form-control" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Priority">
-                              <option *ngFor="let option of this.teacherService.AvailableTimes"[value]=option.id >{{option.start_Date|date:'medium'}}  {{option.end_Date|date:'medium'}}</option>
+                              <option *ngFor="let option of this.studentService.AvailableTimes"[value]=option.id >{{option.start_Date|date:'medium'}}  {{option.end_Date|date:'medium'}}</option>
                           </select>
     
                              

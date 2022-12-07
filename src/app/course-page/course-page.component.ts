@@ -38,8 +38,12 @@ export class CoursePageComponent implements OnInit {
 
    OpenCreateDialouge(item:any)
   {
+
+
+
     console.log(item.user_Id) ;
-     this.teacherService.GetAllTimes(item.user_Id);
+     this.studentService.GetAllTimes(item.user_Id);
+     
 
 
     this.trainer=item;
@@ -56,7 +60,7 @@ export class CoursePageComponent implements OnInit {
    // this.loook="https://www.google.com/maps/embed/v1/place?&q="+this.location.lat+","+this.location.lng+"&zoom=12&key=AIzaSyAVn6ea2iJcMq9Wp0pKGlr3RpA8SVK1MCM&maptype=roadmap";
 
     //console.log(this.createForm.value)
-    console.log(this. teacherService.AvailableTimes);
+    console.log(this. studentService.AvailableTimes);
 
     this.studentService.get_TrainerCourseID(item.id,this.generalServise.retreavedCourse.id);
 
