@@ -1,3 +1,4 @@
+import { ReservationComponent } from './reservation/reservation.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutTeacherComponent } from './about-teacher/about-teacher.component';
@@ -30,6 +31,9 @@ const routes: Routes = [{
 {
   path:'Courses',
   component:SelectCourseComponent
+},{
+  path:'reservation',
+  component:ReservationComponent
 }
 ];
 

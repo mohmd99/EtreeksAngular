@@ -1,0 +1,106 @@
+<div style="height: 20px;"></div>
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-1">
+            <app-bar [first_Name]="adminService.userbyid.first_Name" [last_Name]="adminService.userbyid.last_Name" [image]="adminService.userbyid.image" [color]="this.adminService.color"></app-bar>
+        </div>
+
+        <div class="col-md-11">
+            <div >
+                <div class="col-lg-11 mb-lg-11 mb-11" style="margin-left: 50px;">
+                <div class="card ">
+                    <div class="card-header pb-0 p-3">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="customtabletitle">Reservation Requests</h6>
+                       
+                    </div>
+                    </div>
+                    <div class="table-responsive" style="margin-top:15px" >
+                    <table class="table align-items-center ">
+                        <thead>
+                            <tr>
+                              <th>
+                                User
+                            </th>
+
+                                <th>
+                                    Start Date
+                                </th>
+
+
+                                <th>
+                                    End Date
+                                </th>
+                                <th>
+                                  Course Name
+                              </th>
+                                <th>
+                                    Manage
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of teacherService.reservationRequest">
+                          <td class="w-30" >
+                            <div class="d-flex px-2 py-1 align-items-center">
+
+                                <div class="ms-4">
+
+                                <h6 class="text-sm mb-0">{{ item.first_Name  }} {{ item.last_Name  }}</h6>
+                                </div>
+                            </div>
+                            </td>
+
+                            <td class="w-30" >
+                            <div class="d-flex px-2 py-1 align-items-center">
+
+                                <div class="ms-4">
+
+                                <h6 class="text-sm mb-0">{{ item.start_Date |date:'medium' }}</h6>
+                                </div>
+                            </div>
+                            </td>
+
+                            <td class="w-30" >
+                                <div class="d-flex px-2 py-1 align-items-center">
+
+                                    <div class="ms-4">
+
+                                    <h6 class="text-sm mb-0">{{ item.end_Date |date:'medium' }}</h6>
+                                    </div>
+                                </div>
+                                </td>
+                                <td class="w-30" >
+                                  <div class="d-flex px-2 py-1 align-items-center">
+
+                                      <div class="ms-4">
+
+                                      <h6 class="text-sm mb-0">{{ item.coursE_NAME }}</h6>
+                                      </div>
+                                  </div>
+                                  </td>
+
+                                <td   *ngIf="item.status==null">
+                                  <i  class="bi bi-check-square text-success" style="margin-right: 15px; cursor: pointer; font-size: x-large; " (click)="openAcceptDailog(item)"></i>  <i class="bi bi-x-square text-danger" style=" cursor: pointer;  font-size: x-large;" (click)="openRejectDailog(item)"></i>
+                                </td>
+                                <td *ngIf="item.status==1">Accept</td>
+                                <td *ngIf="item.status==0">Reject</td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+

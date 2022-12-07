@@ -210,7 +210,7 @@ export class TeacherService {
     this.spinner.show();
     this.http.get("https://localhost:44343/api/AvailableTime/GetByTrainer/"+teacher_id).subscribe((res:any)=>{
       this.AvailableTimes=res;
-      
+
     console.log(res) ;
       this.spinner.hide();
 
@@ -294,5 +294,18 @@ this.http.delete('https://localhost:44343/api/CRUDAvailableTime/Delete/'+id).sub
   this.toaster.error(err.message, err.status);
 })
 
+}
+reservationRequest:any
+getReservationRequest(tr_id:number){
+
+  this.http.get("https://localhost:44343/api/reservation/getreservation/"+tr_id).subscribe((res:any)=>{
+    this.reservationRequest=res;
+    console.log(res);
+
+
+  },err=>{
+
+    this.toaster.error(err.message,err.status);
+  });
 }
 }
