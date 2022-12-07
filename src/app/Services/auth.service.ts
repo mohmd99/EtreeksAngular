@@ -44,25 +44,22 @@ export class AuthService {
       {
           this.teacherService.getTraineruserbyid(this.data.ID);
       this.router.navigate(['teacher/home']);
+    }
 
       else if (this.data.Roleid =='3'){
         debugger;
         if(this.loginbyid.verify_Code==1){
-
-      }
-
-      else if (this.data.Roleid =='3')
-
+        
       this.router.navigate(['student/home']);
-        }
+    }
+       
         else{
           console.log(this.login_id);
         
-          this.toastr.error("the account is not verfiy");
           this.resendCode(this.login_id);
 
         }
-      }
+      } 
     },err=>{
       this.toastr.error(err.message,err.status);
     })
