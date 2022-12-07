@@ -4,6 +4,7 @@ import { GeneralService } from '../Services/general.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TeacherService } from '../Services/teacher.service';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-course-page',
@@ -15,14 +16,14 @@ export class CoursePageComponent implements OnInit {
 
   createForm:FormGroup=new FormGroup
   ({
-    trainer_Id:new FormControl(),
-    start_Date:new FormControl('',Validators.required),
-    end_Date:new FormControl('',Validators.required)
+    trainer_Course_Id:new FormControl(),
+    user_Id:new FormControl(),
+    avaliable_time_id:new FormControl(),
     
   });
 
 
-  constructor(public teacherService:TeacherService,public dialog:MatDialog, public generalServise:GeneralService,public studentService:StudentService ) { }
+  constructor(private authService:AuthService ,public teacherService:TeacherService,public dialog:MatDialog, public generalServise:GeneralService,public studentService:StudentService ) { }
 
   ngOnInit(): void {
     
@@ -34,11 +35,13 @@ export class CoursePageComponent implements OnInit {
   location:any={};
   trainer:any;
    googlemapSource = "https://www.google.com/maps/embed/v1/place?&q=";
-   av:any =this.teacherService.AvailableTimes;
-  OpenCreateDialouge(item:any)
+   
+   OpenCreateDialouge(item:any)
   {
-    this.teacherService.GetAllTimes(item.user_Id);
-    
+    console.log(item.user_Id) ;
+     this.teacherService.GetAllTimes(item.user_Id);
+
+   
     this.trainer=item;
     console.log(item.location) 
     let lctn= JSON.parse(item.location); 
@@ -50,17 +53,27 @@ export class CoursePageComponent implements OnInit {
     this.googlemapSource+=lctn.lng.toString();
     this.googlemapSource+="&zoom=12&key=AIzaSyAVn6ea2iJcMq9Wp0pKGlr3RpA8SVK1MCM&maptype=roadmap";
     console.log( this.googlemapSource); 
-    this.dialog.open(this.callCreateReservation);
-    this.loook="https://www.google.com/maps/embed/v1/place?&q="+this.location.lat+","+this.location.lng+"&zoom=12&key=AIzaSyAVn6ea2iJcMq9Wp0pKGlr3RpA8SVK1MCM&maptype=roadmap"; 
+   // this.loook="https://www.google.com/maps/embed/v1/place?&q="+this.location.lat+","+this.location.lng+"&zoom=12&key=AIzaSyAVn6ea2iJcMq9Wp0pKGlr3RpA8SVK1MCM&maptype=roadmap"; 
     
     //console.log(this.createForm.value)
-    console.log(this.av);
-    
+    console.log(this. teacherService.AvailableTimes);
+
+    this.studentService.get_TrainerCourseID(item.id,this.generalServise.retreavedCourse.id);
     
 
+    this.dialog.open(this.callCreateReservation);
+   
   }
 
   SaveData(){
+
+
+    this.createForm.controls['user_Id'].setValue(Number(this.authService.data.ID));
+    this.createForm.controls['trainer_Course_Id'].setValue(Number(this.studentService.trainersbycourseID.id));
+
+    console.log(this.createForm.value);
+    this.createForm.controls['avaliable_time_id'].setValue(Number( this.createForm.controls['avaliable_time_id'].value))
+    this.studentService.createReservation(this.createForm.value);
 
 
   

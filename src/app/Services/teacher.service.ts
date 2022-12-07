@@ -210,6 +210,8 @@ export class TeacherService {
     this.spinner.show();
     this.http.get("https://localhost:44343/api/AvailableTime/GetByTrainer/"+teacher_id).subscribe((res:any)=>{
       this.AvailableTimes=res;
+      
+    console.log(res) ;
       this.spinner.hide();
 
     },err=>{

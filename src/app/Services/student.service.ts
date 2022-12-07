@@ -150,12 +150,38 @@ export class StudentService {
     })
   }
   trainersbycourse:any;
+  trainersbycourseID:any;
   GetTrainerByCourseId(course_id:number){
     this.spinner.show();
     this.http.get('https://localhost:44343/api/trainercourse/GetTrainerByCourseId/'+course_id).subscribe((resp)=>{
       console.log(resp);
 
       this.trainersbycourse=resp;
+      this.spinner.hide();
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message , err.status);
+    })
+  }
+
+  get_TrainerCourseID(c_id:number,t_id:number){
+    this.spinner.show();
+    this.http.get('https://localhost:44343/api/trainercourse/GetIdTrainerCourse/'+c_id+'/'+t_id).subscribe((resp)=>{
+      console.log(resp);
+
+      this.trainersbycourseID=resp;
+      this.spinner.hide();
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message , err.status);
+    })
+  }
+  createReservation(body:any){
+    
+    this.spinner.show();
+    this.http.post('https://localhost:44343/api/CRUDReservation/',body).subscribe((resp)=>{
+      console.log(resp);
+      this.toaster.success("Please wait for the trainer acceptance","the initial reservation done succesfuly!!")
       this.spinner.hide();
     },err=>{
       this.spinner.hide();

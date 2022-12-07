@@ -220,12 +220,15 @@
     <div class="card" >
 
         <div class="card-content collapse show">
+            <a style="    float: right;
+            font-weight: bold;" href="https://www.google.com/maps/?q={{location.lat}},{{location.lng}}" target="_blank"><i style="font-size: 18px;" class="bi bi-globe-central-south-asia"></i>  Address</a>
+
             <div class="card-body">
-                <h3>{{trainer.first_Name}}</h3>
-                <h3>{{trainer.last_Name}}</h3>
+                <h3>{{trainer.first_Name}} {{trainer.last_Name}}</h3>
+             
                 <!-- <h5>{{this.teacherService.AvailableTimes[0].start_Date}}  </h5> -->
 
-                    <iframe id="frame"
+                    <!-- <iframe id="frame"
                     width="300" 
                     height="200" 
                     frameborder="0" 
@@ -234,7 +237,7 @@
                     marginwidth="0"                    
                     src={{loook}} 
                                         >
-                </iframe>
+                </iframe> -->
 
                     
                 <!-- src="https://www.google.com/maps/embed/v1/place?&q={{location.lat}},{{location.lng}}&zoom=10&key=AIzaSyAVn6ea2iJcMq9Wp0pKGlr3RpA8SVK1MCM&maptype=roadmap"  -->
@@ -243,15 +246,9 @@
 
 
 
-                <h3>Add Secion</h3>
+                
                 <form class="form" [formGroup]="createForm">
                     <div class="form-body">
-
-                        <div class="form-group">
-                            <label for="issueinput1">Start Date</label>
-                            <input type="datetime-local" matInput formControlName="start_Date"   id="issueinput1" class="form-control" placeholder="issue title"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Issue Title">
-                            <mat-error *ngIf="createForm.controls['start_Date'].hasError('required')" >  </mat-error>
-                        </div>
 
 
 
@@ -259,12 +256,12 @@
 
                         </div>
                         <div class="form-group">
-                            <label for="issueinput5">Category</label>
-                            <select type="number"  matInput formControlName="id" id="issueinput5"  class="form-control" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Priority">
-                              <option *ngFor="let option of this.av">{{option.start_Date}}  {{option.end_Date}}</option>
+                            <label for="issueinput5">Lecture Period</label>
+                            <select type="number"  matInput formControlName="avaliable_time_id"  id="issueinput5"  class="form-control" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Priority">
+                              <option *ngFor="let option of this.teacherService.AvailableTimes"[value]=option.id >{{option.start_Date|date:'medium'}}  {{option.end_Date|date:'medium'}}</option>
                           </select>
     
-                            <mat-error *ngIf="createForm.controls['cat_Id'].hasError('required')" >  </mat-error>
+                             
                         </div>
 
 
