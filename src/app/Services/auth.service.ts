@@ -31,7 +31,7 @@ export class AuthService {
       headers: new HttpHeaders(headerDic)
     }
     this.http.post('https://localhost:44343/api/Jwt/',body,requestOptions).subscribe((resp:any)=>{
-      
+
       const responce={
         token :resp.toString()
       }
@@ -41,11 +41,18 @@ export class AuthService {
       if(this.data.Roleid =='1')
       this.router.navigate(['admin']);
       else if (this.data.Roleid =='2')
-
+      {
+          this.teacherService.getTraineruserbyid(this.data.ID);
       this.router.navigate(['teacher/home']);
+
       else if (this.data.Roleid =='3'){
         debugger;
         if(this.loginbyid.verify_Code==1){
+
+      }
+
+      else if (this.data.Roleid =='3')
+
       this.router.navigate(['student/home']);
         }
         else{

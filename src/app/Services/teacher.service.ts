@@ -210,7 +210,7 @@ export class TeacherService {
     this.spinner.show();
     this.http.get("https://localhost:44343/api/AvailableTime/GetByTrainer/"+teacher_id).subscribe((res:any)=>{
       this.AvailableTimes=res;
-      
+
     console.log(res) ;
       this.spinner.hide();
 
@@ -295,4 +295,63 @@ this.http.delete('https://localhost:44343/api/CRUDAvailableTime/Delete/'+id).sub
 })
 
 }
+reservationRequest:any
+getReservationRequest(tr_id:number){
+
+  this.http.get("https://localhost:44343/api/reservation/getreservation/"+tr_id).subscribe((res:any)=>{
+    this.reservationRequest=res;
+    console.log(res);
+
+
+  },err=>{
+
+    this.toaster.error(err.message,err.status);
+  });
+}
+updateReservation(body:any){
+  this.spinner.show();
+  this.http.put('https://localhost:44343/api/CRUDreservation/',body).subscribe((resp)=>{
+    this.spinner.hide();
+    this.toaster.success('updated Successfully !!');
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  })
+}
+deleteAvailabletime(id:number){
+  this.http.delete('https://localhost:44343/api/CRUDAvailableTime/Delete/'+id).subscribe((resp)=>{
+    this.spinner.hide();
+    this.toaster.success('updated Successfully !!');
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+});
+}
+sendEmailResrvation(id:number,status:any){
+  let body={
+
+   }
+   this.http.post('https://localhost:44343/api/reservation/SendEmail/'+id+'/'+status, body).subscribe((resp) => {
+     console.log(resp);
+
+   }, err => {
+     this.spinner.hide();
+     this.toaster.error(err.message, err.status);
+   }
+   )
+ }
+
+ updatestatus(id:number,status:any){
+  let body={
+
+}
+  this.http.put('https://localhost:44343/api/availabletime/update/'+id+'/'+status, body).subscribe((resp) => {
+    console.log(resp);
+
+  }, err => {
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  }
+  )
+ }
 }

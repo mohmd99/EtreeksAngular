@@ -75,5 +75,8 @@ export class NavbarComponent implements OnInit {
   Logout(){
     this.router.navigate([''])
   }
-  
+  GoToreservation(){
+    this.router.navigate(['student/reservation'])
+  }
+
 }

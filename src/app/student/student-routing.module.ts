@@ -7,6 +7,7 @@ import { ContactStudentComponent } from './contact-student/contact-student.compo
 import { CourseStudentComponent } from './course-student/course-student.component';
 import { HomeStudentComponent } from './home-student/home-student.component';
 import { ProfileStudentComponent } from './profile-student/profile-student.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 const routes: Routes = [{
   path:'home',
@@ -31,6 +32,8 @@ const routes: Routes = [{
 {
   path:'profile',
   component:ProfileStudentComponent
+},{
+  path:'reservation',component:ReservationComponent
 }
 ];
 
