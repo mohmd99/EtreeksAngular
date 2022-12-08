@@ -22,7 +22,6 @@ export class AuthService {
       password: password.value.toString()
     }
     this.getloginbyemail(body.email);
-    this.getloginbyid(this.login_id);
     const headerDic={
       'Content-Type' :'application/json',
       'Accept':'application/json'
@@ -193,11 +192,13 @@ resendCode(id:number){
 }
 login_id:any;
 getloginbyemail(email:string){
+
+
   this.http.get('https://localhost:44343/api/Login/GetIdByEmail/'+email).subscribe((resp) => {
     console.log("loginuserbyid id = "+email);
     console.log("loginuserbyid = "+resp);
     this.login_id=resp
-
+  this.getloginbyid(this.login_id);
   
 
   }
