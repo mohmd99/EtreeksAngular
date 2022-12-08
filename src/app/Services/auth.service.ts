@@ -21,7 +21,9 @@ export class AuthService {
       email:email.value.toString(),
       password: password.value.toString()
     }
-    this.getloginbyemail(body.email);
+
+    this.getloginbyemail(email.value.toString());
+    
     const headerDic={
       'Content-Type' :'application/json',
       'Accept':'application/json'
@@ -29,6 +31,7 @@ export class AuthService {
     const requestOptions={
       headers: new HttpHeaders(headerDic)
     }
+
     this.http.post('https://localhost:44343/api/Jwt/',body,requestOptions).subscribe((resp:any)=>{
 
       const responce={
@@ -37,28 +40,39 @@ export class AuthService {
       localStorage.setItem('token',responce.token);
        this.data =jwt_decode(responce.token);
       localStorage.setItem('user',JSON.stringify({...this.data}));
-      if(this.data.Roleid =='1')
-      this.router.navigate(['admin']);
-      else if (this.data.Roleid =='2')
-      {
-          this.teacherService.getTraineruserbyid(this.data.ID);
-      this.router.navigate(['teacher/home']);
-    }
 
-      else if (this.data.Roleid =='3'){
-        debugger;
-        if(this.loginbyid.verify_Code==1){
+      this.spinner.show();
+      setTimeout(() => {
         
-      this.router.navigate(['student/home']);
-    }
-       
-        else{
-          console.log(this.login_id);
-        
-          this.resendCode(this.login_id);
 
-        }
-      } 
+        this.spinner.hide();
+        if(this.data.Roleid =='1')
+        this.router.navigate(['admin']);
+        else if (this.data.Roleid =='2')
+        {
+            this.teacherService.getTraineruserbyid(this.data.ID);
+        this.router.navigate(['teacher/home']);
+      }
+  
+  
+        else if (this.data.Roleid =='3'){
+          if(this.loginbyid.verify_Code==1){
+          
+        this.router.navigate(['student/home']);
+      }
+         
+          else{
+            console.log(this.login_id);
+          
+            this.resendCode(this.login_id);
+  
+          }
+        } 
+
+
+      },2000);
+
+     
     },err=>{
       this.toastr.error(err.message,err.status);
     })
@@ -197,7 +211,7 @@ getloginbyemail(email:string){
   this.http.get('https://localhost:44343/api/Login/GetIdByEmail/'+email).subscribe((resp) => {
     console.log("loginuserbyid id = "+email);
     console.log("loginuserbyid = "+resp);
-    this.login_id=resp
+    this.login_id=resp;
   this.getloginbyid(this.login_id);
   
 
