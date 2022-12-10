@@ -22,7 +22,9 @@ export class CoursesComponent implements OnInit {
   }
   ShowCourse(id:number){
  
-    this.generalService.GetCourseById(id);    
+    this.generalService.GetCourseById(id);  
+    
+
     
     this.router.navigate(['Course']);
 

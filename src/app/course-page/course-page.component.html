@@ -167,10 +167,25 @@
             <div class="related-products">
                 <div class="text-widget">
                     <h3>Related Products</h3>
+
+                    <div>
+                        <label style="    margin-left: 750px;
+                        margin-bottom: -26px;
+                        font-size: 18px;" for="example-text-input" class="form-control-label">City : </label>
+                        <select style="margin-bottom: 20px;width: 30%;margin-left: auto;"
+                        (change)="Filter($event)"   id="issueinput5"  class="form-control" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Priority">
+                            <option value="All">All</option>
+                            <option value="Amman">Amman</option>
+                            <option value="Irbid">Irbid</option>
+                            <option value="Zarqa">zarqa</option>
+                        </select>
+                    </div>
+
+
                 </div><!-- end title -->
 
                 <div class="row blog-grid shop-grid">
-                    <div class="col-md-3" *ngFor="let item of this.studentService.trainersbycourse">
+                    <div class="col-md-3" *ngFor="let item of FilteredTrainer">
                         <div class="course-box shop-wrapper">
                             <div class="image-wrap entry">
                                 <!-- *ngIf="item.image!=null" -->
@@ -221,7 +236,7 @@
 
         <div class="card-content collapse show">
             <a style="    float: right;
-            font-weight: bold;" href="https://www.google.com/maps/?q={{location.lat}},{{location.lng}}" target="_blank"><i style="font-size: 18px;" class="bi bi-globe-central-south-asia"></i>  Address</a>
+            font-weight: bold;" href="https://www.google.com/maps/?q={{trainer.location.lat}},{{trainer.location.lng}}" target="_blank"><i style="font-size: 18px;" class="bi bi-globe-central-south-asia"></i>  Address</a>
 
             <div class="card-body">
                 <h3>{{trainer.first_Name}} {{trainer.last_Name}}</h3>

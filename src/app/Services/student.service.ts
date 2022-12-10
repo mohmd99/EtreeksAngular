@@ -150,20 +150,37 @@ export class StudentService {
     })
   }
   trainersbycourse:any;
-  trainersbycourseID:any;
+ 
   GetTrainerByCourseId(course_id:number){
     this.spinner.show();
     this.http.get('https://localhost:44343/api/trainercourse/GetTrainerByCourseId/'+course_id).subscribe((resp)=>{
       console.log(resp);
 
       this.trainersbycourse=resp;
+      
+
+
+      this.trainersbycourse.forEach((element:any) => {
+        let lctn= JSON.parse(element.location);
+        
+        element.location=lctn;
+  
+        
+      });
+  
+      console.log(this.trainersbycourse);
+
+
+
+
+      
       this.spinner.hide();
     },err=>{
       this.spinner.hide();
       this.toaster.error(err.message , err.status);
     })
   }
-
+  trainersbycourseID:any;
   get_TrainerCourseID(c_id:number,t_id:number){
     this.spinner.show();
     this.http.get('https://localhost:44343/api/trainercourse/GetIdTrainerCourse/'+c_id+'/'+t_id).subscribe((resp)=>{
