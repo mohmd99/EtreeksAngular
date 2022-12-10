@@ -22,19 +22,19 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
+                    <p class="text-sm mb-0  font-weight-bold">Admin User</p>
                     <h5 class="font-weight-bolder">
-                      $53,000
+                      {{authService.adminuser.length }}
                     </h5>
                     <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">+55%</span>
-                      since yesterday
+                      <span class="text-success text-sm font-weight-bolder">User</span>
+
                     </p>
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="bi bi-person-gear"aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -47,19 +47,19 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
+                    <p class="text-sm mb-0  font-weight-bold">Teacher User</p>
                     <h5 class="font-weight-bolder">
-                      2,300
+                      {{authService.teacheruser.length }}
                     </h5>
                     <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">+3%</span>
-                      since last week
+                      <span class="text-success text-sm font-weight-bolder">User</span>
+
                     </p>
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="bi bi-person-vcard"aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -72,19 +72,19 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
+                    <p class="text-sm mb-0  font-weight-bold">Student User</p>
                     <h5 class="font-weight-bolder">
-                      +3,462
+                      {{authService.studentuser.length }}
                     </h5>
                     <p class="mb-0">
-                      <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                      since last quarter
+                      <span class="text-danger text-sm font-weight-bolder">User</span>
+
                     </p>
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="bi bi-person-workspace" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -97,12 +97,12 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
+                    <p class="text-sm mb-0  font-weight-bold">Course</p>
                     <h5 class="font-weight-bolder">
-                      $103,430
+                      {{generalService.allCourses.length }}
                     </h5>
                     <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
+                      <span class="text-success text-sm font-weight-bolder">Course</span>
                     </p>
                   </div>
                 </div>

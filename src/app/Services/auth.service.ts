@@ -23,7 +23,7 @@ export class AuthService {
     }
 
     this.getloginbyemail(email.value.toString());
-    
+
     const headerDic={
       'Content-Type' :'application/json',
       'Accept':'application/json'
@@ -43,7 +43,7 @@ export class AuthService {
 
       this.spinner.show();
       setTimeout(() => {
-        
+
 
         this.spinner.hide();
         if(this.data.Roleid =='1')
@@ -53,26 +53,26 @@ export class AuthService {
             this.teacherService.getTraineruserbyid(this.data.ID);
         this.router.navigate(['teacher/home']);
       }
-  
-  
+
+
         else if (this.data.Roleid =='3'){
           if(this.loginbyid.verify_Code==1){
-          
+
         this.router.navigate(['student/home']);
       }
-         
+
           else{
             console.log(this.login_id);
-          
+
             this.resendCode(this.login_id);
-  
+
           }
-        } 
+        }
 
 
       },2000);
 
-     
+
     },err=>{
       this.toastr.error(err.message,err.status);
     })
@@ -213,9 +213,27 @@ getloginbyemail(email:string){
     console.log("loginuserbyid = "+resp);
     this.login_id=resp;
   this.getloginbyid(this.login_id);
-  
+
 
   }
   )
 }
+allLogin:any;
+adminuser:any;
+teacheruser:any;
+studentuser:any;
+getalllogin(){
+  this.http.get('https://localhost:44343/api/crudlogin/').subscribe((resp) => {
+
+    this.allLogin=resp;
+   this.adminuser= this.allLogin.filter((x:any)=>x.role_Id==1);
+   this.teacheruser= this.allLogin.filter((x:any)=>x.role_Id==2);
+   this.studentuser= this.allLogin.filter((x:any)=>x.role_Id==3);
+  this.getloginbyid(this.login_id);
+
+
+  }
+  )
+}
+
 }
