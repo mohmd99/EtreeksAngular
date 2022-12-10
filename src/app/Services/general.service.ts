@@ -43,12 +43,22 @@ export class GeneralService {
       this.toaster.error(err.message,err.status);
     });
   }
+  coursesinfo:any;
+  SearchCourse(body:string){
 
+    this.http.get('https://localhost:44343/api/Course/Search/'+body).subscribe((res:any)=>{
+      this.allCourses=res
+
+    },err=>{
+      this.toaster.error('Can not Search');
+      console.log(err);
+    })
+  }
   GetCourseById(id:number){
 
     this.studentService.GetTrainerByCourseId(id);
     console.log(this.studentService.trainersbycourse);
-    
+
 
     this.spinner.show();
     this.http.get("https://localhost:44343/api/CRUDCourse/getbyid/"+id).subscribe((res:any)=>{
