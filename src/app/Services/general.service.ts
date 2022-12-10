@@ -48,6 +48,7 @@ export class GeneralService {
 
     this.studentService.GetTrainerByCourseId(id);
     console.log(this.studentService.trainersbycourse);
+    
 
     this.spinner.show();
     this.http.get("https://localhost:44343/api/CRUDCourse/getbyid/"+id).subscribe((res:any)=>{

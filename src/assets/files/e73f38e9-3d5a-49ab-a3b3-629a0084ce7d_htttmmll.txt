@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        div {
+            background-color: pink;
+            width: 340px;
+            height: 30px;
+            padding: 50px;
+            color: white;
+            font-size :18px;
+            border-radius: 100px;
+            margin: auto
+        }
+    </style>
+</head>
+<body>
+    <!--<p class="class1">Hello</p>
+    <p class="class1">Welcome</p>
+    <p class="class1">Welcome Trainee</p>
+       <p id="p1"></p>
+    <p id="p2"></p>-->
+    <!--<img id="img1" src="https://hotmart.com/media/2020/03/BLOG_web-design-1.png" alt="Alternate Text" width=200 ;height=200 />
+    <div id="div1" style="background-color:aqua">
+        <p id="p1">P One </p>
+        <p id="p2">P Two</p>
+    </div>
+    <button onclick="deleteItem()">Remove</button>
+    <h2 style="background-color:red" onclick="this.innerHTML ='Hello Trainee '"> Click Me</h2>
+    <p id="date">Data is : </p>
+    <button onclick="ShowItem()">Show</button>
+    <input type="text" value="Dana" id="input1" onchange="uppercase()" />
+    Enter your name: <input type="text" id="name">-->
+    <div onmouseup="Over(this)" onmousedown="Out(this)">
+    </div>
+    <script src="JavaScript.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+//console.log(document.getElementById("p2"));
+//const text = document.getElementById("p1").innerHTML;//P One
+//document.getElementById("p2").innerHTML = "P Two " +text  ;
+//console.log(document.getElementsByTagName("p"));
+/*var arr = document.getElementsByClassName("class1"); //3 p p P*/
+//arr[0].innerHTML = "Hello Trainee";
+//arr[1].innerHTML= "Welcome Trainee :)"
+//document.getElementById("p1").innerHTML = "First p " + arr[0].innerHTML;
+//document.getElementById("p2").innerHTML = "Second p " + arr[1].innerHTML;
+document.getElementById("p1").style.textAlign = "center";
+document.getElementById("p1").style.backgroundColor = "red";
+document.getElementById("img1").src = "http://tahaworld.com/uploads/thumbs/webdes-w-850-h-475.png";
+const parent = document.getElementById("div1");
+const p = document.createElement("p");
+const text = document.createTextNode("P three");
+const child1 = document.getElementById("p1");
+p.appendChild(text);
+parent.appendChild(p);
+parent.replaceChild(p, child1);
+function deleteItem() {
+    document.getElementById("p1").remove();
+}
+function ShowItem() {
+    document.getElementById("date").innerText = Date();
+}
+document.getElementById("name").addEventListener("change", uppercase);
+function uppercase() {
+    const inputOne = document.getElementById("name");
+    inputOne.value = inputOne.value.toUpperCase();
+}
+function Over(ele) {
+    ele.innerHTML = "Welcome Trainee :)";
+    ele.style.color = "black";
+}
+function Out(ele) {
+    ele.innerHTML = "Welcome To Tahaluf :)";
+   /* ele.style.color = "black";*/
+}

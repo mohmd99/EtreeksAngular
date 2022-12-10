@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TeacherService } from '../Services/teacher.service';
 import { AuthService } from '../Services/auth.service';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-course-page',
@@ -27,8 +28,15 @@ export class CoursePageComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    setTimeout(() => {
+      this.FilteredTrainer=this.studentService.trainersbycourse;
+      
+    }, 500);
+    
+  
   }
+
+  FilteredTrainer:any;
 
   // temp="{\"lat\":32.0453809970146,\"lng\":36.10676384863419}";
   loook:any;
@@ -45,13 +53,17 @@ export class CoursePageComponent implements OnInit {
      this.studentService.GetAllTimes(item.user_Id);
      
 
+     console.log(item.location);
+     
 
     this.trainer=item;
-    console.log(item.location)
-    let lctn= JSON.parse(item.location);
-    console.log(lctn);
-    this.location=lctn;
-
+    
+    console.log("location");
+    console.log(this.location);
+   
+    let lctn= item.location;
+   
+   
     this.googlemapSource+=lctn.lat.toString();
     this.googlemapSource+=",";
     this.googlemapSource+=lctn.lng.toString();
@@ -80,6 +92,26 @@ export class CoursePageComponent implements OnInit {
     this.studentService.createReservation(this.createForm.value);
     this.teacherService.updatestatus(Number( this.createForm.controls['avaliable_time_id'].value),0);
 
+
+   }
+
+
+   Filter(ev:any){
+
+    if(ev.target.value=='All')
+    this.FilteredTrainer=this.studentService.trainersbycourse;
+    else if(ev.target.value=='Amman')
+    this.FilteredTrainer=this.studentService.trainersbycourse.filter((x:any)=>
+    x.location.lat>=31.78&&x.location.lat<=32.19&&x.location.lng>=35.65&&x.location.lng<=36.01
+    );
+    else if(ev.target.value=='Irbid')
+    this.FilteredTrainer=this.studentService.trainersbycourse.filter((x:any)=>
+    x.location.lat>=32.42&&x.location.lat<=32.65&&x.location.lng>=35.63&&x.location.lng<=36.05
+    );
+    else if(ev.target.value=='Zarqa')
+    this.FilteredTrainer=this.studentService.trainersbycourse.filter((x:any)=>
+    x.location.lat>=32.0&&x.location.lat<=32.15&&x.location.lng>=36.015&&x.location.lng<=36.16
+    );
 
    }
 
