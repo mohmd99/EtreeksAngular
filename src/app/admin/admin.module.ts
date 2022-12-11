@@ -18,8 +18,9 @@ import { ManageAboutComponent } from './manage-about/manage-about.component';
 import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { ManageProfileComponent } from './manage-profile/manage-profile.component';
-
+import { GoogleMapsModule } from '@angular/google-maps';
 import { ManageTrainerComponent } from './manage-trainer/manage-trainer.component';
+import { ManageContactInfoComponent } from './manage-contact-info/manage-contact-info.component';
 
 
 
@@ -36,13 +37,18 @@ import { ManageTrainerComponent } from './manage-trainer/manage-trainer.componen
     ManageTestimonialComponent,
     ManageUserComponent,
     ManageProfileComponent,
-    ManageTrainerComponent
+    ManageTrainerComponent,
+    ManageContactInfoComponent
 
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
+    GoogleMapsModule
+  ],
+  exports: [
+    AdminNavbarComponent
   ]
 })
 export class AdminModule { }

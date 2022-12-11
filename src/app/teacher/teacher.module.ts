@@ -12,8 +12,12 @@ import { AboutTeacherComponent } from './about-teacher/about-teacher.component';
 import { ManageAvailableTimeComponent } from './manage-available-time/manage-available-time.component';
 import { SelectCourseComponent } from './select-course/select-course.component';
 import { ReservationComponent } from './reservation/reservation.component';
+
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDatepickerModule,} from '@angular/material/datepicker';
+
+import { AdminModule } from '../admin/admin.module';
+
 
 import { MatNativeDateModule } from '@angular/material/core';
 
@@ -31,7 +35,10 @@ import { MatNativeDateModule } from '@angular/material/core';
   imports: [
     CommonModule,
     TeacherRoutingModule,
-    SharedModule,MatExpansionModule,MatDatepickerModule,MatNativeDateModule
+
+    SharedModule,MatExpansionModule,MatDatepickerModule,MatNativeDateModule,
+    AdminModule
+
   ]
 })
 export class TeacherModule { }

@@ -1,36 +1,187 @@
 
 <app-navbar  [first_Name]="studentService.userbyid.first_Name" [last_Name]="studentService.userbyid.last_Name" [image]="studentService.userbyid.image"></app-navbar>
-<div class="container rounded bg-white mt-5">
+<div class="container ">
     <div class="row">
-        <div class="col-md-4 border-left">
-            <div class="card card-profile" >
-                <img style="width:200px ; height: 200px; margin: 35px;" *ngIf="studentService.userbyid.image==null" src="../../../assets/admin_assests/assets/img/l60Hf.png" alt="Image placeholder" >
-                <img style="width:200px ; height: 200px; margin: 35px;" *ngIf="studentService.userbyid.image!=null" src="../../../assets/images/{{studentService.userbyid.image}}" alt="Image placeholder" >
+        <div class="col-md-10">
+
+            <div class="main-content position-relative max-height-vh-100 h-100">
+                <div class="container-fluid py-4">
+                <div class="row">
+                    <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                        
+                        </div> 
+                        <div class="card-body">
+                        <p class="text-uppercase text-sm">User Information</p>
+                        <form class="form" [formGroup]="updateForm" >
+                            <div class="d-flex align-items-center">
+                            <p class="mb-0">Edit Profile</p>
+                            <button (click)="UpdateProfile()" class="btn btn-primary btn-sm ms-auto">Save Info</button>
+                            </div>
+                            <div class="form-body">
+                        <div class="row">
+                        
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">First name</label>
+                                <input matInput formControlName="first_Name" [(ngModel)]="userData.first_Name" class="form-control" type="text" >
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Last name</label>
+                                <input matInput formControlName="last_Name" [(ngModel)]="userData.last_Name" class="form-control" type="text" >
+                            </div>
+                            </div>
+                            <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Phone number</label>
+                                <input matInput formControlName="phone_Number" [(ngModel)]="userData.phone_Number" class="form-control" type="email" >
+                            </div>
+                            </div>
+                            <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Birth Date</label>
+                                <input matInput style="pointer-events:none" formControlName="birth_Date" (ngModelChange)="userData.birth_Date" [ngModel]="userData.birth_Date |date" class="form-control" type="text"  >
+                            </div>
+                            </div>
+                            <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Email address</label>
+                                <input matInput formControlName="email" [(ngModel)]="loginData.email" class="form-control" type="email" >
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Old Password</label>
+                                <input (keyup)="Changepass($event)"  class="form-control" type="text" >
+                            </div>
+                            </div>
+                            <!-- matInput formControlName="first_Name" [(ngModel)]="p_data.first_Name" -->
+                            <div class="col-md-6">
+                            <div [ngStyle]="{'pointer-events': !changepass ? 'none':''}" class="form-group">
+                                <label for="example-text-input" class="form-control-label">New Password</label>
+                                <input matInput formControlName="password" class="form-control" type="text" >
+                            </div>
+                            </div>
+                            <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">image</label>
+                                <input  matInput formControlName="image" [(ngModel)]='userData.image'   #file  (change)="UploadFile(file.files)" class="form-control" type="file" >
+                            </div>
+                            </div>
+                            <!-- <div class="col-md-6">
+                            <div  class="form-group">
+                                <button (click)="UpdateProfile()"> Save </button>
+                            </div>
+                            </div> -->
+                        </div>
+                        <hr class="horizontal dark">
+                        <!-- <p class="text-uppercase text-sm">Contact Information</p>
+                        <div class="row">
+                            <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Address</label>
+                                <input class="form-control" type="text" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                            </div>
+                            </div>
+                            <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">City</label>
+                                <input class="form-control" type="text" value="New York">
+                            </div>
+                            </div>
+                            <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Town</label>
+                                <input class="form-control" type="text" value="United States">
+                            </div>
+                            </div>
+                            <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Postal code</label>
+                                <input class="form-control" type="text" value="437300">
+                            </div>
+                            </div>
+                        </div>
+                        <hr class="horizontal dark">
+                        <p class="text-uppercase text-sm">About me</p>
+                        <div class="row">
+                            <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">About me</label>
+                                <input class="form-control" type="text" value="A beautiful Dashboard for Bootstrap 5. It is Free and Open Source.">
+                            </div>
+                            </div>
+                        </div> -->
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                    <div class="card card-profile">
+                        <img *ngIf="studentService.userbyid.image==null" src="../../../assets/admin_assests/assets/img/l60Hf.png" alt="Image placeholder" class="card-img-top">
+                        <img *ngIf="studentService.userbyid.image!=null" src="../../../assets/images/{{studentService.userbyid.image}}" alt="Image placeholder" class="card-img-top">
+                
+                    
+                        <div class="card-body pt-0">
+                        
+                        <div class="text-center mt-4">
+                            <h5>
+                            {{userData.first_Name}} {{userData.last_Name}}<span class="font-weight-light"></span>
+                            </h5>
+                            <!-- <div class="h6 font-weight-300">
+                            <i class="ni location_pin mr-2"></i>Bucharest, Romania
+                            </div> -->
+                            <div class="h6 mt-4">
+                            <i class="ni business_briefcase-24 mr-2"></i>Student 
+                            </div>
+                            <div>
+                            <i class="ni education_hat mr-2"></i>{{userData.birth_Date | date}}
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <footer class="footer pt-3  ">
+                    <div class="container-fluid">
+                    <div class="row align-items-center justify-content-lg-between">
+                        <div class="col-lg-6 mb-lg-0 mb-4">
+                        <div class="copyright text-center text-sm text-muted text-lg-start">
+                            © <script>
+                            document.write(new Date().getFullYear())
+                            </script>,
+                            made with <i class="fa fa-heart"></i> by
+                            <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                            for a better web.
+                        </div>
+                        </div>
+                        <div class="col-lg-6">
+                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                            <li class="nav-item">
+                            <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                            </li>
+                            <li class="nav-item">
+                            <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                            <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                            <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                    </div>
+                </footer>
+                </div>
             </div>
         </div>
-        <div class="col-md-8">
-            <div class="p-3 py-5">
-               
-                <form class="form" [formGroup]="updateForm" style="margin: 50px;">
-                <div class="row mt-2">
-                    <div class="col-md-6"><input matInput formControlName="first_Name" [(ngModel)]="userData.first_Name" type="text" class="form-control" placeholder="first name"></div>
-                    <div class="col-md-6"><input matInput formControlName="last_Name" [(ngModel)]="userData.last_Name" type="text" class="form-control" ></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><input matInput formControlName="email" [(ngModel)]="loginData.email" type="email" class="form-control" placeholder="Email" ></div>
-                    <div class="col-md-6"><input matInput formControlName="phone_Number" [(ngModel)]="userData.phone_Number" type="text" class="form-control" placeholder="Phone number"></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><input  matInput formControlName="birth_Date" (ngModelChange)="userData.birth_Date" [ngModel]="userData.birth_Date |date" type="text" class="form-control" placeholder="Birth Date"></div>
-                    <div class="col-md-6"><input matInput formControlName="image" [(ngModel)]='userData.image'   #file  (change)="UploadFile(file.files)" type="file" class="form-control"  placeholder="Upload Image"></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><input (keyup)="Changepass($event)" type="text" class="form-control"  placeholder="Old Password"></div>
-                    <div [ngStyle]="{'pointer-events': !changepass ? 'none':''}" class="col-md-6" ><input matInput formControlName="password" type="text" class="form-control" placeholder="New Password"></div>
-                </div>
-                <div class="mt-5 text-right"><button (click)="UpdateProfile()" class="btn btn-primary profile-button" >Save Profile</button></div>
-            </form>
-            </div>
-        </div>
+       
+
     </div>
 </div>

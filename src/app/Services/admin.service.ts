@@ -300,6 +300,51 @@ display_image:any;
 
 
 
+  createContactInfo(body: any) {
+    body.image = this.display_image_home;
+    this.spinner.show();
+    debugger
+    this.http.post('https://localhost:44343/api/CRUDContactInfo', body).subscribe((resp) => {
+      console.log(resp);
+      this.spinner.hide();
+      this.toaster.success('Created !!');
+    }, err => {
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    }
+    )
+  }
+
+  updateContactInfo(body:any)
+  {
+    if(this.display_image_home !=null)
+     body.image = this.display_image_home;
+
+    this.spinner.show();
+    this.http.put('https://localhost:44343/api/CRUDContactInfo',body).subscribe((resp)=>{
+      this.spinner.hide();
+      this.toaster.success('Updated Successfully !!');
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    })
+  }
+  deleteContactInfo(id:number)
+  {
+    this.spinner.show();
+
+    this.http.delete('https://localhost:44343/api/CRUDContactInfo/Delete/'+id).subscribe((resp)=>{
+      this.spinner.hide();
+        this.toaster.success('Deleted Successfully !!');
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message, err.status);
+    })
+  }
+
+
+
+
 
 getTestimonial(){
   this.spinner.show();

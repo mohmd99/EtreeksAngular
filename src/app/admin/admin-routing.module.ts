@@ -11,6 +11,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ManageCoursesComponent } from './manage-courses/manage-courses.component';
+import { ManageContactInfoComponent } from './manage-contact-info/manage-contact-info.component';
 
 const routes: Routes = [
   {path:"",component:AdminPanelComponent},{
@@ -32,6 +33,9 @@ const routes: Routes = [
   },{
     path:"trainer",
     component:ManageTrainerComponent
+  },{
+    path:"ContactInfo",
+    component:ManageContactInfoComponent
   }
 ];
 
