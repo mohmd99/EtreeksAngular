@@ -205,12 +205,12 @@ export class TeacherService {
       console.log(err);
     })
   }
-
+filterTime:any
   GetAllTimes(teacher_id:number){
     this.spinner.show();
     this.http.get("https://localhost:44343/api/AvailableTime/GetByTrainer/"+teacher_id).subscribe((res:any)=>{
       this.AvailableTimes=res;
-
+     this.filterTime= this.AvailableTimes.filter((x:any)=>x.status!=1)
     console.log(res) ;
       this.spinner.hide();
 
@@ -353,5 +353,13 @@ sendEmailResrvation(id:number,status:any){
     this.toaster.error(err.message, err.status);
   }
   )
+ }
+ availabletimebytrainerid:any;
+ getAvailableTimebytrainerId(id:number){
+  this.http.get('https://localhost:44343/api/availabletime/GetByTrainerid/'+id).subscribe((res)=>{
+    this.availabletimebytrainerid=res;
+  },err=>{
+    this.toaster.error(err.message,err.status)
+  })
  }
 }

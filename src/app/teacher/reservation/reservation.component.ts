@@ -109,7 +109,7 @@ export class ReservationComponent implements OnInit {
 
           console.log(this.updateForm.value);
           this.teacherService.updateReservation(this.updateForm.value);
-
+          this.teacherService.updatestatus(obj.avaliable_time_id,null);
           if(this.updateForm.controls['status'].value!=null)
           this.teacherService.sendEmailResrvation(obj.loginid,this.updateForm.controls['status'].value);
         }

@@ -30,12 +30,26 @@ export class CoursePageComponent implements OnInit {
 
     setTimeout(() => {
       this.FilteredTrainer=this.studentService.trainersbycourse;
-      
-    }, 500);
-    
-  
-  }
 
+
+    }, 500);
+
+
+  }
+  available:any;
+  book:any;
+  check(id:number){
+    this.teacherService.getAvailableTimebytrainerId(id);
+    this.teacherService.availabletimebytrainerid.forEach((element:any) => {
+      if(element.status==null){
+        this.available=true;
+      }else{
+        this.available=false;
+        this.book=document.getElementById('book')
+        this.book.style.pointerEvents='none';
+      }
+    });
+  }
   FilteredTrainer:any;
 
   // temp="{\"lat\":32.0453809970146,\"lng\":36.10676384863419}";
@@ -51,19 +65,19 @@ export class CoursePageComponent implements OnInit {
 
     console.log(item.user_Id) ;
      this.studentService.GetAllTimes(item.user_Id);
-     
+
 
      console.log(item.location);
-     
+
 
     this.trainer=item;
-    
+
     console.log("location");
     console.log(this.location);
-   
+
     let lctn= item.location;
-   
-   
+
+
     this.googlemapSource+=lctn.lat.toString();
     this.googlemapSource+=",";
     this.googlemapSource+=lctn.lng.toString();

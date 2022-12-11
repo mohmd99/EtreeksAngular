@@ -187,32 +187,34 @@
                 <div class="row blog-grid shop-grid">
                     <div class="col-md-3" *ngFor="let item of FilteredTrainer">
                         <div class="course-box shop-wrapper">
-                            <div class="image-wrap entry">
+                            <div  class="image-wrap entry">
                                 <!-- *ngIf="item.image!=null" -->
                                 <img *ngIf="item.image!=null" src="../../assets/images/{{item.image}}"  class="img-responsive">
-                                <img *ngIf="item.image==null" src="../../assets/admin_assests/assets/img/l60Hf.png" alt="" class="img-responsive"> 
-                                <div class="magnifier">
-                                    <a href="shop-single.html" title=""><i class="flaticon-add"></i></a>
-                                </div>
+                                <img *ngIf="item.image==null" src="../../assets/admin_assests/assets/img/l60Hf.png" alt="" class="img-responsive">
+
+
                             </div>
 
-        
+
                             <!-- end image-wrap -->
                             <div class="course-details shop-box text-center">
                                 <h4>
                                     <a href="shop-single.html" title="">{{ item.first_Name }} {{ item.last_Name }}</a>
-                                    <small>Bags</small>
+                                    <small  (click)="check(item.id)">check available</small>
+                                    <button disabled="true"></button>
                                 </h4>
                             </div>
                             <!-- end details -->
                             <div class="course-footer clearfix">
                                 <div class="pull-left">
                                     <ul class="list-inline">
-                                        <li><a (click)="OpenCreateDialouge(item)" ><i class="bi bi-bookmark-plus"></i> Book apointment </a></li>
+                                        <li id="book"><a  (click)="OpenCreateDialouge(item)" ><i class="bi bi-bookmark-plus"></i> Book apointment </a></li>
+                                        <li [ngStyle]="{'visibility':available == null ? 'hidden' : 'visible' }"><a *ngIf="available" ><i class="bi bi-bookmark-plus"></i> Available </a></li>
+                                        <li [ngStyle]="{'visibility':available == null ? 'hidden' : 'visible' }"><a  *ngIf="!available" ><i class="bi bi-bookmark-plus"></i>  Not Available </a></li>
                                     </ul>
                                 </div><!-- end left -->
 
-                                
+
                             </div><!-- end footer -->
                         </div><!-- end box -->
                     </div><!-- end col -->
@@ -240,28 +242,28 @@
 
             <div class="card-body">
                 <h3>{{trainer.first_Name}} {{trainer.last_Name}}</h3>
-             
+
                 <!-- <h5>{{this.teacherService.AvailableTimes[0].start_Date}}  </h5> -->
 
                     <!-- <iframe id="frame"
-                    width="300" 
-                    height="200" 
-                    frameborder="0" 
-                    scrolling="no" 
-                    marginheight="0" 
-                    marginwidth="0"                    
-                    src={{loook}} 
+                    width="300"
+                    height="200"
+                    frameborder="0"
+                    scrolling="no"
+                    marginheight="0"
+                    marginwidth="0"
+                    src={{loook}}
                                         >
                 </iframe> -->
 
-                    
+
                 <!-- src="https://www.google.com/maps/embed/v1/place?&q={{location.lat}},{{location.lng}}&zoom=10&key=AIzaSyAVn6ea2iJcMq9Wp0pKGlr3RpA8SVK1MCM&maptype=roadmap"  -->
-                       
 
 
 
 
-                
+
+
                 <form class="form" [formGroup]="createForm">
                     <div class="form-body">
 
@@ -275,8 +277,8 @@
                             <select type="number"  matInput formControlName="avaliable_time_id"  id="issueinput5"  class="form-control" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Priority">
                               <option *ngFor="let option of this.studentService.AvailableTimes"[value]=option.id >{{option.start_Date|date:'medium'}}  {{option.end_Date|date:'medium'}}</option>
                           </select>
-    
-                             
+
+
                         </div>
 
 
