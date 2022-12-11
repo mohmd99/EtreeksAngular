@@ -12,6 +12,7 @@ import { AboutTeacherComponent } from './about-teacher/about-teacher.component';
 import { ManageAvailableTimeComponent } from './manage-available-time/manage-available-time.component';
 import { SelectCourseComponent } from './select-course/select-course.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { AdminModule } from '../admin/admin.module';
 
 
 
@@ -29,7 +30,8 @@ import { ReservationComponent } from './reservation/reservation.component';
   imports: [
     CommonModule,
     TeacherRoutingModule,
-    SharedModule
+    SharedModule,
+    AdminModule
   ]
 })
 export class TeacherModule { }

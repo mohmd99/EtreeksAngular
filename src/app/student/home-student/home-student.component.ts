@@ -30,7 +30,8 @@ export class HomeStudentComponent implements OnInit {
   
 
     this.studentService.getuserbyid(this.authService.data.ID);
-  }
+    this.studentService.getloginuserbyid(this.authService.data.ID);
+    }
   OpenCategory(id:number){
 
     this.generalServise.getCoursesbyCategoryId(id);

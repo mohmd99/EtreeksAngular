@@ -46,6 +46,9 @@ import { ManageContactInfoComponent } from './manage-contact-info/manage-contact
     AdminRoutingModule,
     SharedModule,
     GoogleMapsModule
+  ],
+  exports: [
+    AdminNavbarComponent
   ]
 })
 export class AdminModule { }
