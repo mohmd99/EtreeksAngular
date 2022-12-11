@@ -150,30 +150,59 @@ export class StudentService {
     })
   }
   trainersbycourse:any;
- 
+
   GetTrainerByCourseId(course_id:number){
     this.spinner.show();
     this.http.get('https://localhost:44343/api/trainercourse/GetTrainerByCourseId/'+course_id).subscribe((resp)=>{
       console.log(resp);
 
       this.trainersbycourse=resp;
-      
+
 
 
       this.trainersbycourse.forEach((element:any) => {
         let lctn= JSON.parse(element.location);
-        
+
         element.location=lctn;
-  
-        
+
+
       });
-  
+
       console.log(this.trainersbycourse);
 
 
 
 
-      
+
+      this.spinner.hide();
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message , err.status);
+    })
+  }
+  SearchTrainerByCourseId(course_id:number,c_name:string){
+    this.spinner.show();
+    this.http.get('https://localhost:44343/api/trainercourse/SearchTrainerByCourseId/'+course_id+'/'+c_name).subscribe((resp)=>{
+      console.log(resp);
+
+      this.trainersbycourse=resp;
+
+
+
+      this.trainersbycourse.forEach((element:any) => {
+        let lctn= JSON.parse(element.location);
+
+        element.location=lctn;
+
+
+      });
+
+      console.log(this.trainersbycourse);
+
+
+
+
+
       this.spinner.hide();
     },err=>{
       this.spinner.hide();
@@ -194,7 +223,7 @@ export class StudentService {
     })
   }
   createReservation(body:any){
-    
+
     this.spinner.show();
     this.http.post('https://localhost:44343/api/CRUDReservation/',body).subscribe((resp)=>{
       console.log(resp);
@@ -223,7 +252,7 @@ export class StudentService {
   }
 
 
-  // 
+  //
   PendingReservation:any;
   RejectedReservations:any;
   AcceptedReservation:any;

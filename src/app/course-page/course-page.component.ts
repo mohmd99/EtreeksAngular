@@ -36,6 +36,18 @@ export class CoursePageComponent implements OnInit {
 
 
   }
+  Search(ev:any){
+    if (ev.target.value!='')
+    {
+       this.FilteredTrainer=this.FilteredTrainer.filter((x:any)=>x.first_Name.toLowerCase().includes(ev.target.value)|| x.last_Name.toLowerCase().includes(ev.target.value));
+
+    console.log(this.FilteredTrainer);
+    }
+
+
+    else
+    this.FilteredTrainer=this.studentService.trainersbycourse;
+  }
   available:any;
   book:any;
   check(id:number){
