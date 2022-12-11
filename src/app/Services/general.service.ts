@@ -108,6 +108,25 @@ getabout(){
     this.toaster.error(err.message,err.status);
   });
 }
+contactInfo:any;
+CurrentContactLocation:any
 
+getContactInfo(){
+  this.spinner.show();
+  this.http.get("https://localhost:44343/api/CRUDContactInfo").subscribe((res:any)=>{
+    this.contactInfo=res;
+    let lctn= JSON.parse(this.contactInfo[0].location);
+
+    this.CurrentContactLocation=lctn;
+
+    this.spinner.hide();
+    console.log(this.contactInfo);
+    
+
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message,err.status);
+  });
+}
 }
 

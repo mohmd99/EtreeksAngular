@@ -1,0 +1,246 @@
+<div class="position-absolute w-100 min-height-300 top-0" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/profile-layout-header.jpg'); background-position-y: 50%;">
+    <span class="mask bg-primary opacity-6"></span>
+  </div>
+  <aside [ngStyle]="{'display': unvisible?'none':'block'}" class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+      <app-side-nav></app-side-nav>
+     </aside>
+  
+  <main class="main-content position-relative border-radius-lg ">
+       <!-- Navbar -->
+       <app-admin-navbar [first_Name]="adminService.userbyid.first_Name" [last_Name]="adminService.userbyid.last_Name" [image]="adminService.userbyid.image" [color]="this.adminService.color"></app-admin-navbar>
+       <!-- End Navbar -->
+  
+     <div class="row mt-4">
+          <div class="col-lg-11 mb-lg-11 mb-11" style="margin-left: 50px;">
+          <div class="card ">
+              <div class="card-header pb-0 p-3">
+              <div class="d-flex justify-content-between">
+                  <h6 class="customtabletitle">Home </h6>
+                  <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle" *ngIf="generalService.contactInfo.length==0">
+                      <i class="bi bi-file-plus"  (click)="OpenCreateDialouge()"></i>
+                    </div>
+              </div>
+              </div>
+              <div class="table-responsive" style="margin-top:15px" >
+              <table class="table align-items-center ">
+                  <thead>
+                      <tr>
+                          <th>
+                              Phone Number
+                          </th>
+  
+  
+                          <th>
+                              Location
+                          </th>
+                          <th>
+                               Email
+                          </th>
+                          <th>
+                            Website
+                          </th>
+                          <th>
+                              Manage
+                          </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let item of generalService.contactInfo">
+                      <td class="w-30" >
+                      <div class="d-flex px-2 py-1 align-items-center">
+  
+                          <div class="ms-4">
+  
+                          <h6 class="text-sm mb-0">{{ item.phone_Number }}</h6>
+                          </div>
+                      </div>
+                      </td>
+  
+                        <td class="w-30" >
+                          <div class="d-flex px-2 py-1 align-items-center">
+  
+                              <div class="ms-4">
+  
+                                <a style="    float: right;
+                                font-weight: bold;" href="https://www.google.com/maps/?q={{this.generalService.CurrentContactLocation.lat}},{{this.generalService.CurrentContactLocation.lng}}" target="_blank"><i style="font-size: 18px;" class="bi bi-globe-central-south-asia"></i>Location</a>
+                    
+                              </div>
+                          </div>
+                          </td>
+                          <td class="w-30" >
+                            <div class="d-flex px-2 py-1 align-items-center">
+    
+                                <div class="ms-4">
+    
+                                <h6 class="text-sm mb-0">{{ item.website_Name }}</h6>
+                                </div>
+                            </div>
+                            </td>
+                            <td class="w-30" >
+                                <div class="d-flex px-2 py-1 align-items-center">
+        
+                                    <div class="ms-4">
+        
+                                    <h6 class="text-sm mb-0">{{ item.email }}</h6>
+                                    </div>
+                                </div>
+                                </td>
+                   
+                          <td>
+                            <i class="bi bi-pencil-square" style="margin-right: 15px; cursor: pointer;" (click)="openUpdateDailog(item)"></i>  <i class="bi bi-trash3" style=" cursor: pointer;" (click)="openDeleteDailog(item.id)"></i>
+                          </td>
+  
+                  </tr>
+                  </tbody>
+              </table>
+              </div>
+          </div>
+          </div>
+      </div>
+  </main>
+  
+  
+  
+  <ng-template #CreateDialoug >
+  
+  
+      <div class="card" >
+  
+          <div class="card-content collapse show">
+              <div class="card-body">
+  
+  
+                  <h3>Create Contact Info</h3>
+                  <form class="form" [formGroup]="createForm">
+                      <div class="form-body">
+  
+                          <div class="form-group">
+                              <label for="issueinput1">Phone Number</label>
+                              <input matInput formControlName="phone_Number"  type="text" id="issueinput1" class="form-control" placeholder="issue title"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Issue Title">
+                          </div>
+  
+                          
+                          <div class="form-group">
+                              <label for="issueinput8">Web Site</label>
+                              <textarea matInput formControlName="website_Name"   id="issueinput8" rows="5" class="form-control"  placeholder="comments" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Comments"></textarea>
+                          </div>
+                          <div class="form-group">
+                            <label for="issueinput8">Email</label>
+                            <textarea matInput formControlName="email"   id="issueinput8" rows="5" class="form-control"  placeholder="comments" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Comments"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="example-text-input" class="form-control-label">Location</label>
+                            <button (click)="OpenLocationDialog()" class="btn btn-primary" >Add Location</button>
+              
+                          </div>
+  
+                      </div>
+  
+                      <div class="form-actions">
+                          <button mat-dialog-close type="reset" class="btn btn-warning mr-1">
+                              <i class="feather icon-x"></i> Cancel
+                          </button>
+                          <button  [mat-dialog-close]="true" (click)="SaveData()" style="margin-left:20px" type="submit" class="btn btn-primary">
+                              <i class="fa fa-check-square-o"></i> Save
+                          </button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  
+  
+  
+  </ng-template>
+  <ng-template #callUpdatDailog>
+  
+    <div class="card" >
+  
+      <div class="card-content collapse show">
+          <div class="card-body">
+  
+  
+              <h3>Update Category</h3>
+              <form class="form" [formGroup]="updateForm">
+                  <div class="form-body">
+  
+                    <div class="form-group">
+                        <label for="issueinput1">title</label>
+                        <input matInput formControlName="phone_Number"  type="text" id="issueinput1" class="form-control" placeholder="issue title"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Issue Title">
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label for="issueinput8">Web site</label>
+                        <input type="text" matInput formControlName="website_Name"   id="issueinput8" rows="5" class="form-control"  placeholder="comments" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Comments">
+                    </div>
+                    <div class="form-group">
+                      <label for="issueinput8">Email</label>
+                      <input type="text" matInput formControlName="email"   id="issueinput8" rows="5" class="form-control"  placeholder="comments" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Comments">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="example-text-input" class="form-control-label">Location</label>
+                      <button (click)="OpenLocationDialog()" class="btn btn-primary" >Add Location</button>
+        
+                    </div>
+
+                </div>
+  
+                  <div class="form-actions">
+                      <button mat-dialog-close type="reset" class="btn btn-warning mr-1">
+                          <i class="feather icon-x"></i> Cancel
+                      </button>
+                      <button  [mat-dialog-close]="true" (click)="updateData()" style="margin-left:20px" type="submit" class="btn btn-primary">
+                          <i class="fa fa-check-square-o"></i> Save
+                      </button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  </ng-template>
+  
+  
+  
+  <ng-template #callDeleteDailog>
+  <h5>Are you sure you want to delete this item ? </h5>
+  <br>
+  <div class="form-actions">
+    <button mat-dialog-close="no" type="reset" class="btn btn-warning mr-1">
+        <i class="feather icon-x"></i> Cancel
+    </button>
+    <button  mat-dialog-close="yes"  style="margin-left:20px" type="submit" class="btn btn-primary">
+        <i class="fa fa-check-square-o"></i> Save
+    </button>
+  </div>
+  
+  </ng-template>
+
+
+  <ng-template #callLocationDailog>
+    <google-map height="400px"
+              width="750px"
+              [center]="center"
+              [zoom]="zoom"
+  
+  
+              (mapClick)="addMarker($event)">
+    <map-marker [position]="markerPosition"
+                [options]="markerOptions"></map-marker>
+  </google-map>
+  <div class="form-actions">
+  <button mat-dialog-close type="reset" class="btn btn-warning mr-1">
+    <i class="bi bi-x-lg"></i> Cancel
+  </button>
+  <button class="btn btn-primary mr-1"  mat-dialog-close="true" (click)="ConfirmLocation()" type="submit" >
+    <i class="bi bi-pin-map-fill"></i>Conferm
+  </button>
+  </div>
+  <!-- <div>Latitude: {{display?.lat}}</div>
+  <div>Longitude: {{display?.lng}}</div> -->
+    </ng-template>
+  
+  
+  
