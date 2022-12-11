@@ -13,6 +13,13 @@ export class ReservationComponent implements OnInit {
   @ViewChild('callAcceptDailog') callAccept!:TemplateRef<any>
   @ViewChild('callRejectDailog') callReject!:TemplateRef<any>
   constructor(public dialog:MatDialog,public teacherService:TeacherService,public adminService:AdminService) { }
+  filteredreservation:any
+  search(ev:any){
+    if(ev.target.value!=''){
+      this.filteredreservation=this.teacherService.reservationRequest.filter((x:any)=>x.first_Name.toLowerCase().includes(ev.target.value.toLowerCase()))
+    }else
+    this.filteredreservation=this.teacherService.reservationRequest;
+  }
   updateForm:FormGroup=new FormGroup
   ({
 
@@ -23,11 +30,16 @@ export class ReservationComponent implements OnInit {
     trainer_Course_Id:new FormControl()
 
   });
-
+  panelOpenState = false;
   ngOnInit(): void {
     debugger
     this.teacherService.getReservationRequest(this.teacherService.Traineruserbyid[0].id);
+    setTimeout(() => {
+this.filteredreservation=this.teacherService.reservationRequest;
+    }, 1000);
+
   }
+
   p_data:any;
   openAcceptDailog(obj:any){
 
@@ -74,6 +86,23 @@ export class ReservationComponent implements OnInit {
 
       }
     })
+  }
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl(),
+  });
+  searchPeriod(){
+
+
+
+    if(this.range.controls['start'].value!=null){
+      this.filteredreservation=this.teacherService.reservationRequest.filter((x:any)=>x.start_Date.day>=this.range.controls['start'].value.day)
+    }else
+    this.filteredreservation=this.teacherService.reservationRequest;
+  }
+  showSearch:any=false;
+  showsearch(){
+    this.showSearch=!this.showSearch;
   }
   openRejectDailog(obj:any){
 

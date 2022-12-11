@@ -7,13 +7,66 @@
             <app-bar [first_Name]="adminService.userbyid.first_Name" [last_Name]="adminService.userbyid.last_Name" [image]="adminService.userbyid.image" [color]="this.adminService.color"></app-bar>
         </div>
 
-        <div class="col-md-11">
-            <div >
-                <div class="col-lg-11 mb-lg-11 mb-11" style="margin-left: 50px;">
+
+
+
+
+
+        <div class="col-11" style="margin-left: 180px; ">
+             <div class="card col-md-3" style=" margin-bottom: 30px; margin-right: 30px; padding-bottom: 30px;" *ngIf="showSearch">
+                <div class="d-flex justify-content-between">
+                    <h6 class="customtabletitle">Search</h6>
+
+                </div>
+                <mat-accordion>
+                    <mat-expansion-panel hideToggle>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <i class="bi bi-person-bounding-box"></i>
+                        </mat-panel-title>
+                        <mat-panel-description>
+                          Search By Name
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <label for="">Name</label>
+                      <input type="text" (keyup)="search($event)" placeholder="Enter Name" class="form-control">
+                    </mat-expansion-panel>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                         (closed)="panelOpenState = false">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <i class="bi bi-calendar-month"></i>
+                        </mat-panel-title>
+                        <mat-panel-description>
+                          Search by period
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <label>date range</label>
+  <mat-date-range-input [formGroup]="range" class="form-control"  [rangePicker]="picker">
+    <input matStartDate formControlName="start" placeholder="Start date -">
+    <input matEndDate formControlName="end" placeholder="End date">
+  </mat-date-range-input>
+  <button class="btn btn-primary" style="height: 30px;
+  margin-left: 123px;
+  margin-top: 20px;
+  line-height: 0px;" (click)="searchPeriod()">Search</button>
+
+  <mat-datepicker-toggle style="    position: absolute;
+  top: 91px;
+  right: 23px;" matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker></mat-date-range-picker>
+
+  <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+  <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+            </div>
+
+                <div class="col mb-lg-11 mb-11" >
                 <div class="card ">
                     <div class="card-header pb-0 p-3">
                     <div class="d-flex justify-content-between">
-                        <h6 class="customtabletitle">Reservation Requests</h6>
+                        <h6 class="customtabletitle">Reservation Requests</h6><i class="bi bi-funnel" (click)="showsearch()"></i>
 
                     </div>
                     </div>
@@ -42,7 +95,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let item of teacherService.reservationRequest">
+                        <tr *ngFor="let item of filteredreservation">
                           <td class="w-30" >
                             <div class="d-flex px-2 py-1 align-items-center">
 
@@ -99,7 +152,7 @@
 
     </div>
 
-</div>
+
 <ng-template #callAcceptDailog>
   <h5>Are you sure you want to Accept Trainer ? </h5>
   <br>

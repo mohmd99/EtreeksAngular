@@ -12,8 +12,10 @@ import { AboutTeacherComponent } from './about-teacher/about-teacher.component';
 import { ManageAvailableTimeComponent } from './manage-available-time/manage-available-time.component';
 import { SelectCourseComponent } from './select-course/select-course.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDatepickerModule,} from '@angular/material/datepicker';
 
-
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { ReservationComponent } from './reservation/reservation.component';
   imports: [
     CommonModule,
     TeacherRoutingModule,
-    SharedModule
+    SharedModule,MatExpansionModule,MatDatepickerModule,MatNativeDateModule
   ]
 })
 export class TeacherModule { }
