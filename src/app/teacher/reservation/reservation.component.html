@@ -59,6 +59,7 @@
   <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
   <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
                     </mat-expansion-panel>
+                    <div *ngIf="showclear"style='cursor: pointer;' (click)="clear()">Clear Filter</div>
                   </mat-accordion>
             </div>
 

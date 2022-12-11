@@ -88,15 +88,27 @@ this.filteredreservation=this.teacherService.reservationRequest;
     })
   }
   range = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl(),
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
   });
+  start:any;
+  end:any;
+  showclear=false;
+  clear(){
+    this.filteredreservation=this.teacherService.reservationRequest;
+    this.range.controls['start'].setValue(null);
+    this.range.controls['end'].setValue(null);
+    this.showSearch=!this.showSearch;
+    this.showclear=false
+  }
   searchPeriod(){
-
-
+this.start=this.range.controls['start'].value?.toJSON();
+this.end=this.range.controls['end'].value?.toJSON();
+console.log(this.start);
 
     if(this.range.controls['start'].value!=null){
-      this.filteredreservation=this.teacherService.reservationRequest.filter((x:any)=>x.start_Date.day>=this.range.controls['start'].value.day)
+      this.filteredreservation=this.teacherService.reservationRequest.filter((x:any)=>x.start_Date>=this.start&&x.end_Date<this.end)
+      this.showclear=true;
     }else
     this.filteredreservation=this.teacherService.reservationRequest;
   }
