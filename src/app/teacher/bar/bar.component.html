@@ -5,8 +5,14 @@
 
         <div class="col-auto">
           <div class="avatar avatar-xl position-relative">
-             <div class="w-100 border-radius-lg shadow-sm" *ngIf="image" style="position: absolute;" ><img src="../../../assets/images/{{ image }} "style="border-radius: 20%;
-              margin-left: 15px;" alt=""></div>
+             <div class="w-100 border-radius-lg" *ngIf="image" style="position: absolute;
+             
+               border-radius: 15%;
+                color: white;
+               text-align: center;
+               line-height: 50px;
+               font-size: 30px;
+               margin-left: 20px;" ><img src="../../../assets/images/{{ image }} " alt=""></div>
                <div class="w-100 border-radius-lg shadow-sm" *ngIf="!image" style=" position: absolute;
                height: 50px;
                width:50px;
@@ -27,7 +33,7 @@
               <h5 class="mb-1" style="position: absolute; margin-left: 50px; margin-top: 17px; font-size: 16px; color: white;">
                 {{ first_Name | uppercase }} {{ last_Name |uppercase}}
               </h5>
-              <p class="mb-0 font-weight-bold text-sm" style="margin-left: 52px; margin-top: 33px; position: absolute;">
+              <p class="mb-0 font-weight-bold text-sm" style="margin-left: 52px; margin-top: 50px; position: absolute;">
                 Trainer
               </p>
             </div>

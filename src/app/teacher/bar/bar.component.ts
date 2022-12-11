@@ -5,7 +5,7 @@ import { TeacherService } from 'src/app/Services/teacher.service';
 @Component({
   selector: 'app-bar',
   templateUrl: './bar.component.html',
-  styleUrls: ['../home/home.component.css']
+  styleUrls: ['./bar.component.css']
 })
 export class BarComponent implements OnInit {
   @Input() first_Name:string="";
