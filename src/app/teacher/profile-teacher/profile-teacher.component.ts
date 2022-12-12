@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/Services/admin.service';
 import { AuthService } from 'src/app/Services/auth.service';
@@ -12,19 +13,25 @@ import { TeacherService } from 'src/app/Services/teacher.service';
 })
 export class ProfileTeacherComponent implements OnInit {
 
-  constructor(public teacherService:TeacherService  ,public adminService:AdminService,private authService : AuthService) { }
+  @ViewChild('callLocationDailog') callLocation!:TemplateRef<any>
+
+  constructor(public dialog:MatDialog,public teacherService:TeacherService  ,public adminService:AdminService,private authService : AuthService) { }
   unvisible=false;
   userData:any;
   loginData:any;
+ 
   ngOnInit(): void {
     this.adminService.getuserbyid(this.authService.data.ID);
     this.userData=this.adminService.userbyid;
     this.loginData=this.teacherService.loginuserbyid;
+   
+    this.teacherService.getTraineruserbyid(this.authService.data.ID)
 
     console.log("this.loginData");
     console.log(this.loginData);
     
     this.updateForm.controls['image'].setValue(this.userData.image);
+    this.updateForm.controls['location'].setValue(this.teacherService.Traineruserbyid.location);
     
     
   }
@@ -43,7 +50,8 @@ export class ProfileTeacherComponent implements OnInit {
       email: new FormControl(),
       password: new FormControl(),
       Verify_Code: new FormControl(),
-      Role_Id: new FormControl()
+      Role_Id: new FormControl(),
+      location : new FormControl()
 
 
     });
@@ -54,10 +62,11 @@ export class ProfileTeacherComponent implements OnInit {
     }
 
     UpdateProfile(){
-
+// Traineruserbyid;
       if(this.updateForm.controls['password'].value==null)
       this.updateForm.controls['password'].setValue(this.loginData.password);
 
+      this.updateForm.controls['birth_Date'].setValue(this.userData.birth_Date);
       this.updateForm.controls['Verify_Code'].setValue(this.loginData.verify_Code);
       this.updateForm.controls['Role_Id'].setValue(this.loginData.role_Id);
       this.updateForm.controls['Id'].setValue(this.loginData.id);
@@ -85,4 +94,37 @@ export class ProfileTeacherComponent implements OnInit {
       this.adminService.uploadAttachmentuser(formData);
   
     }
+
+
+    
+    OpenLocationDialog(){
+
+      this.dialog.open(this.callLocation);
+    }
+
+display : any;
+center: google.maps.LatLngLiteral = {lat: 31.9539, lng: 35.9106};
+zoom = 10;
+markerOptions: google.maps.MarkerOptions = {draggable: false};
+
+//temp value
+markerPosition: google.maps.LatLngLiteral={lat: 31.9539, lng: 35.9106} ;
+
+// select(event: google.maps.MapMouseEvent) {
+//   if(event.latLng != null)
+//   this.display = event.latLng.toJSON();
+// }
+selectedPosition:any
+addMarker(event: google.maps.MapMouseEvent) {
+  if(event.latLng != null)
+  this.markerPosition=event.latLng.toJSON();
+  this.selectedPosition= JSON.stringify(this.markerPosition);
 }
+
+ConfirmLocation(){
+
+  this.updateForm.controls['location'].setValue(this.selectedPosition);
+  console.log(this.updateForm.controls['location'].value);
+}
+}
+
