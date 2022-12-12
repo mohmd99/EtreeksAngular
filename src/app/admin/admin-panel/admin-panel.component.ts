@@ -18,16 +18,19 @@ export class AdminPanelComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     this.adminService.getuserbyid(this.authService.data.ID);
     this.adminService.getloginuserbyid(this.authService.data.ID);
-    this.authService.getalllogin();
-    this.generalService.GetAllCourses();
-    this.adminService.getNumberOfTrainersInCourses();
+ this.adminService.getNumberOfTrainersInCourses();
     this.adminService.getNumberOfCoursesinCategory();
     this.teacherService.getTrainerUser();
-    
-  
-   
+
+    this.authService.getalllogin();
+    this.generalService.GetAllCourses();
+
+
+
+
     console.log(this.adminService.NumberOfCoursesinCategory);
   }
 
@@ -53,8 +56,11 @@ export class AdminPanelComponent implements OnInit {
   barCanvas: any;
 
   ngAfterViewInit(): void {
-    this.pieChartBrowser();
+    setTimeout(() => {
+this.pieChartBrowser();
     this.barChartMethod();
+    }, 750);
+
   }
 
   pieChartBrowser(): void {
@@ -65,11 +71,11 @@ export class AdminPanelComponent implements OnInit {
     // Pending=this.teacherService.trainerUser.filter((x:any)=>x.status=null);
     // let Rejected=new Array<any>;
     // Rejected=this.teacherService.trainerUser.filter((x:any)=>x.status=0);
-    
+
     console.log(this.teacherService.trainerUser);
-    
-    
-    
+
+
+
     this.canvas = this.pieCanvasTrainer.nativeElement;
     this.ctx = this.canvas.getContext('2d');
 
@@ -80,12 +86,9 @@ export class AdminPanelComponent implements OnInit {
         datasets: [
           {
             backgroundColor: [
-              '#2ecc71',
-              '#3498db',
-              '#95a5a6',
-              '#9b59b6',
-              '#f1c40f',
-              '#e74c3c',
+              '#04d65da6',
+              '#f3c3018f',
+              '#ff000085','#e74c3c'
             ],
             data: [this.teacherService.trainerUser.filter((x:any)=>x.status==1).length,this.teacherService.trainerUser.filter((x:any)=>x.status==null).length,this.teacherService.trainerUser.filter((x:any)=>x.status==0).length],
           },
@@ -94,27 +97,27 @@ export class AdminPanelComponent implements OnInit {
     });
   }
 
-  
+
   barChartMethod() {
   let coursenames=new Array<string>;
     let numberoftrainer =new Array<number>;
     this.adminService.NumberOfTrainersInCourses.forEach((element:any) => {
       coursenames.push(element.coursE_NAME)
-          
+
     });
-    
+
     this.adminService.NumberOfTrainersInCourses.forEach((element:any) => {
       numberoftrainer.push(element.numberoftrainer)
-          
+
     });
 
     console.log(coursenames);
     console.log(numberoftrainer);
-    
+
     this.barCanvas = new Chart(this.barCanvasCourseTrainer?.nativeElement, {
       type: 'bar',
       data: {
-        
+
         labels:coursenames,
         datasets: [
           {
@@ -149,8 +152,8 @@ export class AdminPanelComponent implements OnInit {
       },
     });
   }
-  
-  
+
+
 
 
 
