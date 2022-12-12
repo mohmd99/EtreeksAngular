@@ -82,6 +82,17 @@
                             </div>
                         </div>
                         </td>
+                        <td class="w-30" >
+                          <div class="d-flex px-2 py-1 align-items-center">
+
+                              <div class="ms-4">
+                                <a href="../../../assets/files/{{ item.cv }}" download>
+                                  <i class="bi bi-file-earmark-person">cv</i>
+                                </a>
+                                <!-- <embed src="../../../assets/files/{{ item.certificate }}" width="800px" height="2100px" />-->
+                              </div>
+                          </div>
+                          </td>
                         <td   *ngIf="item.status==null">
                           <i  class="bi bi-check-square text-success" style="margin-right: 15px; cursor: pointer; font-size: x-large; " (click)="openAcceptDailog(item)"></i>  <i class="bi bi-x-square text-danger" style=" cursor: pointer;  font-size: x-large;" (click)="openRejectDailog(item)"></i>
                         </td>
