@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
 
   constructor(public adminService:AdminService,public teacherService:TeacherService,public authService:AuthService ,private router:Router,public generalService:GeneralService) { }
 
+  
   ngOnInit(): void {
 
     debugger
@@ -29,17 +30,21 @@ export class HomeComponent implements OnInit {
     this.teacherService.getuserbyid(this.authService.data.ID);
     this.teacherService.getloginuserbyid(this.authService.data.ID);
     this.teacherService.getTraineruserbyid(this.authService.data.ID);
-
+    
     setTimeout(() => {
       console.log("Trainer ID Is :");
       console.log(this.teacherService.Traineruserbyid[0].id);
-      
+     
+      this.teacherService.getReservationRequest(this.teacherService.Traineruserbyid[0].id);
+    
+
       this.teacherService.getNumberOfStudentssInCoursesByID(this.teacherService.Traineruserbyid[0].id);
       
-    }, 1000);
+    }, 800);
   
     
   }
+
 
 
 
@@ -53,21 +58,17 @@ export class HomeComponent implements OnInit {
   barCanvas: any;
 
   ngAfterViewInit(): void {
-    this.pieChartBrowser();
-    this.barChartMethod();
+    setTimeout(() => {
+      this.pieChartBrowser();
+          this.barChartMethod();
+          }, 1200);
+      
+    
   }
 
   pieChartBrowser(): void {
-    // this.teacherService.trainerUser;
-    // let accepted=new Array<any>;
-    // accepted=this.teacherService.trainerUser.filter((x:any)=>x.status=1);
-    // let Pending=new Array<any>;
-    // Pending=this.teacherService.trainerUser.filter((x:any)=>x.status=null);
-    // let Rejected=new Array<any>;
-    // Rejected=this.teacherService.trainerUser.filter((x:any)=>x.status=0);
-    
-    console.log(this.teacherService.trainerUser);
-    
+
+    console.log(this.teacherService.reservationRequest);
     
     
     this.canvas = this.pieCanvasTrainer.nativeElement;
@@ -80,14 +81,11 @@ export class HomeComponent implements OnInit {
         datasets: [
           {
             backgroundColor: [
-              '#2ecc71',
-              '#3498db',
-              '#95a5a6',
-              '#9b59b6',
-              '#f1c40f',
-              '#e74c3c',
+              '#04d65da6',
+              '#f3c3018f',
+              '#ff000085','#e74c3c'
             ],
-            data: [this.teacherService.trainerUser.filter((x:any)=>x.status==1).length,this.teacherService.trainerUser.filter((x:any)=>x.status==null).length,this.teacherService.trainerUser.filter((x:any)=>x.status==0).length],
+            data: [this.teacherService.reservationRequest.filter((x:any)=>x.status==1).length,this.teacherService.reservationRequest.filter((x:any)=>x.status==null).length,this.teacherService.reservationRequest.filter((x:any)=>x.status==0).length],
           },
         ],
       },
