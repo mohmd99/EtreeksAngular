@@ -261,11 +261,17 @@ filterTime:any
     });
   }
   Traineruserbyid:any;
+  myLocation:any
 getTraineruserbyid(id:number){
 
   this.http.get("https://localhost:44343/api/Trainer/getTrainerUser/"+id).subscribe((res:any)=>{
     this.Traineruserbyid=res;
     console.log(res);
+
+    
+    let lctn= JSON.parse(this.Traineruserbyid[0].location);
+
+    this.myLocation=lctn;
 
 
   },err=>{
@@ -362,4 +368,22 @@ sendEmailResrvation(id:number,status:any){
     this.toaster.error(err.message,err.status)
   })
  }
+
+
+ NumberOfStudentssInCoursesByID:any;
+getNumberOfStudentssInCoursesByID(id:number){
+  this.http.get('https://localhost:44343/api/reservation/getuserforeachcourse/'+id).subscribe((resp) => {
+    console.log("NumberOfTrainersInCourses = ");
+    console.log(resp);
+    this.NumberOfStudentssInCoursesByID=resp
+
+
+    this.spinner.hide();
+
+  }, err => {
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  }
+  )
+}
 }

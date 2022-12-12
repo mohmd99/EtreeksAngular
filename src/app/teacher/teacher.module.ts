@@ -20,6 +20,7 @@ import { AdminModule } from '../admin/admin.module';
 
 
 import { MatNativeDateModule } from '@angular/material/core';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     TeacherRoutingModule,
 
     SharedModule,MatExpansionModule,MatDatepickerModule,MatNativeDateModule,
-    AdminModule
+    AdminModule,
+    GoogleMapsModule
 
   ]
 })

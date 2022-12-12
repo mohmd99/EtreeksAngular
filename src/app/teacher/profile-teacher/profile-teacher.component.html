@@ -78,11 +78,21 @@
                                 <input  matInput formControlName="image" [(ngModel)]='userData.image'   #file  (change)="UploadFile(file.files)" class="form-control" type="file" >
                             </div>
                             </div>
-                            <!-- <div class="col-md-6">
-                            <div  class="form-group">
-                                <button (click)="UpdateProfile()"> Save </button>
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        
+                                        <div class="ms-4">
+  
+                                            <a style="    float: right; font-weight: bold;" href="https://www.google.com/maps/?q={{this.teacherService.myLocation.lat}},{{this.teacherService.myLocation.lng}}" target="_blank"><i style="font-size: 18px;" class="bi bi-globe-central-south-asia"></i>Location</a>
+                                
+                                          </div>
+
+                                        <button (click)="OpenLocationDialog()" class="btn btn-primary" >Update Location</button>
+                          
+                                      </div>
+                                </div>
                             </div>
-                            </div> -->
                         </div>
                         <hr class="horizontal dark">
                         <!-- <p class="text-uppercase text-sm">Contact Information</p>
@@ -191,3 +201,26 @@
     </div>
 </div>
             
+
+<ng-template #callLocationDailog>
+    <google-map height="400px"
+              width="750px"
+              [center]="center"
+              [zoom]="zoom"
+  
+  
+              (mapClick)="addMarker($event)">
+    <map-marker [position]="markerPosition"
+                [options]="markerOptions"></map-marker>
+  </google-map>
+  <div class="form-actions">
+  <button mat-dialog-close type="reset" class="btn btn-warning mr-1">
+    <i class="bi bi-x-lg"></i> Cancel
+  </button>
+  <button class="btn btn-primary mr-1"  mat-dialog-close="true" (click)="ConfirmLocation()" type="submit" >
+    <i class="bi bi-pin-map-fill"></i>Conferm
+  </button>
+  </div>
+  <!-- <div>Latitude: {{display?.lat}}</div>
+  <div>Longitude: {{display?.lng}}</div> -->
+    </ng-template>

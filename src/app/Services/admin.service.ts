@@ -571,9 +571,7 @@ getNumberOfTrainersInCourses(){
     console.log(resp);
     this.NumberOfTrainersInCourses=resp
 
-    this.color=this.Colors[this.userbyid.last_Name.toUpperCase().charCodeAt(0)-65]
-    console.log(this.color);
-
+   
     this.spinner.hide();
 
   }, err => {
@@ -590,8 +588,7 @@ getNumberOfCoursesinCategory(){
     console.log(resp);
     this.NumberOfCoursesinCategory=resp
 
-    this.color=this.Colors[this.userbyid.last_Name.toUpperCase().charCodeAt(0)-65]
-    console.log(this.color);
+    
 
     this.spinner.hide();
 
