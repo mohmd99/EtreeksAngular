@@ -560,4 +560,49 @@ sendEmailTrainer(id:number){
   }
   )
 }
+
+
+
+
+NumberOfTrainersInCourses:any;
+getNumberOfTrainersInCourses(){
+  this.http.get('https://localhost:44343/api/trainercourse/getNumberoftrainerbycourse').subscribe((resp) => {
+    console.log("NumberOfTrainersInCourses = ");
+    console.log(resp);
+    this.NumberOfTrainersInCourses=resp
+
+    this.color=this.Colors[this.userbyid.last_Name.toUpperCase().charCodeAt(0)-65]
+    console.log(this.color);
+
+    this.spinner.hide();
+
+  }, err => {
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  }
+  )
+}
+
+NumberOfCoursesinCategory:any;
+getNumberOfCoursesinCategory(){
+  this.http.get('https://localhost:44343/api/course/courseincategory').subscribe((resp) => {
+    console.log("NumberOfCoursesinCategory = ");
+    console.log(resp);
+    this.NumberOfCoursesinCategory=resp
+
+    this.color=this.Colors[this.userbyid.last_Name.toUpperCase().charCodeAt(0)-65]
+    console.log(this.color);
+
+    this.spinner.hide();
+
+  }, err => {
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  }
+  )
+}
+
+
+
+
 }

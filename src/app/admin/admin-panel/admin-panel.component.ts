@@ -5,6 +5,7 @@ import { AdminService } from 'src/app/Services/admin.service';
 import { GeneralService } from 'src/app/Services/general.service';
 import Chart from 'chart.js/auto';
 import { getRelativePosition } from 'chart.js/helpers';
+import { TeacherService } from 'src/app/Services/teacher.service';
 
 @Component({
   selector: 'app-admin-panel',
@@ -13,7 +14,7 @@ import { getRelativePosition } from 'chart.js/helpers';
 })
 export class AdminPanelComponent implements OnInit {
 
-  constructor(public authService:AuthService,private router:Router ,public adminService:AdminService,public generalService:GeneralService) { }
+  constructor(private teacherService:TeacherService ,public authService:AuthService,private router:Router ,public adminService:AdminService,public generalService:GeneralService) { }
 
 
   ngOnInit(): void {
@@ -21,6 +22,13 @@ export class AdminPanelComponent implements OnInit {
     this.adminService.getloginuserbyid(this.authService.data.ID);
     this.authService.getalllogin();
     this.generalService.GetAllCourses();
+    this.adminService.getNumberOfTrainersInCourses();
+    this.adminService.getNumberOfCoursesinCategory();
+    this.teacherService.getTrainerUser();
+    
+  
+   
+    console.log(this.adminService.NumberOfCoursesinCategory);
   }
 
 
@@ -50,13 +58,25 @@ export class AdminPanelComponent implements OnInit {
   }
 
   pieChartBrowser(): void {
+    // this.teacherService.trainerUser;
+    // let accepted=new Array<any>;
+    // accepted=this.teacherService.trainerUser.filter((x:any)=>x.status=1);
+    // let Pending=new Array<any>;
+    // Pending=this.teacherService.trainerUser.filter((x:any)=>x.status=null);
+    // let Rejected=new Array<any>;
+    // Rejected=this.teacherService.trainerUser.filter((x:any)=>x.status=0);
+    
+    console.log(this.teacherService.trainerUser);
+    
+    
+    
     this.canvas = this.pieCanvasTrainer.nativeElement;
     this.ctx = this.canvas.getContext('2d');
 
     this.pieChart = new Chart(this.ctx, {
       type: 'pie',
       data: {
-        labels: ['Apple', 'Google', 'Facebook', 'Infosys', 'Hp', 'Accenture'],
+        labels: ['Accepted', 'Pending', 'Rejected'],
         datasets: [
           {
             backgroundColor: [
@@ -67,22 +87,39 @@ export class AdminPanelComponent implements OnInit {
               '#f1c40f',
               '#e74c3c',
             ],
-            data: [12, 19, 3, 17, 28, 24],
+            data: [this.teacherService.trainerUser.filter((x:any)=>x.status==1).length,this.teacherService.trainerUser.filter((x:any)=>x.status==null).length,this.teacherService.trainerUser.filter((x:any)=>x.status==0).length],
           },
         ],
       },
     });
   }
 
+  
   barChartMethod() {
+  let coursenames=new Array<string>;
+    let numberoftrainer =new Array<number>;
+    this.adminService.NumberOfTrainersInCourses.forEach((element:any) => {
+      coursenames.push(element.coursE_NAME)
+          
+    });
+    
+    this.adminService.NumberOfTrainersInCourses.forEach((element:any) => {
+      numberoftrainer.push(element.numberoftrainer)
+          
+    });
+
+    console.log(coursenames);
+    console.log(numberoftrainer);
+    
     this.barCanvas = new Chart(this.barCanvasCourseTrainer?.nativeElement, {
       type: 'bar',
       data: {
-        labels: ['BJP', 'INC', 'AAP', 'CPI', 'CPI-M', 'NCP'],
+        
+        labels:coursenames,
         datasets: [
           {
             label: '# of Votes',
-            data: [200, 50, 30, 15, 20, 34],
+            data:numberoftrainer,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -112,6 +149,8 @@ export class AdminPanelComponent implements OnInit {
       },
     });
   }
+  
+  
 
 
 
