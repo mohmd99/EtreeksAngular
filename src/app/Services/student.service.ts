@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -273,5 +273,27 @@ export class StudentService {
       this.toaster.error(err.message,err.status);
     });
   }
+
+  createReview(body:any){
+
+    const headerDic={
+      'Content-Type' :'application/json',
+      'Accept':'application/json'
+    }
+    const requestOptions={
+      headers: new HttpHeaders(headerDic)
+    }
+
+    this.spinner.show();
+    this.http.post('https://localhost:44343/api/review/createreview/',body,requestOptions).subscribe((resp)=>{
+      console.log(resp);
+      this.toaster.success("Review Submitted!!")
+      this.spinner.hide();
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message , err.status);
+    })
+  }
+
 
 }
