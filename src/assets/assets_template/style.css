@@ -2030,11 +2030,8 @@ BUTTONS
 .btn {
     border-radius: 0;
     font-size: 14px;
-    background-color: dimgrey;
-    border: 1px solid #fff;
-    font-weight: bold;
-    color: #ffffff !important;
-    padding: 13px 40px;
+     font-weight: bold;
+    color: #000000 !important;
     text-transform: capitalize;
 }
 
