@@ -33,10 +33,17 @@ export class SelectVerifyComponent implements OnInit {
   }
   }
   sendWithWhatsapp(){
+    if(this.authService.login_id!=null){
+      this.authService.SendWhatsapp(this.authService.login_id);
+      setTimeout(()=>{
+        this.authService.DeleteCode(this.authService.login_id);
+      },60000);
+    }
+    else{
     this.authService.SendWhatsapp(this.authService.Ids[0].value)
     setTimeout(() => {
       this.authService.DeleteCode(this.authService.Ids[0].value);
     }, 60000);
-   
+  }
   }
 }
