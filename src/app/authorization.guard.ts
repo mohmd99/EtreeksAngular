@@ -28,7 +28,7 @@ export class AuthorizationGuard implements CanActivate {
           }
         
         else {
-          this.toastr.warning('Sorry , this page for teacher');
+          this.toastr.warning('Sorry , this page for Admin');
           this.router.navigate(['auth/login']);
           localStorage.clear();
           return false;
@@ -55,8 +55,8 @@ export class AuthorizationGuard implements CanActivate {
           }
         
         else {
-          this.toastr.warning('Sorry , this page for teacher');
-          this.router.navigate(['teacher/home']);
+          this.toastr.warning('Sorry , this page for Trainer');
+          this.router.navigate(['auth/login']);
           localStorage.clear();
           return false;
         }
@@ -64,7 +64,7 @@ export class AuthorizationGuard implements CanActivate {
         }
       
         else{
-        this.toastr.warning('Sorry , this page for teacher');
+        this.toastr.warning('Sorry , this page for Trainer');
         this.router.navigate(['contact']);
         return false;
         }

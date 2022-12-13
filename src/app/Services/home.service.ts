@@ -35,4 +35,28 @@ export class HomeService {
       this.tostar.error(err.message,err.status)
     })
   }
+  ContactInfo:any;
+  CurrentLocation:any;
+  GetContact(){
+    this.spinner.show();
+    this.http.get('https://localhost:44343/api/CRUDContactinfo').subscribe((resp)=>{
+      console.log(resp);
+
+      this.ContactInfo=resp;
+
+      
+        let lctn= JSON.parse(this.ContactInfo[0].location);
+        this.CurrentLocation=lctn;
+        
+
+
+      console.log(this.ContactInfo);
+
+
+      this.spinner.hide();
+    },err=>{
+      this.spinner.hide();
+      this.tostar.error(err.message , err.status);
+    })
+  }
 } 

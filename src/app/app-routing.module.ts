@@ -46,16 +46,19 @@ const routes: Routes = [
   {
     path:'admin',
     loadChildren:()=>AdminModule,
-    // canActivate:[AuthorizationGuard]
+    canActivate:[AuthorizationGuard]
   },
 
   {
     path:'teacher',
-    loadChildren:()=>TeacherModule
+    loadChildren:()=>TeacherModule,
+    canActivate:[AuthorizationGuard]
+    
   },
   {
     path:'student',
-    loadChildren:()=>StudentModule
+    loadChildren:()=>StudentModule,
+    canActivate:[AuthorizationGuard]
   },
 
   {

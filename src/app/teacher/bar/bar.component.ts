@@ -26,6 +26,7 @@ export class BarComponent implements OnInit {
     this.router.navigate(['teacher/updateprofile'])
   }
   Logout(){
+    localStorage.clear();
     this.router.navigate([''])
   }
 

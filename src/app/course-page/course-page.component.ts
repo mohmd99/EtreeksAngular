@@ -72,9 +72,6 @@ export class CoursePageComponent implements OnInit {
 
    OpenCreateDialouge(item:any)
   {
-
-
-
     console.log(item.user_Id) ;
      this.studentService.GetAllTimes(item.user_Id);
 
