@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { GeneralService } from '../Services/general.service';
 import { Route, Router } from '@angular/router';
+import { HomeService } from '../Services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -14,16 +15,22 @@ import { Route, Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
 
-  constructor(public authService :AuthService,public generalServise:GeneralService,public adminService:AdminService,private router:Router) { }
+  constructor(public homeService:HomeService,public authService :AuthService,public generalServise:GeneralService,public adminService:AdminService,private router:Router) { }
+
 
   ngOnInit(): void {
     this.generalServise.GetHomeInfo();
     this.generalServise.GetAllCourses();
     this.generalServise.getAllCategory();
     this.adminService.getTestimonial();
+    this.homeService.GetContact();
+   
 
 
 
+  }
+  OpenCourses(){
+    this.router.navigate(['ourCourses']);
   }
 
   OpenCategory(id:number){

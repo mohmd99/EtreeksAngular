@@ -14,6 +14,7 @@ import { StudentModule } from './student/student.module';
 import { SharedModule } from './shared/shared.module';
 import { GooglemapComponent } from './Maps/googlemap/googlemap.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
+import { GuestCoursePageComponent } from './guest-course-page/guest-course-page.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,7 @@ const routes: Routes = [
     path:'Course',
     component:CoursePageComponent
   },
+  
 
   {
     path:'auth',
@@ -48,6 +50,12 @@ const routes: Routes = [
     path:'admin',
     loadChildren:()=>AdminModule,
     canActivate:[AuthorizationGuard]
+  },
+  
+
+  {
+    path:'ourCourses',
+    component:GuestCoursePageComponent
   },
 
   {

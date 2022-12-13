@@ -22,7 +22,8 @@ import { TeacherModule } from './teacher/teacher.module';
 import { ProfileComponent } from './profile/profile.component';
 import { GooglemapComponent } from './Maps/googlemap/googlemap.component';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { TestimonialComponent } from './testimonial/testimonial.component'
+import { TestimonialComponent } from './testimonial/testimonial.component';
+import { GuestCoursePageComponent } from './guest-course-page/guest-course-page.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { TestimonialComponent } from './testimonial/testimonial.component'
     CategoryComponent,
     ProfileComponent,
     GooglemapComponent,
-    TestimonialComponent
+    TestimonialComponent,
+    GuestCoursePageComponent
   ],
   imports: [
     BrowserModule,

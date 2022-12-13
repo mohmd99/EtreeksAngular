@@ -1,0 +1,16 @@
+
+<app-guest-navbar></app-guest-navbar>
+
+
+<section >
+    <div class="container">
+        <div class="row">
+            <app-courses *ngFor="let course of generalServise.allCourses" [coursE_NAME]="course.coursE_NAME"
+              [description]="course.description" [id]="course.id"></app-courses>
+          </div>
+    </div><!-- end container -->
+</section><!-- end section -->
+
+
+<app-footer></app-footer>
+
