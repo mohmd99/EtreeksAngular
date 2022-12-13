@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeacherService } from 'src/app/Services/teacher.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',
@@ -12,6 +13,9 @@ import { Router } from '@angular/router';
 export class ReservationComponent implements OnInit {
 
   // './reservation.component.css'
+  max = 5;
+  rate = 2;
+  isReadonly = false;
 
   constructor(private router:Router,public teacherService: TeacherService,public studentService:StudentService,private authService:AuthService) { }
 

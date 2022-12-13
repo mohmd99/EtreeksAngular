@@ -31,6 +31,9 @@
                               <th>
                                 Address Directions
                             </th>
+                            <th>
+                              Rate
+                            </th>
                                 
                             </tr>
                         </thead>
@@ -81,6 +84,17 @@
                                   <button style="font-weight: bold; cursor: pointer;" (click)="OpenLocation(item)"><i style="font-size: 18px;" class="bi bi-globe-central-south-asia"></i></button>
                                         </div>
                                         </td>
+
+                                        
+                                          <td>
+
+                                            <rating  style="color: #dfc300;
+                                            font-size: 25px;" [(ngModel)]="rate" [max]="max" [readonly]="isReadonly">
+                                            </rating>
+      
+      
+                                          </td>
+                                       
 
 
                         </tr>
@@ -221,6 +235,7 @@
                           <th>
                             Address Directions
                         </th>
+                        
                             
                         </tr>
                     </thead>
@@ -271,6 +286,8 @@
                               <button style="font-weight: bold; cursor: pointer;" (click)="OpenLocation(item)"><i style="font-size: 18px;" class="bi bi-globe-central-south-asia"></i></button>
                                     </div>
                                     </td>
+
+                                    
 
 
                     </tr>

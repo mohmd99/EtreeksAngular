@@ -13,6 +13,7 @@ import { AllcourseStudentComponent } from './allcourse-student/allcourse-student
 import { CategoryStudentComponent } from './category-student/category-student.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ReservationComponent } from './reservation/reservation.component';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 
 
@@ -31,7 +32,7 @@ import { ReservationComponent } from './reservation/reservation.component';
     imports: [
         CommonModule,
         StudentRoutingModule,
-        SharedModule,MatTabsModule
+        SharedModule,MatTabsModule,RatingModule.forRoot()
 
     ]
 })
