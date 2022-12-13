@@ -8,6 +8,7 @@ import { CourseStudentComponent } from './course-student/course-student.componen
 import { HomeStudentComponent } from './home-student/home-student.component';
 import { ProfileStudentComponent } from './profile-student/profile-student.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 const routes: Routes = [{
   path:'home',
@@ -34,6 +35,8 @@ const routes: Routes = [{
   component:ProfileStudentComponent
 },{
   path:'reservation',component:ReservationComponent
+},{
+  path:'testimonial',component:TestimonialComponent
 }
 ];
 

@@ -132,7 +132,7 @@ getContactInfo(){
 CreateTestimonial(body:any){
   this.spinner.show();
   debugger
-  this.http.post('https://localhost:44343/api/CRUDContactUs',body).subscribe((resp)=>{
+  this.http.post('https://localhost:44343/api/testimonial/createTistimonialguest',body).subscribe((resp)=>{
     console.log(resp);
     this.spinner.hide();
     this.toaster.success('Created !!');

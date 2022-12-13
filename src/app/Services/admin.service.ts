@@ -10,6 +10,7 @@ export class AdminService {
 coursesinfo:any=[{}];
 allcontactus:any=[{}];
 allTestimonial:any=[{}];
+allGuestTestimonial:any=[{}];
 display_image:any;
 
   constructor( private toaster:ToastrService,private spinner:NgxSpinnerService,private http:HttpClient,private http2 :HttpClient) { }
@@ -360,6 +361,21 @@ getTestimonial(){
   }
   )
 }
+
+getGuestTestimonial(){
+  this.spinner.show();
+  debugger
+  this.http.get('https://localhost:44343/api/testimonial/GetAllTistimonialguest').subscribe((resp) => {
+    console.log(resp);
+    this.allGuestTestimonial=resp
+    this.spinner.hide();
+
+  }, err => {
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  }
+  )
+}
 updateTestimonial(body:any){
 
 
@@ -372,6 +388,19 @@ updateTestimonial(body:any){
    this.toaster.error(err.message, err.status);
  })
 }
+
+updateGuestTestimonial(id:any,status:any){
+
+var body={};
+  this.spinner.show();
+  this.http.put('https://localhost:44343/api/testimonial/updatestatus/'+id+'/'+status,body).subscribe((resp)=>{
+    this.spinner.hide();
+    this.toaster.success('Updated Successfully !!');
+  },err=>{
+    this.spinner.hide();
+    this.toaster.error(err.message, err.status);
+  })
+ }
 
 
 //---------------User----------------

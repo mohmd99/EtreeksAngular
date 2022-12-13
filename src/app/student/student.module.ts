@@ -14,6 +14,7 @@ import { CategoryStudentComponent } from './category-student/category-student.co
 import {MatTabsModule} from '@angular/material/tabs';
 import { ReservationComponent } from './reservation/reservation.component';
 import { RatingModule } from 'ngx-bootstrap/rating';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 
 
@@ -27,6 +28,7 @@ import { RatingModule } from 'ngx-bootstrap/rating';
         AllcourseStudentComponent,
         CategoryStudentComponent,
         ReservationComponent,
+        TestimonialComponent,
 
     ],
     imports: [

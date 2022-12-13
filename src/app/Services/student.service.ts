@@ -295,5 +295,19 @@ export class StudentService {
     })
   }
 
+  CreateTestimonial(body:any){
+    this.spinner.show();
+    debugger
+    this.http.post('https://localhost:44343/api/CRUDTestimonial',body).subscribe((resp)=>{
+      console.log(resp);
+      this.spinner.hide();
+      this.toaster.success('Created !!');
+    },err=>{
+      this.spinner.hide();
+      this.toaster.error(err.message,err.status);
+    })
+  }
+  
+
 
 }
