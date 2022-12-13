@@ -69,7 +69,7 @@ export class ProfileTeacherComponent implements OnInit {
       this.updateForm.controls['birth_Date'].setValue(this.userData.birth_Date);
       this.updateForm.controls['Verify_Code'].setValue(this.loginData.verify_Code);
       this.updateForm.controls['Role_Id'].setValue(this.loginData.role_Id);
-      this.updateForm.controls['Id'].setValue(this.loginData.id);
+      this.updateForm.controls['Id'].setValue(this.teacherService.Traineruserbyid[0].id);
       this.updateForm.controls['User_Id'].setValue(this.userData.id);
       this.updateForm.controls['birth_Date'].setValue(this.userData.birth_Date);
       console.log("loginData  : ");
@@ -78,7 +78,7 @@ export class ProfileTeacherComponent implements OnInit {
       console.log(this.userData);
       console.log("updated info : ");
       console.log(this.updateForm.value);
-      this.adminService.updateUserlogin(this.updateForm.value);
+      this.teacherService.updateUserlogin(this.updateForm.value);
  
     }
 

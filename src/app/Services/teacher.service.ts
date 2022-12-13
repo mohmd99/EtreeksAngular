@@ -58,6 +58,9 @@ export class TeacherService {
       console.log(err);
     })
   }
+
+
+  
   updateUser(body:any)
   {
   if(this.display_image_user !=null)
@@ -80,7 +83,7 @@ export class TeacherService {
   console.log('body is: ');
   console.log(body);
   this.spinner.show();
-  this.http.put('https://localhost:44343/api/User/Update',body).subscribe((resp)=>{
+  this.http.put('https://localhost:44343/api/trainer/UpdateTrainer',body).subscribe((resp)=>{
     this.spinner.hide();
     this.toaster.success('Updated Successfully !!');
   },err=>{

@@ -21,39 +21,46 @@
             <p class="text-center">Sign in by entering the information below</p>
                   <form class="login-form"  [formGroup]="registerTeacherForm" style="padding-left: 18px;">
                     <div class="row" style="margin:-30px ;">
-                    <div class="form-group">
+                    
+                      
+                        <div class="col-6 col-md-6">
+                          <div class="form-group">
+                            <mat-form-field style="
+                            margin-top: 25px;" >
+                              <div class="icon d-flex align-items-center justify-content-center">
+                                <span style="padding-top: 30px;padding-left: 10px;" class="fa fa-user"></span>
+                              </div>
+                             
+                              <input style="border-radius: 5%;" class="form-control" matInput formControlName="first_Name" type="text"  placeholder="First Name" >
 
-                        <div class="col-4 col-md-4">
-                        <div class="form-group">
-                        <mat-form-field >
-                          <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
-                          <!-- <input type="text" class="form-control" placeholder="Username" required> -->
-                          <input class="form-control" matInput formControlName="first_Name" type="text"  placeholder="FirstName" >
 
 
-
-                      <mat-error *ngIf="registerTeacherForm.controls['first_Name'].hasError('required')">
-                        FirstName is <strong>required</strong>
-                      </mat-error>
-                    </mat-form-field>
+                              <mat-error style="margin-top: 7px;" *ngIf="registerTeacherForm.controls['first_Name'].hasError('required')">
+                                FirstName is <strong>required</strong>
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
                         </div>
-                </div>
-                <div class="col-4 col-md-4">
-                <div class="form-group" style="margin-left:103px ;">
-                    <mat-form-field >
-                        <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
-                        <!-- <input type="text" class="form-control" placeholder="Username" required> -->
-                        <input class="form-control" matInput formControlName="last_Name" type="text"  placeholder="LastName" >
+                        <div class="col-6 col-md-6">
+                          <div class="form-group">
+                            <mat-form-field style="
+                            margin-top: 25px;" >
+                              <div class="icon d-flex align-items-center justify-content-center">
+                                <span style="padding-top: 30px;padding-left: 10px;" class="fa fa-user"></span>
+                              </div>
+                              <!-- <input type="text" class="form-control" placeholder="Username" required> -->
+                              <input style="border-radius: 5%;" class="form-control"formControlName="last_Name" matInput  type="text"  placeholder="Last Name" >
 
 
 
-                    <mat-error *ngIf="registerTeacherForm.controls['last_Name'].hasError('required')">
-                      LastName is <strong>required</strong>
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-                  </div>
-                  </div>
+                              <mat-error style="margin-top: 7px;" *ngIf="registerTeacherForm.controls['last_Name'].hasError('required') ">
+                                Last Name is <strong>required</strong>
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+            
+                  
                   </div>
                   <div class="row" style="margin:-30px ;">
                 <div class="form-group">

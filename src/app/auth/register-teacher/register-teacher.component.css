@@ -8444,3 +8444,8 @@ h1, h2, h3, h4, h5,
         background: #b689b0;
         color: #fff; }
         
+
+        :host /deep/ .mat-form-field-appearance-legacy .mat-form-field-underline {
+ 
+          visibility: hidden !important;
+        }
