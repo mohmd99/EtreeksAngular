@@ -13,6 +13,7 @@ import { TeacherModule } from './teacher/teacher.module';
 import { StudentModule } from './student/student.module';
 import { SharedModule } from './shared/shared.module';
 import { GooglemapComponent } from './Maps/googlemap/googlemap.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 const routes: Routes = [
   {
@@ -64,6 +65,11 @@ const routes: Routes = [
   {
     path:'Maps',
     component:GooglemapComponent
+  },
+
+  {
+    path:'Testimonial',
+    component:TestimonialComponent
   }
 ];
 

@@ -27,7 +27,7 @@ export class ReservationComponent implements OnInit {
   
   locationLink:any;
   OpenLocation(item:any){
-    debugger
+    
 
     console.log(item.location)
     let lctn= JSON.parse(item.location);
@@ -37,8 +37,17 @@ export class ReservationComponent implements OnInit {
     window.open(this.locationLink,'_blank');
 
 
+  }
 
 
+  addReviw(item:any){
+    debugger
+    const body={
+      review:this.rate,
+      RESERVATION_ID:item.id
+    }
+
+    this.studentService.createReview(body);
 
   }
 

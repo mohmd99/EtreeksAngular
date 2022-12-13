@@ -21,7 +21,8 @@ import { TokenInterceptor } from 'src/Interceptor/token.interceptor';
 import { TeacherModule } from './teacher/teacher.module';
 import { ProfileComponent } from './profile/profile.component';
 import { GooglemapComponent } from './Maps/googlemap/googlemap.component';
-import { GoogleMapsModule } from '@angular/google-maps'
+import { GoogleMapsModule } from '@angular/google-maps';
+import { TestimonialComponent } from './testimonial/testimonial.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { GoogleMapsModule } from '@angular/google-maps'
     CoursePageComponent,
     CategoryComponent,
     ProfileComponent,
-    GooglemapComponent
+    GooglemapComponent,
+    TestimonialComponent
   ],
   imports: [
     BrowserModule,

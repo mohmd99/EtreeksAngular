@@ -90,6 +90,10 @@
                                 <th>
                                   Course Name
                               </th>
+                              <th>
+                                Rating
+                              </th>
+
                                 <th>
                                     Manage
                                 </th>
@@ -135,6 +139,22 @@
                                       </div>
                                   </div>
                                   </td>
+                                  
+                                  <td *ngIf="item.review!=null&&item.status==1">
+
+                                    <rating  style="color: #dfc300;
+                                    font-size: 25px;" [ngModel]="item.review"  [readonly]="true">
+                                    </rating>
+
+
+                                  </td>
+                                  <td *ngIf="item.review==null&&item.status==1">
+                                   <div> Waitng Review</div>
+                                  </td>
+                                  <td *ngIf="item.status!=1">
+                                    <div> </div>
+                                   </td>
+
 
                                 <td   *ngIf="item.status==null">
                                   <i  class="bi bi-check-square text-success" style="margin-right: 15px; cursor: pointer; font-size: x-large; " (click)="openAcceptDailog(item)"></i>  <i class="bi bi-x-square text-danger" style=" cursor: pointer;  font-size: x-large;" (click)="openRejectDailog(item)"></i>

@@ -86,10 +86,18 @@
                                         </td>
 
                                         
-                                          <td>
+                                          <td *ngIf="item.review==null" (click)="addReviw(item)">
 
                                             <rating  style="color: #dfc300;
-                                            font-size: 25px;" [(ngModel)]="rate" [max]="max" [readonly]="isReadonly">
+                                            font-size: 25px;" [(ngModel)]="item.rate" [max]="max" [readonly]="isReadonly">
+                                            </rating>
+      
+      
+                                          </td>
+                                          <td *ngIf="item.review!=null">
+
+                                            <rating  style="color: #dfc300;
+                                            font-size: 25px;" [ngModel]="item.review" [max]="max" [readonly]="true">
                                             </rating>
       
       

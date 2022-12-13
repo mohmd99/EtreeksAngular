@@ -21,6 +21,7 @@ import { AdminModule } from '../admin/admin.module';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
 
     SharedModule,MatExpansionModule,MatDatepickerModule,MatNativeDateModule,
     AdminModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    RatingModule.forRoot()
 
   ]
 })
