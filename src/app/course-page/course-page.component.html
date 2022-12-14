@@ -179,7 +179,7 @@
                             <div class="course-footer clearfix">
                                 <div class="pull-left">
                                     <ul class="list-inline">
-                                        <li id="book"><a  (click)="OpenCreateDialouge(item)" ><i class="bi bi-bookmark-plus"></i> Book apointment </a></li>
+                                        <li id="book"><a *ngIf="available"  (click)="OpenCreateDialouge(item)" ><i class="bi bi-bookmark-plus"></i> Book apointment </a></li>
                                         <li [ngStyle]="{'visibility':available == null ? 'hidden' : 'visible' }"><a *ngIf="available" ><i class="bi bi-bookmark-plus"></i> Available </a></li>
                                         <li [ngStyle]="{'visibility':available == null ? 'hidden' : 'visible' }"><a  *ngIf="!available" ><i class="bi bi-bookmark-plus"></i>  Not Available </a></li>
                                     </ul>

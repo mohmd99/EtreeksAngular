@@ -91,6 +91,9 @@ export class TeacherService {
     this.toaster.error(err.message, err.status);
   })
   }
+ 
+
+
   trainerUser:any
   getTrainerUser(){
     this.spinner.show();
@@ -389,4 +392,6 @@ getNumberOfStudentssInCoursesByID(id:number){
   }
   )
 }
+
+
 }

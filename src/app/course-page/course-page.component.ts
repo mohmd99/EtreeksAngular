@@ -97,7 +97,7 @@ export class CoursePageComponent implements OnInit {
     //console.log(this.createForm.value)
     console.log(this. studentService.AvailableTimes);
 
-    this.studentService.get_TrainerCourseID(item.id,this.generalServise.retreavedCourse.id);
+    this.studentService.get_TrainerCourseID(this.generalServise.retreavedCourse.id,item.id);
 
 
     this.dialog.open(this.callCreateReservation);
@@ -105,6 +105,8 @@ export class CoursePageComponent implements OnInit {
   }
 
   SaveData(){
+    console.log(this.studentService.trainersbycourseID.id);
+    
 
 
     this.createForm.controls['user_Id'].setValue(Number(this.authService.data.ID));

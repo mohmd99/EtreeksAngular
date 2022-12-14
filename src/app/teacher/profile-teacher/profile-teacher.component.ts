@@ -21,18 +21,23 @@ export class ProfileTeacherComponent implements OnInit {
   loginData:any;
  
   ngOnInit(): void {
-    this.adminService.getuserbyid(this.authService.data.ID);
+    this.adminService.getuserbyid(Number(this.authService.data.ID));
+    this.teacherService.getTraineruserbyid(Number(this.authService.data.ID));
     this.userData=this.adminService.userbyid;
     this.loginData=this.teacherService.loginuserbyid;
    
-    this.teacherService.getTraineruserbyid(this.authService.data.ID)
+   
 
     console.log("this.loginData");
     console.log(this.loginData);
+    console.log(this.teacherService.Traineruserbyid[0]);
+    
     
     this.updateForm.controls['image'].setValue(this.userData.image);
-    this.updateForm.controls['location'].setValue(this.teacherService.Traineruserbyid.location);
-    
+    this.updateForm.controls['location'].setValue(this.teacherService.Traineruserbyid[0].location);
+      
+      
+   
     
   }
 
@@ -91,7 +96,7 @@ export class ProfileTeacherComponent implements OnInit {
       let filetoupload=<File>file[0];
       const formData=new FormData();
       formData.append(file,filetoupload,filetoupload.name);
-      this.adminService.uploadAttachmentuser(formData);
+      this.teacherService.uploadAttachmentuser(formData);
   
     }
 
