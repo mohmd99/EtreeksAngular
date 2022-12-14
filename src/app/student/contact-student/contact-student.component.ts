@@ -21,11 +21,16 @@ export class ContactStudentComponent implements OnInit {
   constructor(public homeService:HomeService , public adminService:AdminService,public studentService:StudentService, public authService:AuthService) { }
 
   ngOnInit(): void {
-    this.studentService.getuserbyid(this.authService.data.ID);
+    this.homeService.GetContact();
   }
   SaveData(){
     console.log(this.createForm.value);
     this.homeService.CreateContactUs(this.createForm.value);
     this.unvisible=false;
   }
+
+
+
+
+
 }

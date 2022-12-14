@@ -3,9 +3,10 @@
 
 
 
- 
 
-<app-navbar></app-navbar>
+
+<app-navbar *ngIf="authService.data!=null"  [first_Name]="studentService.userbyid.first_Name" [last_Name]="studentService.userbyid.last_Name" [image]="studentService.userbyid.image"></app-navbar>
+<app-guest-navbar *ngIf="authService.data==null"></app-guest-navbar>
 
 
 
@@ -20,16 +21,16 @@
             <div class="related-products">
                 <div class="text-widget">
                     <h3>Courses</h3>
-                </div><!-- end title -->        
+                </div><!-- end title -->
 
                 <div class="row blog-grid shop-grid">
-                   
+
                     <div class="row">
                         <app-courses *ngFor="let course of generalService.coursesbycategory" [coursE_NAME]="course.coursE_NAME"
                         [description]="course.description" [image]="course.image" [id]="course.id"></app-courses>
                     </div>
-   
- 
+
+
                 </div><!-- end row -->
             </div><!-- end related -->
         </div><!-- end boxed -->

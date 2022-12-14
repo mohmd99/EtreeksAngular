@@ -1,3 +1,6 @@
+import { AuthService } from 'src/app/Services/auth.service';
+import { StudentService } from 'src/app/Services/student.service';
+import { StudentModule } from './../student/student.module';
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from '../Services/general.service';
 
@@ -8,7 +11,7 @@ import { GeneralService } from '../Services/general.service';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor(public generalService:GeneralService) { }
+  constructor(public studentService:StudentService,public authService:AuthService ,public generalService:GeneralService) { }
 
   ngOnInit(): void {
   }

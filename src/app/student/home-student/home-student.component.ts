@@ -27,7 +27,8 @@ export class HomeStudentComponent implements OnInit {
     this.generalServise.GetAllCourses();
     this.generalServise.getAllCategory();
     this.adminService.getTestimonial();
-  
+    this.adminService.getGuestTestimonial();
+
 
     this.studentService.getuserbyid(this.authService.data.ID);
     this.studentService.getloginuserbyid(this.authService.data.ID);
@@ -40,7 +41,7 @@ export class HomeStudentComponent implements OnInit {
   }
 
   OpenCourses(){
-    this.router.navigate(['course']);
+    this.router.navigate(['student/course']);
   }
 
 }
