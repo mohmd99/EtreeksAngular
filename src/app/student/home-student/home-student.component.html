@@ -93,8 +93,15 @@
 
 
     <div class="row">
-      <app-course-student *ngFor="let course of generalServise.allCourses" [coursE_NAME]="course.coursE_NAME"
-        [description]="course.description" [id]="course.id"></app-course-student>
+      <app-course-student  [coursE_NAME]="generalServise.allCourses[0].coursE_NAME"
+        [description]="generalServise.allCourses[0].description" [image]="generalServise.allCourses[0].image" [id]="generalServise.allCourses[0].id"></app-course-student>
+
+        <app-course-student  [coursE_NAME]="generalServise.allCourses[1].coursE_NAME"
+        [description]="generalServise.allCourses[1].description" [image]="generalServise.allCourses[1].image" [id]="generalServise.allCourses[1].id"></app-course-student>
+
+        <app-course-student  [coursE_NAME]="generalServise.allCourses[2].coursE_NAME"
+        [description]="generalServise.allCourses[2].description" [image]="generalServise.allCourses[2].image" [id]="generalServise.allCourses[2].id"></app-course-student>
+
     </div>
 
 
@@ -105,7 +112,7 @@
     <hr class="invis">
 
     <div class="section-button text-center">
-      <a href="#" class="btn btn-primary">View All Courses</a>
+      <a (click)="OpenCourses()" class="btn btn-primary">View All Courses</a>
     </div>
   </div><!-- end container -->
 </section>

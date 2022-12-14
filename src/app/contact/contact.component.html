@@ -6,7 +6,7 @@
                 <div class="tagline-message page-title text-center">
                     <h3>Get In Touch</h3>
                     <ul class="breadcrumb">
-                        <li><a href="javascript:void(0)">Edulogy</a></li>
+                        <li><a href="javascript:void(0)">ETreeks</a></li>
                         <li class="active">Get in touch</li>
                     </ul>
                 </div>
@@ -53,17 +53,12 @@
                 <div class="col-md-6 col-md-offset-3">
                     <div class="section-title text-center">
                         <h3>Contact Form</h3>
-                        <p>Maecenas sit amet tristique turpis. Quisque porttitor eros quis leo pulvinar, at hendrerit sapien iaculis.</p>
                     </div><!-- end title -->
                     <!-- <ng-template #CreateDialoug > -->
                     <form class="big-contact-form" [formGroup]="createForm">
                         <input matInput formControlName="name" type="text" class="form-control" placeholder="Enter your name..">
-                        <mat-error *ngIf="createForm.controls['name'].hasError('required')"></mat-error>
                         <input matInput formControlName="email" type="text" class="form-control" placeholder="Enter email..">
-                        <mat-error *ngIf="createForm.controls['email'].hasError('email')"> Please enter the valid mail</mat-error>
-                        <mat-error *ngIf="createForm.controls['email'].hasError('required')">Please enter mail</mat-error>
                         <textarea matInput formControlName="message" class="form-control" placeholder="Message goes here.."></textarea>
-                        <mat-error *ngIf="createForm.controls['message'].hasError('required')">Please enter message</mat-error>
                         <button [mat-dialog-close]="true" (click)="SaveData()" type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 <!-- </ng-template> -->

@@ -15,6 +15,7 @@ export class CoursesComponent implements OnInit {
 
   @Input() coursE_NAME:string|undefined;
   @Input() description:string|undefined;
+  @Input() image:string|undefined;
   @Input() id:number=0;
   
   constructor(public toastr:ToastrService,private authService:AuthService,public studentService:StudentService,public generalService:GeneralService,private router:Router ) { }

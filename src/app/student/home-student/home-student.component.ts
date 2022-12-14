@@ -38,4 +38,9 @@ export class HomeStudentComponent implements OnInit {
     this.router.navigate(['Category']);
 
   }
+
+  OpenCourses(){
+    this.router.navigate(['course']);
+  }
+
 }

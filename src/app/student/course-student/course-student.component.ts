@@ -12,6 +12,7 @@ export class CourseStudentComponent implements OnInit {
   @Input() description:string|undefined;
   @Input() trainer_Id:number|undefined;
   @Input() course_Id:number|undefined;
+  @Input() image:string|undefined;
   @Input() id:number=0;
   constructor(public generalServise:GeneralService , private router:Router) { }
 
