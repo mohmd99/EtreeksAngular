@@ -57,7 +57,7 @@ export class RegisterTeacherComponent implements OnInit {
  this.registerTeacherForm.removeControl('confirmPassword');
  this.registerTeacherForm.controls['role_Id'].setValue(2);
  this.id=this.teacherService.createTeacher(this.registerTeacherForm.value);
-
+ this.router.navigate(['auth/login'])
  console.log(this.authService.Ids[0].value);
 }
 UploadFile(file:any){
