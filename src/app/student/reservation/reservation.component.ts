@@ -43,7 +43,7 @@ export class ReservationComponent implements OnInit {
   addReviw(item:any){
     debugger
     const body={
-      review:this.rate,
+      review:item.rate,
       RESERVATION_ID:item.id
     }
 

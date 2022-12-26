@@ -1628,7 +1628,8 @@ TESTIMONIAL
 
 .testimonial img {
     margin-right: 10px;
-    max-width: 40px;
+   width: 150px;
+   height: 150px;
 }
 
 .testimonial:after {

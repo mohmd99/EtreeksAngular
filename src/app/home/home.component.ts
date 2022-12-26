@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
     this.generalServise.GetAllCourses();
     this.generalServise.getAllCategory();
     this.adminService.getTestimonial();
+    this.adminService.getGuestTestimonial();
     this.homeService.GetContact();
    
 

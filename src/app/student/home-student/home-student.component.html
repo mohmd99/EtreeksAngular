@@ -112,14 +112,14 @@
 
     </div>
     <div class="section-title text-center">
-      <h2>Visitors Testimonials</h2>
+      <h2>Visitors FeedBack</h2>
     </div><!-- end title -->
     <div class="row">
       <div class="col-md-4" *ngFor="let item of adminService.allGuestTestimonial">
         <div *ngIf="item.status==1">
           <div class="box testimonial">
             <p class="testiname"><strong><img src="../../../assets/admin_assests/assets/img/l60Hf.png" style="border-radius: 10%;" alt="" class="img-circle">
-              {{item.name |uppercase }} </strong></p>
+              <br>{{item.name |uppercase }} </strong></p>
             <p>
               {{ item.text }}
             </p>

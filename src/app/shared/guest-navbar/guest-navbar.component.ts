@@ -24,4 +24,7 @@ export class GuestNavbarComponent implements OnInit {
   GoToLogin(){
     this.router.navigate(['auth/login'])
   }
+  GoToTestimonial(){
+    this.router.navigate(['Testimonial'])
+  }
 }
