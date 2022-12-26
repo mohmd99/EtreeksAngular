@@ -42,17 +42,51 @@ export class AuthService {
       localStorage.setItem('user',JSON.stringify({...this.data}));
 
       this.spinner.show();
+
+    
       setTimeout(() => {
+        if (this.data.Roleid =='2')
+        {
+          debugger
+
+
+            this.teacherService.getTraineruserbyid(Number(this.data.ID));
+        }
+        
+      }, 2000);
+      
+      setTimeout(() => {
+
+
 
 
         this.spinner.hide();
         if(this.data.Roleid =='1')
         this.router.navigate(['admin']);
+
+
         else if (this.data.Roleid =='2')
         {
-            this.teacherService.getTraineruserbyid(this.data.ID);
-        this.router.navigate(['teacher/home']);
+          debugger
+
+
+            // this.teacherService.getTraineruserbyid(this.data.ID);
+           
+            
+              
+              if( this.teacherService.Traineruserbyid[0].status==1)
+              this.router.navigate(['teacher/home']);
+              else
+              {
+               this.toastr.warning('Please wait the admin approval','Your account is not Activated yet')
+              }
+              
+         
+
+
       }
+
+
 
 
         else if (this.data.Roleid =='3'){
@@ -70,7 +104,9 @@ export class AuthService {
         }
 
 
-      },2000);
+      },4000);
+
+
 
 
     },err=>{
